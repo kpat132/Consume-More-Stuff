@@ -1,6 +1,7 @@
 // Update with your config settings.
 
 const config = require('./config/config')
+const path = require(`path`);
 
 module.exports = {
 
@@ -17,9 +18,9 @@ module.exports = {
       directory: path.join(__dirname,  'db/migrations')
     },
     seeds: {
-      directory: path.join(__dirname + 'db/seeds')
+      directory: path.join(__dirname, 'db/seeds')
     },
-    debug: true
+    debug: false
   },
 
   staging: {
