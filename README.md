@@ -1,5 +1,10 @@
-# Config File
-- Create a config file for storing user and database information. 
+# Database Set Up
+name: cms_database
+
+## Config File
+- Create a config file for storing user and database information that is located inside a config folder on root. 
+
+/Config/config.js
 
 ``` JS
   db: {
@@ -8,9 +13,13 @@
   }
 }
 ```
+## Migrations
+- Run knex migrate:latest for latest tables. 
 
-# Database Set Up
-name: cms_database
+## Seeds
+- Run knex seed:run for pre populate data. 	
+	- seed files 1 - 4 will need to be ran for production as they are predefined items for the project
+
 
 # Consume More Stuff
 > A custom CMS for personal product sale
