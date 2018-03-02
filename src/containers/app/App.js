@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import NavComponent from "../../components/navbar";
+import { SearchComponent } from "../../components/searchbar";
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
+          <SearchComponent />
         </header>
         <nav className="Navbar">
           <NavComponent />

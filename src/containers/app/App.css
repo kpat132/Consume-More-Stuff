@@ -11,6 +11,9 @@
 
 .App-title {
   font-size: 1.5em;
+  float: left;
+  border-style: inset;
+  border-color: whitesmoke;
 }
 
 .App-intro {
@@ -37,4 +40,16 @@ li a {
 }
 li a:hover {
   background-color: #111;
+}
+
+.search-container {
+  float: right;
+  display: block;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+.search-container button:hover {
+  background: #ccc;
 }
