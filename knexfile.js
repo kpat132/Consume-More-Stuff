@@ -1,23 +1,26 @@
 // Update with your config settings.
 
+const config = require('./config/config')
+const path = require(`path`);
+
 module.exports = {
 
   development: {
     client: 'pg',
     connection: {
       host: 'localhost',
-      user: '',
-      password: 'password',
-      database: '',
+      user: config.db.user,
+      password: config.db.password,
+      database: 'cms_database',
       charset: 'utf8'
     },
     migrations: {
-      directory: path.join(__dirname + “/knex/migrations”)
+      directory: path.join(__dirname,  'db/migrations')
     },
     seeds: {
-      directory: path.join(__dirname + “/knex/seeds”)
+      directory: path.join(__dirname, 'db/seeds')
     },
-    debug: true
+    debug: false
   },
 
   staging: {
