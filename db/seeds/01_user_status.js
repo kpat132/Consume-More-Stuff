@@ -1,13 +1,12 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('conditions').del()
+  return knex('user_status').del()
     .then(function () {
       // Inserts seed entries
-      return knex('conditions').insert([
-        {name: 'fair'},
-        {name: 'new'},
-        {name: 'poor'}
+      return knex('user_status').insert([
+        {status: 'active'},
+        {status: 'inactive'}
       ]);
     });
 };
