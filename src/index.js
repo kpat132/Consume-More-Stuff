@@ -12,5 +12,9 @@ const boundCompose = compose.bind(null,applyMiddleware(thunk));const store = cre
   window.__REDUX_DEVTOOLS_EXTENSION__ ? boundCompose(window.__REDUX_DEVTOOLS_EXTENSION__()) : boundCompose()
 );
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+<Provider store={store}>
+  <App />
+</Provider>,
+document.getElementById('root'));
 registerServiceWorker();
