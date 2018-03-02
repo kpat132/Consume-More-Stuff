@@ -5,8 +5,8 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('items').insert([
-        {name: 'brad', description: 'handsome', price: '2.00', user_id: 9, item_status_id: 13, condition_id: 23, category_id: 22},
-        {name: 'zubin', description: 'beautiful', price: '2.00', user_id: 10, item_status_id: 14, condition_id: 22, category_id: 23},
+        {name: 'brad', description: 'handsome', price: '2.00', user_id: 1, item_status_id: 1, condition_id: 1, category_id: 1},
+        {name: 'zubin', description: 'beautiful', price: '2.00', user_id: 2, item_status_id: 2, condition_id: 2, category_id: 2},
       ]);
     });
 };
