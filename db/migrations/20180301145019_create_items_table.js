@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.string('dimensions');
     table.string('image');
     table.string('notes');
-    table.integer('user_id').references('id').inTable('users')
+    table.integer('user_id').references('id').inTable('users');
     table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
   })
