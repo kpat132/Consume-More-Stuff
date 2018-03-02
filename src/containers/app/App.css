@@ -53,3 +53,7 @@ li a:hover {
 .search-container button:hover {
   background: #ccc;
 }
+
+.login-container.button {
+  background-color: #555555;
+}

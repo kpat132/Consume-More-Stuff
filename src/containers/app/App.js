@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
+import { LoginButtonComponent } from "../../components/loginButton";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
           <SearchComponent />
+          <LoginButtonComponent />
         </header>
         <nav className="Navbar">
           <NavComponent />
