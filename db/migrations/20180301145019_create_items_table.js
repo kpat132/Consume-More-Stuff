@@ -4,10 +4,11 @@ exports.up = function(knex, Promise) {
     table.string('name').notNullable();
     table.string('description').notNullable();
     table.decimal('price').notNullable();
-    table.string('make').notNullable();
-    table.string('model').notNullable();
-    table.string('dimensions').notNullable();
-    table.string('notes').notNullable();
+    table.string('make');
+    table.string('model');
+    table.string('dimensions');
+    table.string('image');
+    table.string('notes');
     table.integer('user_id').references('id').inTable('users')
     table.timestamp('created_at').notNullable().defaultTo(knex.fn.now());
     table.timestamp('updated_at').notNullable().defaultTo(knex.fn.now());
