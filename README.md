@@ -1,3 +1,17 @@
+# Config File
+- Create a config file for storing user and database information. 
+
+``` JS
+  db: {
+    user: 'insertuser',
+    passowrd: 'insertpassword'
+  }
+}
+```
+
+# Database Set Up
+name: cms_database
+
 # Consume More Stuff
 > A custom CMS for personal product sale
 
