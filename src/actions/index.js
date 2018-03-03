@@ -2,13 +2,13 @@ import "whatwg-fetch";
 
 export const GET_ITEM = "GET_ITEM";
 
-const FAKE_DATA = "https://jsonplaceholder.typicode.com/albums";
+const ITEMS_DATA = "/api/items";
 
 export const getItems = () => {
   return dispatch => {
-    return fetch(FAKE_DATA)
+    return fetch(ITEMS_DATA)
       .then(result => {
-        console.log("in function");
+        console.log("getFunction Working");
         return result.json();
       })
       .then(json => {
@@ -22,3 +22,10 @@ export const getItems = () => {
       });
   };
 };
+
+export const addItem = (item)=>{
+console.log('sfsfsf',item)
+
+
+
+}

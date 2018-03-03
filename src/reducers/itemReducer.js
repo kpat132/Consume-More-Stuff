@@ -9,9 +9,7 @@ const initialState = {
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_ITEM:
-      console.log(action);
-      console.log("in reducer");
-
+    
       return { ...state, items: action.items };
 
     default:
