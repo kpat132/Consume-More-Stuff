@@ -2,13 +2,15 @@ const express = require(`express`);
 const router = express.Router();
 //model
 const User = require('../../db/models/User');
+const user_status = require('../../db/models/User_Status');
+const Item = require('../../db/models/Item');
 
 router.route(`/:id`)
   .get((req, res) => {
     let id = req.params.id;
 
     return new User({id:id})
-    .fetch()
+    .fetch({withRelated: ['user_status','items']})
     .then(user => {
       res.json(user);
     })

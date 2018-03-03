@@ -1,6 +1,10 @@
 const express = require(`express`);
 const router = express.Router();
 
+const User = require('../../db/models/User');
+const Category = require('../../db/models/Category');
+const Condition = require('../../db/models/Condition');
+
 //model
 const Item = require('../../db/models/Item');
 
@@ -10,7 +14,7 @@ router.route('/:id')
 
     let id = req.params.id;
     return new Item({ id: id })
-      .fetch()
+      .fetch({withRelated: ['users', 'categories', 'conditions']} )
       .then(item => {
         res.json(item);
       })
