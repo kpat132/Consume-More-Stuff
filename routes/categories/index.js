@@ -4,36 +4,40 @@ const Category = require('../../db/models/Category');
 const Item = require('../../db/models/Item');
 
 router.route('/:id')
-.get((req,res) => {
-  let id = req.params.id;
+  .get((req, res) => {
+    let id = req.params.id;
 
-  return new Category({id:id})
-  .fetch({withRelated:['items']})
-  .then(result => {
-    console.log(result);
-    // console.log('json: ',result.toJSON() )
-    result = result.toJSON();
-    res.json(result);
+    return new Category({ id: id })
+      .fetch({ withRelated: ['items'] })
+      .then(result => {
+        console.log(result);
+        // console.log('json: ',result.toJSON() )
+        result = result.toJSON();
+        res.json(result);
+      })
+      .catch(err => {
+        console.log({ err: err.message })
+        res.json({ err: err.message })
+      })
+
+
+
   })
-  .catch(err => {
-    console.log({err:err.message})
-    res.json({err:err.message})
-  })
-
-
-
-})
 
 router.route('/')
-.get((req,res) => {
-
-
-})
-
-  
-
-
-
+  .get((req, res) => {
+    
+    return new Category()
+      .fetchAll()
+      .then(result => {
+        result = result.toJSON();
+        res.json(result);
+      })
+      .catch(err => {
+        console.log({ err: err.message })
+        res.json({ err: err.message })
+      })
+  })
 
 
 
