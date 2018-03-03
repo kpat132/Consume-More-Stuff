@@ -5,10 +5,14 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const usersRoute = require(`./routes/users`);
+const itemsRoute = require(`./routes/items/index`);
+const categoriesRoute = require(`./routes/categories/index`);
 
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
 
+app.use(`/api/items`,itemsRoute);
+app.use(`/api/categories`,categoriesRoute);
 app.use(`/api/users`,usersRoute);
 
 app.get('/',(req,res)=> {
