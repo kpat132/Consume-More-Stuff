@@ -26,6 +26,7 @@ router.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log('serializing');
+  console.log(user)
   return done(null, {
     id: user.id, 
     username: user.username
@@ -85,7 +86,7 @@ router.post(`/register`, (req, res) => {
   })
 })
 
-router.post(`/login`, passport.authenticate(`local`), (req, rew) => {
+router.post(`/login`, passport.authenticate(`local`), (req, res) => {
   let id = req.user.id
   // need to figure out how to tell front end to redirect to user's home page if succesfull
 })
