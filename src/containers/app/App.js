@@ -6,6 +6,7 @@ import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
+import Main from "../reactRouter/Main";
 
 class App extends Component {
   constructor(props) {
@@ -31,12 +32,15 @@ class App extends Component {
           <NavComponent />
         </nav>
         <p className="App-intro">Buy, sell and connect.</p>
+        <div className="Main">
+          <Main />
+        </div>
       </div>
     );
   }
 }
 
-const mapStatetoProps = state => {
+const mapStateToProps = state => {
   return state.items;
 };
 
@@ -48,6 +52,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(App);
+const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default ConnectedApp;
