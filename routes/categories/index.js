@@ -11,7 +11,7 @@ router.route('/:id')
       .fetch({ withRelated: ['items'] })
       .then(result => {
         console.log(result);
-        // console.log('json: ',result.toJSON() )
+         console.log('json: ',result.toJSON() )
         result = result.toJSON();
         res.json(result);
       })
@@ -19,16 +19,13 @@ router.route('/:id')
         console.log({ err: err.message })
         res.json({ err: err.message })
       })
-
-
-
   })
 
 router.route('/')
   .get((req, res) => {
     
     return new Category()
-      .fetchAll()
+      .fetchAll({ withRelated: ['items'] })
       .then(result => {
         result = result.toJSON();
         res.json(result);
