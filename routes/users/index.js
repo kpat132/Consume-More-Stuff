@@ -53,7 +53,7 @@ router.route(`/`)
   .get((req, res) => {
 
     return new User()
-    .fetchAll()
+    .fetchAll({withRelated: ['user_status','items']})
     .then(users => {
       return res.json(users.toJSON());
     })
@@ -66,6 +66,8 @@ router.route(`/`)
   .post((req, res) => {
 
     let data = {username,email,password}= req.body;
+    data.user_status_id = 1;
+
 
     return new User(data)
     .save()

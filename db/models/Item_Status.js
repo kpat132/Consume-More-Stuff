@@ -5,7 +5,7 @@ class Item_Status extends bookshelf.Model{
   get tableName(){return 'item_status'}
 
   items(){
-    return this.belongsTo(`Item`);
+    return this.hasMany(`Item`);
   }
   
 }

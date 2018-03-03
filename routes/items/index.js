@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('../../db/models/User');
 const Category = require('../../db/models/Category');
 const Condition = require('../../db/models/Condition');
+const Item_Status = require('../../db/models/Item_Status');
 
 //model
 const Item = require('../../db/models/Item');
@@ -14,7 +15,7 @@ router.route('/:id')
 
     let id = req.params.id;
     return new Item({ id: id })
-      .fetch({withRelated: ['users', 'categories', 'conditions']} )
+    .fetch({withRelated: ['users', 'categories', 'conditions','item_status']} )
       .then(item => {
         res.json(item);
       })
@@ -43,7 +44,7 @@ router.route(`/`)
 
   .get((req, res) => {
     return new Item()
-      .fetchAll()
+    .fetchAll({withRelated: ['users', 'categories', 'conditions','item_status']} )
       .then(items => {
         return res.json(items.toJSON());
       })
@@ -55,7 +56,9 @@ router.route(`/`)
 
   .post((req, res) => {
 
-    let data = {name,description,price,make,model,dimensions,image,notes} = req.body;
+    let data = {name,description,price,make,model,dimensions,image,notes,item_status_id,condition_id,category_id} = req.body;
+
+    data.item_status_id = 1;
 
     return new Item(data)
     .save()
