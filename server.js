@@ -6,12 +6,14 @@ const PORT = process.env.PORT || 8080;
 
 const usersRoute = require(`./routes/users/index`);
 const itemsRoute = require(`./routes/items/index`);
+const categoriesRoute = require(`./routes/categories/index`);
 
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
 
 app.use(`/api/users`,usersRoute);
 app.use(`/api/items`,itemsRoute);
+app.use(`/api/categories`,categoriesRoute);
 
 app.get('/',(req,res)=> {
   res.send('smoke test');

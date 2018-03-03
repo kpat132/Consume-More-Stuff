@@ -4,7 +4,7 @@ class Category extends bookshelf.Model{
   get tableName(){return 'categories'}
 
   items(){
-    return this.belongsTo('Item')
+    return this.hasMany('Item')
   }
 
 }

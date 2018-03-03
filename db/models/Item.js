@@ -8,12 +8,11 @@ class Item extends bookshelf.Model{
     return this.belongsTo('User');
   }
   categories(){
-    return this.hasOne('Category');
+    return this.belongsTo('Category');
   }
   conditions(){
-    return this.hasOne('Condition');
+    return this.belongsTo('Condition');
   }
-
 }
 
 module.exports = bookshelf.model('Item',Item);

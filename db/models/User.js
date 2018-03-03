@@ -6,7 +6,7 @@ class User extends bookshelf.Model{
   get hasTimestamps(){return true}
 
   user_status(){
-    return this.hasOne(`User_Status`);
+    return this.belongsTo(`User_Status`);
   }
 
   items(){
