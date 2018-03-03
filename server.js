@@ -19,6 +19,24 @@ const categoriesRoute = require(`./routes/categories/index`);
 app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.json());
 
+app.use(session({
+  store: newRedis(),
+  secret: CONFIG.passport.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user, doesNotThrow) =>  {
+  console.log('serializing')
+  return done(null, {
+    id: user.id
+  })
+})
+
+
 app.use(`/api/users`,usersRoute);
 app.use(`/api/items`,itemsRoute);
 app.use(`/api/categories`,categoriesRoute);
