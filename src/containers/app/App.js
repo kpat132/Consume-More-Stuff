@@ -21,7 +21,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
-          <SearchComponent />
+          <div className="search-bar">
+            <SearchComponent />
+          </div>
+
           <LoginButtonComponent />
         </header>
         <nav className="Navbar">
