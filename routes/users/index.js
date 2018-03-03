@@ -1,14 +1,94 @@
 const express = require(`express`);
 const router = express.Router();
+
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
+const session = require('express-session');
+const bcrypt = require('bcrypt');
+const Redis = require('connect-redis')(session);
+const CONFIG = require('./config/config')
 //model
+const saltRounds = 11;
+
 const User = require('../../db/models/User');
 const user_status = require('../../db/models/User_Status');
 const Item = require('../../db/models/Item');
 
+router.use(session({
+  store: newRedis(),
+  secret: CONFIG.passport.SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+router.use(passport.initialize());
+router.use(passport.session());
+
+passport.serializeUser((user, done) => {
+  console.log('serializing');
+  return done(null, {
+    id: user.id, 
+    username: user.username
+  });
+})
+
+passport.deserializeUser((user, done) => {
+  console.log('deserializing');
+  new User ({id: user.id}).fetch()
+    .then(user => {
+      user = user.toJSON();
+      return done(null, {
+        id: user.id,  
+        username: user.username
+      });
+    });
+  });
+
+passport.user(new LocalStrategy(function(username, password, done){
+  return new User ({username:username}).fetch()
+    .then(user => {
+      user = user.toJSON();
+      if (user === null) {
+        return done(null, false, {message: 'bad username or password'});
+      }
+      else {
+       bcrypt.compare(password, user.password)
+        .then(res => {
+          if (res) { return done(null, user)}
+          else {
+            return done(null, false, {message: 'bad username or password'})
+          }
+        });
+      }
+    })
+    .catch(err => { console.log('error:', err)});
+}));
+
+
+router.poster(`/register`, (req, res) => {
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    if (err) { console.log(err)}
+    bcrypt.hash(req.body.password, salt, function (err, hash) {
+      console.log(hash)
+      if(err) { console.log(err)}
+      new User ({
+        username: req.body.uesrname,
+        password: hash
+      })
+      .save()
+      .then( (user) => {
+        console.log(user)
+       
+      })
+    })
+  })
+})
+
+
+
 router.route(`/:id`)
   .get((req, res) => {
     let id = req.params.id;
-
     return new User({id:id})
     .fetch({withRelated: ['user_status','items']})
     .then(user => {
@@ -63,6 +143,7 @@ router.route(`/`)
     })
 
   })
+  
   .post((req, res) => {
 
     let data = {username,email,password}= req.body;
