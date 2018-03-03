@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 const Redis = require('connect-redis')(session);
-const CONFIG = require('./config/config')
+const CONFIG = require('../../config/config')
 //model
 const saltRounds = 11;
 
@@ -15,7 +15,7 @@ const user_status = require('../../db/models/User_Status');
 const Item = require('../../db/models/Item');
 
 router.use(session({
-  store: newRedis(),
+  store: new Redis(),
   secret: CONFIG.passport.SECRET,
   resave: false,
   saveUninitialized: false
@@ -44,7 +44,7 @@ passport.deserializeUser((user, done) => {
     });
   });
 
-passport.user(new LocalStrategy(function(username, password, done){
+passport.use(new LocalStrategy(function(username, password, done){
   return new User ({username:username}).fetch()
     .then(user => {
       user = user.toJSON();
@@ -65,24 +65,31 @@ passport.user(new LocalStrategy(function(username, password, done){
 }));
 
 
-router.poster(`/register`, (req, res) => {
+router.post(`/register`, (req, res) => {
   bcrypt.genSalt(saltRounds, function(err, salt) {
     if (err) { console.log(err)}
     bcrypt.hash(req.body.password, salt, function (err, hash) {
-      console.log(hash)
       if(err) { console.log(err)}
       new User ({
-        username: req.body.uesrname,
-        password: hash
+        username: req.body.username,
+        password: hash,
+        email: req.body.email
       })
       .save()
       .then( (user) => {
+        user = user.toJSON()
         console.log(user)
-       
+       // need to figure out how to tell front end to redirect to login page if successful
       })
     })
   })
 })
+
+router.post(`/login`, passport.authenticate(`local`), (req, rew) => {
+  let id = req.user.id
+  // need to figure out how to tell front end to redirect to user's home page if succesfull
+})
+
 
 
 
