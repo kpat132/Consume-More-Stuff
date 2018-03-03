@@ -1,57 +1,21 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
 
-import "./App.css";
-import NavComponent from "../../components/navbar";
-import { SearchComponent } from "../../components/searchbar";
-import { LoginButtonComponent } from "../../components/loginButton";
-import { getItems } from "../../actions/index";
-import Main from "../reactRouter/Main";
+import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  componentWillMount() {
-    this.props.getItems();
-  }
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Codely_Tool</h1>
-          <div className="search-bar">
-            <SearchComponent />
-          </div>
-
-          <LoginButtonComponent />
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
         </header>
-        <nav className="Navbar">
-          <NavComponent />
-        </nav>
-        <p className="App-intro">Buy, sell and connect.</p>
-        <div className="Main">
-          <Main />
-        </div>
+        <p className="App-intro">
+          To get started, edit <code>src/App.js</code> and save to reload.
+        </p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return state.items;
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    getItems: () => {
-      dispatch(getItems());
-    }
-  };
-};
-
-const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
-
-export default ConnectedApp;
+export default App;
