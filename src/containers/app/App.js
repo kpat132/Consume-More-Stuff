@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddItem from '../AddItem';
-
-
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
+import { getCategories } from "../../actions/index";
+import { getStatus } from "../../actions/index";
 import Main from "../reactRouter/Main";
+
+
 
 class App extends Component {
   constructor(props) {
@@ -16,10 +18,13 @@ class App extends Component {
   }
 
   componentWillMount() {
-    this.props.getItems();
+    this.props.getItems()
+    this.props.getCategories()
+    this.props.getStatus()
   }
 
   render() {
+ 
     return (
       <div className="App">
         <header className="App-header">
@@ -44,14 +49,22 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.items;
+  
+  return state.items
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getItems: () => {
       dispatch(getItems());
+    },
+    getCategories: () => {
+      dispatch(getCategories());
+    },
+    getStatus: ()=>{
+      dispatch(getStatus());
     }
+
   };
 };
 

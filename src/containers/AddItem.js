@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getItems } from "../actions/index";
-import {addItem} from '../actions/index'
+import {addItem} from '../actions/index';
+
 
 class AddItem extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      categorie:"",
       name: "",
       description: "",
       price: "",
@@ -18,7 +20,13 @@ class AddItem extends Component {
       notes: ""
     };
   }
-
+  
+  handleChangeCategorie(event){
+    const data = this.props.categories.filter(categorie=>{
+      return categorie.name ===event.target.value
+    })
+    this.setState({categorie: data[0].id});
+  }
   handleChangeName(event) {
     this.setState({ name: event.target.value });
   }
@@ -46,6 +54,7 @@ class AddItem extends Component {
   handleSubmit(event){
    event.preventDefault()
    const newItem = {
+    categorie:parseFloat(this.state.categorie),
     name: this.state.name,
     description: this.state.description,
     price: parseFloat(this.state.price),
@@ -61,13 +70,23 @@ class AddItem extends Component {
 }
 
   render() {
+
     
     return (
       <div>
         SMOKE TEST
         <div>
+
           <form onSubmit = {this.handleSubmit.bind(this)}>
-            <br />
+          <select name="cars"
+          onChange={this.handleChangeCategorie.bind(this)}>
+             <option value="Auto">Auto</option>
+             <option value="Clothes">Clothes</option>
+              <option value="Furniture">Furniture</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Misc...">Misc...</option>
+          </select>
+            <br /><br /><br /><br /><br />
             Name
             <br />
             <input type="text" 
@@ -113,14 +132,16 @@ class AddItem extends Component {
 }
 
 const mapStatetoProps = state => {
-  return state.items;
+  return {
+    categories:state.items.categories
+  }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getItems: () => {
-      dispatch(getItems());
-    }
+    addItem: (item)=>{
+      dispatch(addItem(item))
+    } 
   };
 };
 
