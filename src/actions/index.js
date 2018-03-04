@@ -2,7 +2,7 @@ import "whatwg-fetch";
 
 export const GET_ITEM = "GET_ITEM";
 
-const FAKE_DATA = "https://jsonplaceholder.typicode.com/albums";
+const FAKE_DATA = "/api/items";
 
 export const getItems = () => {
   return dispatch => {
