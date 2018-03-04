@@ -20,7 +20,7 @@ export default (state = initialState, action = {}) => {
 
       return {...state, categories:action.payload}
       case ADD_ITEM:
-
+        console.log('in dispatch')
       return {...state, status:action.payload}
     default:
       return state;

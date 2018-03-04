@@ -9,7 +9,8 @@ class AddItem extends Component {
     super(props);
 
     this.state = {
-      categorie:"",
+      category_id:"",
+      // condition_id:"",
       name: "",
       description: "",
       price: "",
@@ -21,11 +22,17 @@ class AddItem extends Component {
     };
   }
   
-  handleChangeCategorie(event){
-    const data = this.props.categories.filter(categorie=>{
-      return categorie.name ===event.target.value
+  handleChangeCategories(event){
+    
+    const data = this.props.categories.filter(category=>{
+      
+      
+      return category.name === event.target.value
+      
     })
-    this.setState({categorie: data[0].id});
+    console.log(data[0])
+  
+    this.setState({category_id: data[0].id});
   }
   handleChangeName(event) {
     this.setState({ name: event.target.value });
@@ -54,7 +61,7 @@ class AddItem extends Component {
   handleSubmit(event){
    event.preventDefault()
    const newItem = {
-    categorie:parseFloat(this.state.categorie),
+    category_id:parseFloat(this.state.category_id),
     name: this.state.name,
     description: this.state.description,
     price: parseFloat(this.state.price),
@@ -65,7 +72,7 @@ class AddItem extends Component {
     notes: this.state.notes
    }
  
-   addItem(newItem)
+   this.props.addItem(newItem)
 
 }
 
@@ -79,7 +86,7 @@ class AddItem extends Component {
 
           <form onSubmit = {this.handleSubmit.bind(this)}>
           <select name="cars"
-          onChange={this.handleChangeCategorie.bind(this)}>
+          onChange={this.handleChangeCategories.bind(this)}>
              <option value="Auto">Auto</option>
              <option value="Clothes">Clothes</option>
               <option value="Furniture">Furniture</option>
