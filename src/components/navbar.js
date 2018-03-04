@@ -14,7 +14,19 @@ export const NavComponent = () => {
           <a href="settings.asp">Settings</a>
         </li>
         <li>
-          <a href="catagories.asp">Catagories</a>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Catagories
+              <i class="fa fa-caret-down" />
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Auto</a>
+              <a href="#">Furniture</a>
+              <a href="#">Clothes</a>
+              <a href="#">Electronics</a>
+              <a href="#">Misc...</a>
+            </div>
+          </div>
         </li>
       </ul>
     </nav>

@@ -7,13 +7,17 @@
   height: 100px;
   padding: 20px;
   color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row nowrap;
 }
 
 .App-title {
-  font-size: 1.5em;
-  float: left;
+  display: flex;
+  justify-content: center;
   border-style: inset;
   border-color: whitesmoke;
+  padding: 1%;
 }
 
 .App-intro {
@@ -21,6 +25,8 @@
 }
 
 .nav {
+  display: flex;
+  justify-content: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -42,18 +48,74 @@ li a:hover {
   background-color: #111;
 }
 
-.search-container {
-  float: right;
-  display: block;
-  text-align: center;
-  width: 100%;
-  margin: 0;
+.search-bar {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding: 5%;
 }
 
 .search-container button:hover {
   background: #ccc;
 }
 
+.login-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  padding: 5%;
+}
+
+.login-container button:hover {
+  background: #ccc;
+}
+
 .login-container.button {
   background-color: #555555;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: whitesmoke;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  /* padding: 12px 16px; */
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }

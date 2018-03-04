@@ -13,6 +13,9 @@ class Item extends bookshelf.Model{
   conditions(){
     return this.belongsTo('Condition');
   }
+  item_status(){
+    return this.belongsTo('Item_Status')
+  }
 }
 
 module.exports = bookshelf.model('Item',Item);

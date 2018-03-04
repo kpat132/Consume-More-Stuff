@@ -4,9 +4,9 @@ class Condition extends bookshelf.Model{
   get tableName() {return 'conditions'}
 
   items(){
-    return this.belongsTo('Item')
+    return this.hasMany('Item')
   }
-
+  
 
 }
 
