@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('conditions', table => {
     table.increments('id').notNullable();
-    table.enu('name', ['new', 'good', 'fair', 'word', 'used'])
+    table.enu('name', ['new', 'good', 'fair', 'poor', 'used'])
   })
 };
 

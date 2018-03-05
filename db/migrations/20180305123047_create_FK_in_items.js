@@ -1,9 +1,9 @@
-
+//foreign key in items
 exports.up = function(knex, Promise) {
   return knex.schema.table('items', table => {
-    table.integer('item_status_id').references('id').inTable('item_status');
-    table.integer('condition_id').references('id').inTable('conditions');
-    table.integer('category_id').references('id').inTable('categories');
+    table.integer('item_status_id').references('id').inTable('item_status').notNullable();
+    table.integer('condition_id').references('id').inTable('conditions').notNullable();
+    table.integer('category_id').references('id').inTable('categories').notNullable();
   })
 };
 
