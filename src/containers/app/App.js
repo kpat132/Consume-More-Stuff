@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddItem from '../AddItem';
+import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
@@ -10,6 +11,7 @@ import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
 import {getConditions} from "../../actions/index";
 
+import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
 
@@ -20,6 +22,7 @@ class App extends Component {
   }
 
   componentWillMount() {
+
     this.props.getItems()
     this.props.getCategories()
     this.props.getStatus()
@@ -28,6 +31,16 @@ class App extends Component {
 
   render() {
  
+
+    this.props.getItems();
+
+    this.props.getUsers();
+  }
+
+  render() {
+   
+
+
     return (
       <div className="App">
         <header className="App-header">
@@ -52,8 +65,10 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  
-  return state.items
+  return {
+    items: state.items,
+    users: state.users
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -69,11 +84,13 @@ const mapDispatchToProps = dispatch => {
     },
     getConditions: () => {
       dispatch(getConditions());
+    },
+    getUsers: () => {
+      dispatch(getUsers());
     }
-
   };
 };
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default ConnectedApp;
+export default withRouter(connect(mapStateToProps)(ConnectedApp));
