@@ -5,23 +5,23 @@ export const EDIT_USER = "EDIT_USER"
 
 const DATA = "http://localhost:3000/api/users";
 
-export const getUsers = () => {
-  return dispatch => {
-    return fetch(DATA)
-      .then(result => {
-        return result.json();
-      })
-      .then(users => {
-        dispatch({
-          type: GET_USERS,
-          users: users
-        });
-      })
-      .catch(err => {
-        return console.log({ err: err.message });
-      })
-  }
-}
+// export const getUsers = () => {
+//   return dispatch => {
+//     return fetch(DATA)
+//       .then(result => {
+//         return result.json();
+//       })
+//       .then(users => {
+//         dispatch({
+//           type: GET_USERS,
+//           users: users
+//         });
+//       })
+//       .catch(err => {
+//         return console.log({ err: err.message });
+//       })
+//   }
+// }
 
 export const registerUser = (user) => {
   return dispatch => {
@@ -39,6 +39,22 @@ export const registerUser = (user) => {
     }) //probably should send them back to register page if it didn't work
     .catch(err => {
       console.log.log(err)
+    })
+  }
+}
+
+export const loginUser = (user) => {
+  return dispatch => {
+    return fetch(`${DATA}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(
+        user
+      )
+    }).then(result => {
+      console.log('ri', result)
     })
   }
 }

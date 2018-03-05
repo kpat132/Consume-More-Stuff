@@ -92,7 +92,18 @@ router.post(`/register`, (req, res) => {
 })
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
-  let id = req.user.id
+  console.log(req.user)
+  if(req.user) {
+    return res.status(200).json({
+      user: req.user,
+      authenticated: true
+    });
+  } else {
+    return res.status(401).json({
+      error: 'User is not authenticated',
+      authenticated: false
+    });
+  }
   // need to figure out how to tell front end to redirect to user's home page if succesfull
 })
 
