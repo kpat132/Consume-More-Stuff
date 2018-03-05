@@ -57,7 +57,7 @@ router.route(`/`)
   .post((req, res) => {
 
     let data = {name,description,price,make,model,dimensions,image,notes,item_status_id,condition_id,category_id} = req.body;
-    console.log(data);
+   
 
     data.item_status_id = 1;
 

@@ -3,11 +3,14 @@ import "whatwg-fetch";
 export const GET_ITEM = "GET_ITEM";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const GET_STATUS = "GET_STATUS";
+export const GET_CONDITIONS = "GET_CONDITIONS";
 export const ADD_ITEM = "ADD_ITEM";
 
 const ITEMS_DATA = "/api/items";
 const CATEGORIES_DATA = "/api/categories";
 const STATUS_DATA = "/api/itemstatus";
+const CONDITIONS_DATA = "/api/conditions";
+
 
 export const getItems = () => {
   return dispatch => {
@@ -60,7 +63,24 @@ export const getStatus = () => {
       });
   };
 };
-
+export const getConditions = () => {
+  return dispatch => {
+    return fetch(CONDITIONS_DATA)
+      .then(result => {
+        
+        return result.json();
+      })
+      .then(json => {
+        dispatch({
+          type: GET_CONDITIONS,
+          payload: json
+        });
+      })
+      .catch(err => {
+        return err;
+      });
+  };
+};
 
 
 

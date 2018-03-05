@@ -8,6 +8,8 @@ import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
+import {getConditions} from "../../actions/index";
+
 import Main from "../reactRouter/Main";
 
 
@@ -21,10 +23,11 @@ class App extends Component {
     this.props.getItems()
     this.props.getCategories()
     this.props.getStatus()
+    this.props.getConditions()
   }
 
   render() {
- console.log(this.props.items)
+ 
     return (
       <div className="App">
         <header className="App-header">
@@ -63,6 +66,9 @@ const mapDispatchToProps = dispatch => {
     },
     getStatus: ()=>{
       dispatch(getStatus());
+    },
+    getConditions: () => {
+      dispatch(getConditions());
     }
 
   };

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getItems } from "../actions/index";
 import {addItem} from '../actions/index';
 
 
@@ -10,7 +9,7 @@ class AddItem extends Component {
 
     this.state = {
       category_id:"",
-      // condition_id:"",
+      condition_id:"",
       name: "",
       description: "",
       price: "",
@@ -18,22 +17,28 @@ class AddItem extends Component {
       model: "",
       dimensions: "",
       image: "",
-      notes: ""
+      notes: "",
+      image: ""
     };
   }
   
   handleChangeCategories(event){
     
     const data = this.props.categories.filter(category=>{
+       return category.name === event.target.value
+      })
+      this.setState({category_id: data[0].id});
+    }
+
+    handleChangeCondition(event){
+      console.log(event.target.value)
+      const data = this.props.conditions.filter(condition=>{
+        return condition.name ===event.target.value
+      })
       
-      
-      return category.name === event.target.value
-      
-    })
-    console.log(data[0])
-  
-    this.setState({category_id: data[0].id});
-  }
+      this.setState({condition_id: data[0].id})
+     }
+
   handleChangeName(event) {
     this.setState({ name: event.target.value });
   }
@@ -58,10 +63,15 @@ class AddItem extends Component {
   handleChangeNotes(event) {
     this.setState({ notes: event.target.value });
   }
+  handleChangeImg(event) {
+
+    this.setState({image:event.target.value})
+  }
   handleSubmit(event){
    event.preventDefault()
    const newItem = {
     category_id:parseFloat(this.state.category_id),
+    condition_id:this.state.condition_id,
     name: this.state.name,
     description: this.state.description,
     price: parseFloat(this.state.price),
@@ -71,7 +81,7 @@ class AddItem extends Component {
     image: this.state.image,
     notes: this.state.notes
    }
- 
+   
    this.props.addItem(newItem)
 
 }
@@ -81,8 +91,8 @@ class AddItem extends Component {
     
     return (
       <div>
-        SMOKE TEST
-        <div>
+      
+        <div className= 'add-form'>
 
           <form onSubmit = {this.handleSubmit.bind(this)}>
           <select name="cars"
@@ -92,6 +102,13 @@ class AddItem extends Component {
               <option value="Furniture">Furniture</option>
               <option value="Electronics">Electronics</option>
               <option value="Misc...">Misc...</option>
+          </select>
+            <br /><br /><br /><br /><br />
+            <select 
+          onChange={this.handleChangeCondition.bind(this)}>
+             <option value="new">New</option>
+              <option value="fair">Fair</option>
+              <option value="used">Used</option>
           </select>
             <br /><br /><br /><br /><br />
             Name
@@ -129,6 +146,11 @@ class AddItem extends Component {
             <input type="text"
             onChange={this.handleChangeNotes.bind(this)} />
             <br />
+            Image
+            <br />
+            <input type="text"
+            onChange={this.handleChangeImg.bind(this)} />
+            <br />
             <br />
             <input type="submit" value="submit" />
           </form>
@@ -139,8 +161,13 @@ class AddItem extends Component {
 }
 
 const mapStatetoProps = state => {
+ 
   return {
-    categories:state.items.categories
+    categories:state.items.categories,
+    conditions:state.items.conditions
+
+    
+
   }
 };
 
