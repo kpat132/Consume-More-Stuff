@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
@@ -21,7 +21,8 @@ class App extends Component {
   }
 
   render() {
-    console.log('STATE: ', this.props.users.users)
+    console.log("STATE: ", this.props.users.users);
+
     return (
       <div className="App">
         <header className="App-header">
@@ -45,12 +46,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
- // return state.items;
- return{
-   items:state.items,
-   users:state.users
-
- }
+  // return state.items;
+  return {
+    items: state.items,
+    users: state.users
+  };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default ConnectedApp;
+export default withRouter(connect(mapStateToProps)(ConnectedApp));
