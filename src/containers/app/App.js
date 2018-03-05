@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import AddItem from '../AddItem';
+import AddItem from "../AddItem";
 import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
@@ -9,12 +9,10 @@ import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
-import {getConditions} from "../../actions/index";
+import { getConditions } from "../../actions/index";
 
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
-
-
 
 class App extends Component {
   constructor(props) {
@@ -22,25 +20,19 @@ class App extends Component {
   }
 
   componentWillMount() {
-
-    this.props.getItems()
-    this.props.getCategories()
-    this.props.getStatus()
-    this.props.getConditions()
+    this.props.getItems();
+    this.props.getCategories();
+    this.props.getStatus();
+    this.props.getConditions();
   }
 
   render() {
- 
-
     this.props.getItems();
 
     this.props.getUsers();
   }
 
   render() {
-   
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -57,7 +49,7 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
-          <AddItem/>
+          <AddItem />
         </div>
       </div>
     );
@@ -79,7 +71,7 @@ const mapDispatchToProps = dispatch => {
     getCategories: () => {
       dispatch(getCategories());
     },
-    getStatus: ()=>{
+    getStatus: () => {
       dispatch(getStatus());
     },
     getConditions: () => {
