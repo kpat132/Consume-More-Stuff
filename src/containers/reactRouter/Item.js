@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getItems } from "../../actions/index";
+import { withRouter } from "react-router-dom";
 
 class Item extends Component {
   constructor(props) {
@@ -71,4 +72,4 @@ const mapDispatchToProps = dispatch => {
 };
 const ConnectedItem = connect(mapStateToProps, mapDispatchToProps)(Item);
 
-export default ConnectedItem;
+export default withRouter(connect(mapStateToProps)(ConnectedItem));

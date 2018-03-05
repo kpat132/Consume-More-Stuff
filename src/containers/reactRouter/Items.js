@@ -4,6 +4,7 @@ import { getItems } from "../../actions/index";
 import ItemsList from "./ItemsList";
 import Item from "./Item";
 import { Switch, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class Items extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Items extends Component {
             return <ItemsList items={this.props.items} />;
           }}
         />
-        <Route path="/items/:id" component={Item} />
+        <Route exact path="/items/:id" component={Item} />
       </Switch>
     );
   }
@@ -44,4 +45,4 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedItems = connect(mapStateToProps, mapDispatchToProps)(Items);
 
-export default ConnectedItems;
+export default withRouter(connect(mapStateToProps)(ConnectedItems));

@@ -6,7 +6,7 @@ export const NavComponent = () => {
     <nav>
       <ul className="nav">
         <li>
-          <a href="default.asp">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <a href="Messages.asp">Messages</a>

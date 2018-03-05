@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
-export default ConnectedApp;
+export default withRouter(connect(mapStateToProps)(ConnectedApp));
