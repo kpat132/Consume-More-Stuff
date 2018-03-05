@@ -3,13 +3,12 @@ import "whatwg-fetch";
 export const GET_USERS = "GET_USERS"
 export const EDIT_USER = "EDIT_USER"
 
-const DATA = "/api/users";
+const DATA = "http://localhost:3000/api/users";
 
 export const getUsers = () => {
   return dispatch => {
     return fetch(DATA)
       .then(result => {
-        console.log('GET USERS ACTION');
         return result.json();
       })
       .then(users => {
@@ -21,6 +20,26 @@ export const getUsers = () => {
       .catch(err => {
         return console.log({ err: err.message });
       })
+  }
+}
+
+export const registerUser = (user) => {
+  return dispatch => {
+    return fetch(`${DATA}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(
+        user
+      )
+    }).then(result => {
+      // do i need to do an if statement ehre? 
+      return // login page 
+    }) //probably should send them back to register page if it didn't work
+    .catch(err => {
+      console.log.log(err)
+    })
   }
 }
 

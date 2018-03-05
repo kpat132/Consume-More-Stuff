@@ -26,7 +26,6 @@ router.use(passport.session());
 
 passport.serializeUser((user, done) => {
   console.log('serializing');
-  console.log(user)
   return done(null, {
     id: user.id, 
     username: user.username
@@ -79,8 +78,14 @@ router.post(`/register`, (req, res) => {
       .save()
       .then( (user) => {
         user = user.toJSON()
-        console.log(user)
-       // need to figure out how to tell front end to redirect to login page if successful
+        return res.status(200).json({
+          user: user.id //do i have to send a json here? 
+        })
+      })
+      .catch(err => {
+        return res.status(401).json({
+          error: 'Shit did not work'
+        })
       })
     })
   })

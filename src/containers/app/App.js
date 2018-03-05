@@ -6,8 +6,9 @@ import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
-import { getUsers } from "../../actions/UserAction";
+import { getUsers, registerUser } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
+
 
 class App extends Component {
   constructor(props) {
@@ -18,10 +19,13 @@ class App extends Component {
     this.props.getItems();
 
     this.props.getUsers();
+
+    this.props.registerUser({username: 'SHIIIIIIIIT', 
+                             password: 'FUCKING', 
+                             email: 'FUCCCCKKKKKK'})
   }
 
   render() {
-    console.log('STATE: ', this.props.users.users)
     return (
       <div className="App">
         <header className="App-header">
@@ -60,6 +64,9 @@ const mapDispatchToProps = dispatch => {
     },
     getUsers: () => {
       dispatch(getUsers());
+    },
+    registerUser: (user) => {
+      dispatch(registerUser(user))
     }
   };
 };
