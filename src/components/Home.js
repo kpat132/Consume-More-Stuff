@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = props => (
   <section>
-    <h1>Hey you're home</h1>
+    <h1>Home Page</h1>
   </section>
 );
 export default Home;
