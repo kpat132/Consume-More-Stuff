@@ -6,6 +6,7 @@ import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
+import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
 class App extends Component {
@@ -15,10 +16,13 @@ class App extends Component {
 
   componentWillMount() {
     this.props.getItems();
+
+    this.props.getUsers();
   }
 
   render() {
-    console.log("propssssssssssss", this.props);
+    console.log("STATE: ", this.props.users.users);
+
     return (
       <div className="App">
         <header className="App-header">
@@ -42,13 +46,20 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return state.items;
+  // return state.items;
+  return {
+    items: state.items,
+    users: state.users
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     getItems: () => {
       dispatch(getItems());
+    },
+    getUsers: () => {
+      dispatch(getUsers());
     }
   };
 };
