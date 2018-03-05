@@ -11,7 +11,7 @@ module.exports = {
       host: 'localhost',
       user: config.db.user,
       password: config.db.password,
-      database: 'consume_base',
+      database: config.db.name,
       charset: 'utf8'
     },
     migrations: {
