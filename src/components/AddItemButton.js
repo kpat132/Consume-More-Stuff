@@ -6,7 +6,9 @@ export const AddItemButtonComponent = () => {
   return (
     <div className="AddItemButton-container">
       <button type="submit">
-        <Link to="/addItem">Create Item</Link>
+        <Link className="addItemLink" to="/addItem">
+          Create Item
+        </Link>
       </button>
     </div>
   );
