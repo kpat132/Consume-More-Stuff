@@ -5,5 +5,4 @@ const Home = props => (
     <h1>Hey you're home</h1>
   </section>
 );
-
 export default Home;
