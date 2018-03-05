@@ -24,29 +24,29 @@ export const getUsers = () => {
   }
 }
 
-// export const editUser = (user) => {
-//   return dispatch => {
-//     let data = {
-//       username: user.username,
-//       email: user.email,
-//       password: user.password
-//     }
+export const editUser = (user) => {
+  return dispatch => {
+    let data = {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }
 
-//     return fetch(`${DATA}/${user.id}`,{
-//       method: `PUT`,
-//       headers: {
-//         'Content-Type' : 'application/json'
-//       },
-//       body: JSON.stringify(data)
-//     })
-//       .then(result => {
-//         dispatch({
-//           type: EDIT_USER,
-//           user: result
-//         })
-//       })
-//       .catch(err => {
-//         return console.log({ err: err.message });
-//       })
-//   }
-// }
+    return fetch(`${DATA}/${user.id}`,{
+      method: `PUT`,
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(result => {
+        dispatch({
+          type: EDIT_USER,
+          user: result
+        })
+      })
+      .catch(err => {
+        return console.log({ err: err.message });
+      })
+  }
+}

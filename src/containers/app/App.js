@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import  Login  from '../../containers/login/login';
+
 
 import "./App.css";
 import NavComponent from "../../components/navbar";
@@ -38,6 +40,7 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
+          <Login />
         </div>
       </div>
     );
@@ -45,12 +48,12 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
- // return state.items;
- return{
-   items:state.items,
-   users:state.users
+  // return state.items;
+  return {
+    items: state.items,
+    users: state.users
 
- }
+  }
 };
 
 const mapDispatchToProps = dispatch => {
