@@ -1,4 +1,5 @@
 
+// foreign key in users
 exports.up = function(knex, Promise) {
   return knex.schema.table('users', table => {
   table.integer('user_status_id').references('id').inTable('user_status');

@@ -1,3 +1,4 @@
+// item status
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('item_status', table => {
     table.increments('id').notNullable();
