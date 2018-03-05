@@ -20,11 +20,11 @@ export const NavComponent = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              Catagories
+              <Link to="/items">Catagories</Link>
               <i className="fa fa-caret-down" />
             </button>
             <div className="dropdown-content">
-              <a href="#">Auto</a>
+              <a href="">Auto</a>
               <a href="#">Furniture</a>
               <a href="#">Clothes</a>
               <a href="#">Electronics</a>
