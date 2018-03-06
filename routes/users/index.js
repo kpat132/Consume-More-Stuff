@@ -10,6 +10,7 @@ const CONFIG = require('../../config/config')
 //model
 const saltRounds = 11;
 
+const { isAuthenticated } = require('../helper')
 const User = require('../../db/models/User');
 const user_status = require('../../db/models/User_Status');
 const Item = require('../../db/models/Item');
@@ -64,6 +65,19 @@ passport.use(new LocalStrategy(function(username, password, done){
     .catch(err => { console.log('error:', err)});
 }));
 
+router.get('/:id', isAuthenticated, (req, res) =>{
+  console.log('test')
+  return new User ()
+  .wheere({id: req.params.id})
+  .fetch()
+  .then(result => {
+    result = result.toJSON()
+    console.log(result)
+  })
+})
+
+
+
 
 router.post(`/register`, (req, res) => {
   bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -77,9 +91,10 @@ router.post(`/register`, (req, res) => {
       })
       .save()
       .then( (user) => {
+        console.log(user)
         user = user.toJSON()
         return res.status(200).json({
-          user: user.id //do i have to send a json here? 
+          message: 'it worked'
         })
       })
       .catch(err => {
@@ -110,33 +125,33 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
 
 
 
-router.route(`/:id`)
-  .get((req, res) => {
-    let id = req.params.id;
-    return new User({id:id})
-    .fetch({withRelated: ['user_status','items']})
-    .then(user => {
-      res.json(user);
-    })
-    .catch(err => {
-      console.log({err:err.message});
-      return res.json({err:err.message});
-    })
+// router.route(`/:id`)
+//   .get((req, res) => {
+//     let id = req.params.id;
+//     return new User({id:id})
+//     .fetch({withRelated: ['user_status','items']})
+//     .then(user => {
+//       res.json(user);
+//     })
+//     .catch(err => {
+//       console.log({err:err.message});
+//       return res.json({err:err.message});
+//     })
 
-  })
-  .put((req, res) => {
-    let id = req.params.id;
-    let data = {} = req.body;
-    return new User(data)
-    .where({id:id})
-    .save(data,{patch:true})
-    .then(updatedInfo => {
-      return res.json(updatedInfo);
-    })
-    .catch(err => {
-      res.json({err:err.message});
-    })
-  })
+//   })
+//   .put((req, res) => {
+//     let id = req.params.id;
+//     let data = {} = req.body;
+//     return new User(data)
+//     .where({id:id})
+//     .save(data,{patch:true})
+//     .then(updatedInfo => {
+//       return res.json(updatedInfo);
+//     })
+//     .catch(err => {
+//       res.json({err:err.message});
+//     })
+  // })
   
   // .delete((req, res) => {
   //   let id = req.params.id;
@@ -168,23 +183,23 @@ router.route(`/`)
 
   })
   
-  .post((req, res) => {
+//   .post((req, res) => {
 
-    let data = {username,email,password}= req.body;
-    data.user_status_id = 1;
+//     let data = {username,email,password}= req.body;
+//     data.user_status_id = 1;
 
 
-    return new User(data)
-    .save()
-    .then(newUser => {
-      return res.send(newUser);
-    })
-    .catch(err => {
-      console.log({err:err.message});
-      return res.json({err:err.message});
-    })
+//     return new User(data)
+//     .save()
+//     .then(newUser => {
+//       return res.send(newUser);
+//     })
+//     .catch(err => {
+//       console.log({err:err.message});
+//       return res.json({err:err.message});
+//     })
 
-  })
+//   })
 
 
 

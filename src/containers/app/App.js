@@ -6,7 +6,7 @@ import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
-import { registerUser} from "../../actions/UserAction";
+import { loginUser} from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
 
@@ -20,12 +20,12 @@ class App extends Component {
 
     //this.props.getUsers();
 
-    this.props.registerUser({username: 'levi', 
-                             password: 'password', 
-                             email: 'FUCCCCKKKKKK'})
+    // this.props.registerUser({username: 'cindy', 
+    //                          password: 'password', 
+    //                          email: 'FUCCCCKKKKKKIT'})
 
-    // this.props.loginUser({username: 'SHIIIIIIIIT',
-    //                       password: 'FUCCCCKKKKKK'})
+    this.props.loginUser({username: 'cindy',
+                          password: 'password'})
   }
 
   render() {
@@ -68,12 +68,12 @@ const mapDispatchToProps = dispatch => {
     // getUsers: () => {
     //   dispatch(getUsers());
     // },
-    registerUser: (user) => {
-      dispatch(registerUser(user))
-    },
-    // loginUser: (user) => {
-    //   dispatch(loginUser(user))
-    // }
+    // registerUser: (user) => {
+    //   dispatch(registerUser(user))
+    // },
+    loginUser: (user) => {
+      dispatch(loginUser(user))
+    }
   };
 };
 

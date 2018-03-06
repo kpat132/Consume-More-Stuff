@@ -34,11 +34,12 @@ export const registerUser = (user) => {
         user
       )
     }).then(result => {
+      console.log('riri', result)
       // do i need to do an if statement ehre? 
       return // login page 
     }) //probably should send them back to register page if it didn't work
     .catch(err => {
-      console.log.log(err)
+      console.log(err)
     })
   }
 }
@@ -54,7 +55,11 @@ export const loginUser = (user) => {
         user
       )
     }).then(result => {
-      console.log('ri', result)
+      return result.json()
+    }).then(verifiedUser =>{
+      //save info to global state to use for local storage. also redirect to main user page
+    }).catch(err => {
+      console.log(err)
     })
   }
 }
