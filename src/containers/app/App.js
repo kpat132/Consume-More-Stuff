@@ -45,7 +45,10 @@ class App extends Component {
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-        <p className="App-intro">Buy, sell and connect.</p>
+        <p className="App-intro"></p>
+        <div className="Main">
+        <Main />
+        </div>
         <div className="CategoryHomePage">
         {
           this.props.categories.map((category) => {
@@ -87,10 +90,3 @@ const mapDispatchToProps = dispatch => {
 const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App);
 
 export default withRouter(connect(mapStateToProps)(ConnectedApp));
-
-
-
-
-          {/* <Main /> */}
-          {/* <AddItem/> */}
-          {/* <RegisterUser/> */}
