@@ -20,7 +20,7 @@ export const NavComponent = () => {
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              <Link to="/items">Catagories</Link>
+              Catagories
               <i className="fa fa-caret-down" />
             </button>
             <div className="dropdown-content">
