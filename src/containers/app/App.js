@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AddItem from '../AddItem';
+import EditItem from '../EditItem'
 import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
@@ -10,7 +11,6 @@ import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
 import {getConditions} from "../../actions/index";
-
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
@@ -57,7 +57,8 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
-          <AddItem/>
+          <EditItem/>
+          
         </div>
       </div>
     );

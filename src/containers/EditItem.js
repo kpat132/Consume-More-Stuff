@@ -1,16 +1,17 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import {addItem} from '../actions/index';
+import { connect } from 'react-redux';
+import { editItem } from '../actions/index';
 
 
-class AddItem extends Component {
+class EditItem extends Component {
+
+
   constructor(props) {
     super(props);
-
+  
     this.state = {
-      
-      category_id:"",
-      condition_id:"",
+    
+     
       name: "",
       description: "",
       price: "",
@@ -21,25 +22,11 @@ class AddItem extends Component {
       notes: "",
       image: ""
     };
+
+
   }
+
   
-  handleChangeCategories(event){
-    
-    const data = this.props.categories.filter(category=>{
-       return category.name === event.target.value
-      })
-      this.setState({category_id: data[0].id});
-    }
-
-    handleChangeCondition(event){
-      console.log(event.target.value)
-      const data = this.props.conditions.filter(condition=>{
-        return condition.name ===event.target.value
-      })
-      
-      this.setState({condition_id: data[0].id})
-     }
-
   handleChangeName(event) {
     this.setState({ name: event.target.value });
   }
@@ -65,56 +52,45 @@ class AddItem extends Component {
     this.setState({ notes: event.target.value });
   }
   handleChangeImg(event) {
-
+  
     this.setState({image:event.target.value})
   }
   handleSubmit(event){
    event.preventDefault()
-   const newItem = {
-    category_id:parseFloat(this.state.category_id),
-    condition_id:this.state.condition_id,
-    name: this.state.name,
-    description: this.state.description,
-    price: parseFloat(this.state.price),
-    make: this.state.make,
-    model: this.state.model,
-    dimensions: this.state.dimensions,
-    image: this.state.image,
-    notes: this.state.notes
+   const updateItem = {
+     user_id:this.props.item.id,
+   
+    name: this.state.name?this.state.name:this.props.item.name,
+    description: this.state.description?this.state.description:this.props.description,
+    price: parseFloat(this.state.price)?parseFloat(this.state.price):parseFloat(this.props.price),
+    make: this.state.make?this.state.make:this.props.make,
+    model: this.state.model?this.state.model:this.props.model,
+    dimensions: this.state.dimensions?this.state.dimensions:this.props.dimensions,
+    image: this.state.image?this.state.image:this.props.image,
+    notes: this.state.notes?this.state.notes:this.props.notes
    }
    
-   this.props.addItem(newItem)
-
-}
-
+   this.props.editItem(updateItem)
+  
+  }
+  
   render() {
 
+ 
     
     return (
       <div>
       
-        <div className= 'add-form'>
-
+        <div className= 'edit-form'>
+        <h1>edit {this.props.item.name}</h1>
           <form onSubmit = {this.handleSubmit.bind(this)}>
-          <select name="cars"
-          onChange={this.handleChangeCategories.bind(this)}>
-             <option value="Auto">Auto</option>
-             <option value="Clothes">Clothes</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Misc...">Misc...</option>
-          </select>
-            <br /><br /><br /><br /><br />
-            <select 
-          onChange={this.handleChangeCondition.bind(this)}>
-             <option value="new">New</option>
-              <option value="fair">Fair</option>
-              <option value="used">Used</option>
-          </select>
-            <br /><br /><br /><br /><br />
+          
+          <br />
             Name
             <br />
+          
             <input type="text" 
+            
             onChange={this.handleChangeName.bind(this)}/>
             <br />
             Price
@@ -161,28 +137,26 @@ class AddItem extends Component {
   }
 }
 
+
 const mapStatetoProps = state => {
- 
+  
   return {
+    item:state.items.item,
     categories:state.items.categories,
     conditions:state.items.conditions
 
-    
-
+  
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    addItem: (item)=>{
-      dispatch(addItem(item))
-    } 
+    editItem: (item)=>{
+      dispatch(editItem(item))
+    }
   };
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(AddItem);
+const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(EditItem);
 
 export default ConnectedApp;
-
-
-
