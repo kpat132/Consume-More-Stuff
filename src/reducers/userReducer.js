@@ -14,7 +14,7 @@ export default (state = initialState, action = {}) => {
       return { ...state, user: action.username };
 
     case REGISTER:
-  console.log('REDUCERAWEJIAOWIEJR');
+
       return { ...state, users: action.users }
 
     case GET_USERS:

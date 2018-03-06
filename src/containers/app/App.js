@@ -65,7 +65,7 @@ class App extends Component {
         <div className="Main">
           <Main />
           {/* <AddItem/> */}
-          <RegisterUser/>
+          {/* <RegisterUser/> */}
         </div>
       </div>
     );

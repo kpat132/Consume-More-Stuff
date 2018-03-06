@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import { register } from '../actions/UserAction';
 
 class RegisterUser extends Component {
@@ -9,6 +10,7 @@ class RegisterUser extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    console.log(this.props.history);
   }
 
   handleChange(event) {
@@ -19,11 +21,13 @@ class RegisterUser extends Component {
     event.preventDefault();
     console.log('this.state', this.state);
     this.props.register(this.state);
-
+    this.props.history.push('/login');
   }
 
   render() {
     return (
+      <div className= 'registerForm'>
+
       <form onSubmit={this.handleRegister}>
         <input
           type='text'
@@ -50,6 +54,7 @@ class RegisterUser extends Component {
         />
          <button type='submit'>Submit</button>
       </form>
+      </div>
     )
   }
 }
@@ -68,9 +73,9 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-const ConnectedRegister = connect(
+const ConnectedRegister = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegisterUser)
+)(RegisterUser))
 
 export default ConnectedRegister;
