@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
-
+import { withRouter } from "react-router-dom";
+import "./App.css";
 import  Login  from '../../containers/login/login';
 import RegisterUser from '../../containers/register';
 
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
-
-import { withRouter } from "react-router-dom";
-
-import "./App.css";
-import NavComponent from "../../components/navbar";
+import  CategoryComp  from "../../components/CategoryComp"
+import  NavComponent  from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
-import { getItems } from "../../actions/index";
-import { getCategories } from "../../actions/index";
-import { getStatus } from "../../actions/index";
-import { getConditions } from "../../actions/index";
-
+import { getItems, getCategories, getStatus, getConditions } from "../../actions/index";
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
@@ -36,13 +29,9 @@ class App extends Component {
     this.props.getConditions();
   }
 
-  // render() {
-  //   this.props.getItems();
-
-  //   //this.props.getUsers();
-  // }
 
   render() {
+  
     return (
       <div className="App">
         <header className="App-header">
@@ -56,11 +45,16 @@ class App extends Component {
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-        <p className="App-intro">Buy, sell and connect.</p>
+        <p className="App-intro"></p>
         <div className="Main">
-          <Main />
-          {/* <AddItem/> */}
-          {/* <RegisterUser/> */}
+        <Main />
+        </div>
+        <div className="CategoryHomePage">
+        {
+          this.props.categories.map((category) => {
+            return  <CategoryComp key={category.id} {...category} /> 
+          })
+        }
         </div>
       </div>
     );
@@ -80,9 +74,6 @@ const mapDispatchToProps = dispatch => {
     getItems: () => {
       dispatch(getItems());
     },
-    // getUsers: () => {
-    //   dispatch(getUsers());
-    // },
     getCategories: () => {
       dispatch(getCategories());
     },
