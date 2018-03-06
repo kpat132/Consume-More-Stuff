@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-<<<<<<< HEAD
+
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
-=======
 
->>>>>>> f7a5177eea8d1c46c8fe1bea7ee661e17396d8ee
+
 import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
@@ -14,12 +13,8 @@ import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
-<<<<<<< HEAD
-import {getConditions} from "../../actions/index";
-=======
 import { getConditions } from "../../actions/index";
 
->>>>>>> f7a5177eea8d1c46c8fe1bea7ee661e17396d8ee
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
@@ -58,6 +53,7 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
+          <EditItem/>
         </div>
       </div>
     );
