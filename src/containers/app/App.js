@@ -1,17 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
+import  Login  from '../../containers/login/login';
+import RegisterUser from '../../containers/register';
+
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
 
 import { withRouter } from "react-router-dom";
+
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
-import { loginUser, registerUser} from "../../actions/UserAction";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
 import { getConditions } from "../../actions/index";
@@ -32,18 +36,11 @@ class App extends Component {
     this.props.getConditions();
   }
 
-  render() {
-    this.props.getItems();
+  // render() {
+  //   this.props.getItems();
 
-    //this.props.getUsers();
-
-    // this.props.registerUser({username: 'cindy', 
-    //                          password: 'password', 
-    //                          email: 'FUCCCCKKKKKKIT'})
-
-    this.props.loginUser({username: 'cindy',
-                          password: 'password'})
-  }
+  //   //this.props.getUsers();
+  // }
 
   render() {
     return (
@@ -62,7 +59,8 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
-          <EditItem/>
+          {/* <AddItem/> */}
+          {/* <RegisterUser/> */}
         </div>
       </div>
     );
@@ -84,12 +82,6 @@ const mapDispatchToProps = dispatch => {
     // getUsers: () => {
     //   dispatch(getUsers());
     // },
-    registerUser: (user) => {
-      dispatch(registerUser(user))
-    },
-    loginUser: (user) => {
-      dispatch(loginUser(user))
-    },
     getCategories: () => {
       dispatch(getCategories());
     },

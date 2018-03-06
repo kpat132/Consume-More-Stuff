@@ -2,6 +2,7 @@ import "whatwg-fetch";
 
 export const GET_USERS = "GET_USERS"
 export const EDIT_USER = "EDIT_USER"
+export const REGISTER = "REGISTER"
 
 const DATA = "http://localhost:3000/api/users";
 
@@ -23,27 +24,57 @@ const DATA = "http://localhost:3000/api/users";
 //   }
 // }
 
-export const registerUser = (user) => {
+
+export const register = (user) => {
+  console.log('REGISTER ACTION');
   return dispatch => {
-    return fetch(`${DATA}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type' : 'application/json',
-      },
-      body: JSON.stringify(
-        user
-      )
-    }).then(result => {
-      console.log('riri', result)
-      // do i need to do an if statement ehre? 
-      return // login page reducers shit
-    }) //probably should send them back to register page if it didn't work
-    .catch(err => {
-      console.log(err)
-    })
+   return fetch(`${DATA}/register`,{
+    method: `POST`,
+    headers: {
+      'Content-Type' : 'application/json',
+      
+    },
+    body: JSON.stringify(user)
+   })
+   .then(newUser =>{
+    //  return dispatch({
+    //    type:REGISTER,
+    //    users:newUser
+    //  })
+    console.log('NEWUSER',newUser);
+   })
+   .catch(err => {
+     console.log({err:err.message});
+   })
   }
 }
 
+export const editUser = (user) => {
+  return dispatch => {
+    let data = {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }
+
+    return fetch(`${DATA}/${user.id}`,{
+      method: `PUT`,
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(result => {
+        dispatch({
+          type: EDIT_USER,
+          user: result
+        })
+      })
+      .catch(err => {
+        return console.log({ err: err.message });
+      })
+  }
+}
 export const userPage = (id) => {
   return dispatch => {
     return fetch (`${DATA}/${id}`, {
@@ -52,14 +83,19 @@ export const userPage = (id) => {
       .then(parseJSON)
       .then(verified => {
         ///send to dispatch so id saves to global storage
+        console.log('verified',verified)
     }).catch(err =>{
       console.log(err)
     })
   }
 }
 
-export const loginUser = (user) => {
+export const loginAction = (user) => {
   return dispatch => {
+    let data = {
+      username: user.username,
+      password: user.password
+    }
     return fetch(`${DATA}/login`, {
       credentials : 'include',
       method: 'POST',
@@ -67,7 +103,7 @@ export const loginUser = (user) => {
         'Content-Type' : 'application/json',
       },
       body: JSON.stringify(
-        user
+        data
       )
     }).then(checkStatus)
       .then(parseJSON)
@@ -79,34 +115,6 @@ export const loginUser = (user) => {
   }
 }
 
-
-
-// export const editUser = (user) => {
-//   return dispatch => {
-//     let data = {
-//       username: user.username,
-//       email: user.email,
-//       password: user.password
-//     }
-
-//     return fetch(`${DATA}/${user.id}`,{
-//       method: `PUT`,
-//       headers: {
-//         'Content-Type' : 'application/json'
-//       },
-//       body: JSON.stringify(data)
-//     })
-//       .then(result => {
-//         dispatch({
-//           type: EDIT_USER,
-//           user: result
-//         })
-//       })
-//       .catch(err => {
-//         return console.log({ err: err.message });
-//       })
-//   }
-// }
 
 
 function checkStatus(response) {
