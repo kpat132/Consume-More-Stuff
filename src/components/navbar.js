@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const NavComponent = () => {
+export const NavComponent = ({ categories }) => {
+  console.log("CategoriesNav", categories);
   return (
     <nav>
       <ul className="nav">
@@ -24,11 +25,9 @@ export const NavComponent = () => {
               <i className="fa fa-caret-down" />
             </button>
             <div className="dropdown-content">
-              <a href="">Auto</a>
-              <a href="#">Furniture</a>
-              <a href="#">Clothes</a>
-              <a href="#">Electronics</a>
-              <a href="#">Misc...</a>
+              {categories.map(category => {
+                return <Link to={"/" + category.name}>{category.name}</Link>;
+              })}
             </div>
           </div>
         </li>
