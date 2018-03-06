@@ -3,9 +3,11 @@ import { Switch, Route } from "react-router-dom";
 import Home from "../../components/Home";
 import Items from "./Items";
 import Item from "./Item";
-import Register from '../../components/Register';
-import Login from '../../components/Login';
+import Register from "../../components/Register";
+import Login from "../../components/Login";
 import AddItem from "../AddItem";
+import AutoList from "./AutoList";
+import Categories from "./Categories";
 
 const Main = props => (
   <main className="page-content">
