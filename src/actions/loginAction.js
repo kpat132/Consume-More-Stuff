@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-const API = '/api/login';
+const API = '/api/users/login';
 export const LOGIN = 'LOGIN';
 
 export const loginAction = (user) => {
@@ -7,10 +7,10 @@ export const loginAction = (user) => {
   return dispatch => {
 
     let data = {
-      id: user.id,
       username: user.username,
       password: user.password
     }
+
     return fetch(`${API}`, {
       method: 'POST',
       headers: {

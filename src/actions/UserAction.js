@@ -2,6 +2,7 @@ import "whatwg-fetch";
 
 export const GET_USERS = "GET_USERS"
 export const EDIT_USER = "EDIT_USER"
+export const REGISTER = "REGISTER"
 
 const DATA = "/api/users";
 
@@ -21,6 +22,27 @@ export const getUsers = () => {
       .catch(err => {
         return console.log({ err: err.message });
       })
+  }
+}
+
+export const register = (user) => {
+  return dispatch => {
+   return fetch(`${DATA}/register`,{
+    method: `POST`,
+    headers: {
+      'Content-Type' : 'application/json'
+    },
+    body: JSON.stringify(user)
+   })
+   .then(newUser =>{
+     return dispatch({
+       type:REGISTER,
+       users:newUser
+     })
+   })
+   .catch(err => {
+     console.log({err:err.message});
+   })
   }
 }
 
