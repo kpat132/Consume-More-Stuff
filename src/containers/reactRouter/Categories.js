@@ -12,7 +12,6 @@ class Categories extends Component {
   }
 
   render() {
-    console.log("fhshfshfioesh", this.props);
     return (
       <Switch>
         <Route

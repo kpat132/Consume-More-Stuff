@@ -109,7 +109,7 @@ export const loginAction = (user) => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser =>{
-        
+        console.log('insideLoginAction', verifiedUser)
       return userPage(verifiedUser.user)(dispatch)
     }).catch(err => {
       console.log(err)
