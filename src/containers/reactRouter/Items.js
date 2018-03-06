@@ -12,18 +12,15 @@ class Items extends Component {
   }
   componentDidMount() {
     this.props.getItems();
-    
   }
   render() {
+    console.log("fhshfshfioesh", this.props.categories);
     return (
       <Switch>
         <Route
           exact
           path="/items"
           render={() => {
-            {
-              console.log("hefhdifhoshf", this.props.items);
-            }
             return <ItemsList items={this.props.items} />;
           }}
         />
@@ -33,7 +30,10 @@ class Items extends Component {
   }
 }
 const mapStateToProps = state => {
-  return state.items;
+  return {
+    items: state.items.items,
+    categories: state.items.categories
+  };
 };
 
 const mapDispatchToProps = dispatch => {

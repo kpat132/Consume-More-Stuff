@@ -88,7 +88,7 @@ class AddItem extends Component {
     return (
       <div>
         <div className="add-form">
-          <form onSubmit={this.handleSubmit.bind(this)}>
+          <form className="add-forms" onSubmit={this.handleSubmit.bind(this)}>
             <select
               name="cars"
               onChange={this.handleChangeCategories.bind(this)}

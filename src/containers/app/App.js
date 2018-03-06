@@ -54,7 +54,7 @@ class App extends Component {
           <LoginButtonComponent />
         </header>
         <nav className="Navbar">
-          <NavComponent />
+          <NavComponent categories={this.props.categories} />
         </nav>
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
@@ -70,7 +70,8 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
-    users: state.users
+    users: state.users,
+    categories: state.items.categories
   };
 };
 
