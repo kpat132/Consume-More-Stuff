@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import { loginAction } from '../../actions/loginAction';
 
 class Login extends Component {
@@ -19,6 +20,7 @@ class Login extends Component {
     event.preventDefault();
     console.log('THIS.STATE',this.state);
     this.props.login(this.state);
+    this.props.history.push('/items');
   }
   render() {
     console.log('PROPS',this.props);
@@ -58,6 +60,6 @@ const mapDispatchToProps = dispatch => {
     })
   }
 }
-const ConnectedLogin = connect(mapStateToProps,mapDispatchToProps)(Login);
+const ConnectedLogin = withRouter(connect(mapStateToProps,mapDispatchToProps)(Login));
 
 export default ConnectedLogin;

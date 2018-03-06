@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
 import  Login  from '../../containers/login/login';
 import RegisterUser from '../../containers/register';
 
-
-
 import AddItem from '../AddItem';
+import EditItem from '../EditItem'
+
+
 import { withRouter } from "react-router-dom";
 
 import "./App.css";
@@ -16,11 +18,10 @@ import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
-import {getConditions} from "../../actions/index";
+import { getConditions } from "../../actions/index";
 
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
-
 
 
 class App extends Component {
@@ -29,25 +30,19 @@ class App extends Component {
   }
 
   componentWillMount() {
-
-    this.props.getItems()
-    this.props.getCategories()
-    this.props.getStatus()
-    this.props.getConditions()
-  }
-
-  render() {
- 
-
     this.props.getItems();
-
-    this.props.getUsers();
+    this.props.getCategories();
+    this.props.getStatus();
+    this.props.getConditions();
   }
 
+  // render() {
+  //   this.props.getItems();
+
+  //   //this.props.getUsers();
+  // }
+
   render() {
-   
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -84,18 +79,19 @@ const mapDispatchToProps = dispatch => {
     getItems: () => {
       dispatch(getItems());
     },
+    // getUsers: () => {
+    //   dispatch(getUsers());
+    // },
     getCategories: () => {
       dispatch(getCategories());
     },
-    getStatus: ()=>{
+    getStatus: () => {
       dispatch(getStatus());
     },
     getConditions: () => {
       dispatch(getConditions());
     },
-    getUsers: () => {
-      dispatch(getUsers());
-    }
+
   };
 };
 

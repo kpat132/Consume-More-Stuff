@@ -5,6 +5,7 @@ import Items from "./Items";
 import Item from "./Item";
 import Register from '../../components/Register';
 import Login from '../../components/Login';
+import AddItem from "../AddItem";
 
 const Main = props => (
   <main className="page-content">
@@ -14,6 +15,7 @@ const Main = props => (
       <Route exact path="/items" component={Items} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/addItem" component={AddItem} />
     </Switch>
   </main>
 );
