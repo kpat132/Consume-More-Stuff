@@ -11,12 +11,14 @@ import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
+import { loginUser, registerUser} from "../../actions/UserAction";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
 import { getConditions } from "../../actions/index";
 
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
+
 
 class App extends Component {
   constructor(props) {
@@ -33,7 +35,14 @@ class App extends Component {
   render() {
     this.props.getItems();
 
-    this.props.getUsers();
+    //this.props.getUsers();
+
+    // this.props.registerUser({username: 'cindy', 
+    //                          password: 'password', 
+    //                          email: 'FUCCCCKKKKKKIT'})
+
+    this.props.loginUser({username: 'cindy',
+                          password: 'password'})
   }
 
   render() {
@@ -72,6 +81,15 @@ const mapDispatchToProps = dispatch => {
     getItems: () => {
       dispatch(getItems());
     },
+    // getUsers: () => {
+    //   dispatch(getUsers());
+    // },
+    registerUser: (user) => {
+      dispatch(registerUser(user))
+    },
+    loginUser: (user) => {
+      dispatch(loginUser(user))
+    },
     getCategories: () => {
       dispatch(getCategories());
     },
@@ -81,9 +99,7 @@ const mapDispatchToProps = dispatch => {
     getConditions: () => {
       dispatch(getConditions());
     },
-    getUsers: () => {
-      dispatch(getUsers());
-    }
+
   };
 };
 
