@@ -72,10 +72,17 @@ router.get('/:id', isAuthenticated, (req, res) =>{
   .fetch({withRelated: ['user_status','items']})
   .then(result => {
     result = result.toJSON()
-    console.log(result)
+    let data = {id: result.id, 
+      username: result.username, 
+      email: result.email, 
+      created_at: result.created_at, 
+      updated_at: result.updated_at,
+      user_status: result.user_status,
+      items: result.items
+    }
     if(result.id) {
       return res.status(200).json({
-        user: [result.id, result.items],
+        user: data,
         authenticated: true
       });
     } else {
@@ -115,6 +122,7 @@ router.post(`/register`, (req, res) => {
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
   if(req.user) {
+    console.log(req.user)
     return res.status(200).json({
       user: req.user.id,
       authenticated: true

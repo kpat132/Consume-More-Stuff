@@ -2,6 +2,7 @@
 
 module.exports = {
   isAuthenticated,
+  isAuthorized
 }
 
 function isAuthenticated (req, res, next) {
