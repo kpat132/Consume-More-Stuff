@@ -66,13 +66,12 @@ passport.use(new LocalStrategy(function(username, password, done){
 }));
 
 router.get('/:id', isAuthenticated, (req, res) =>{
-  console.log('test')
   return new User ()
-  .wheere({id: req.params.id})
+  .where({id: req.params.id})
   .fetch()
   .then(result => {
     result = result.toJSON()
-    console.log(result)
+    return result.id
   })
 })
 
@@ -94,7 +93,7 @@ router.post(`/register`, (req, res) => {
         console.log(user)
         user = user.toJSON()
         return res.status(200).json({
-          message: 'it worked'
+          user
         })
       })
       .catch(err => {
@@ -107,10 +106,9 @@ router.post(`/register`, (req, res) => {
 })
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
-  console.log(req.user)
   if(req.user) {
     return res.status(200).json({
-      user: req.user,
+      user: req.user.id,
       authenticated: true
     });
   } else {

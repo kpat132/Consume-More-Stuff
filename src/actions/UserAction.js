@@ -28,7 +28,8 @@ export const registerUser = (user) => {
     return fetch(`${DATA}/register`, {
       method: 'POST',
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
+        'credentials' : 'same-origin'
       },
       body: JSON.stringify(
         user
@@ -44,12 +45,30 @@ export const registerUser = (user) => {
   }
 }
 
+export const userPage = (id) => {
+  console.log('gettin here', id)
+  return dispatch => {
+    console.log('anything')
+    return fetch (`${DATA}/5`, {
+         credentials : 'include' 
+    }).then(result => {
+      console.log(result)
+      return result.json()
+    }).then(verified => {
+      console.log(verified)
+    }).catch(err =>{
+      console.log(err)
+    })
+  }
+}
+
 export const loginUser = (user) => {
   return dispatch => {
     return fetch(`${DATA}/login`, {
+      credentials : 'include',
       method: 'POST',
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type' : 'application/json',
       },
       body: JSON.stringify(
         user
@@ -57,12 +76,15 @@ export const loginUser = (user) => {
     }).then(result => {
       return result.json()
     }).then(verifiedUser =>{
+      return userPage(verifiedUser.user)(dispatch)
       //save info to global state to use for local storage. also redirect to main user page
     }).catch(err => {
       console.log(err)
     })
   }
 }
+
+
 
 // export const editUser = (user) => {
 //   return dispatch => {
