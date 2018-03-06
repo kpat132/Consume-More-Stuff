@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
+import  Login  from '../../containers/login/login';
+import RegisterUser from '../../containers/register';
+
+import AddItem from '../AddItem';
+import EditItem from '../EditItem'
+
+
 import { withRouter } from "react-router-dom";
+
 import "./App.css";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
@@ -13,6 +22,7 @@ import { getConditions } from "../../actions/index";
 
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
+
 
 class App extends Component {
   constructor(props) {
@@ -26,11 +36,11 @@ class App extends Component {
     this.props.getConditions();
   }
 
-  render() {
-    this.props.getItems();
+  // render() {
+  //   this.props.getItems();
 
-    this.props.getUsers();
-  }
+  //   //this.props.getUsers();
+  // }
 
   render() {
     return (
@@ -49,6 +59,8 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
+          {/* <AddItem/> */}
+          {/* <RegisterUser/> */}
         </div>
       </div>
     );
@@ -68,6 +80,9 @@ const mapDispatchToProps = dispatch => {
     getItems: () => {
       dispatch(getItems());
     },
+    // getUsers: () => {
+    //   dispatch(getUsers());
+    // },
     getCategories: () => {
       dispatch(getCategories());
     },
@@ -77,9 +92,7 @@ const mapDispatchToProps = dispatch => {
     getConditions: () => {
       dispatch(getConditions());
     },
-    getUsers: () => {
-      dispatch(getUsers());
-    }
+
   };
 };
 

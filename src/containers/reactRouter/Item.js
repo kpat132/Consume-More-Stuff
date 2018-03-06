@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getItems } from "../../actions/index";
+import { setItem} from '../../actions/index'
 import { withRouter } from "react-router-dom";
 
 class Item extends Component {
@@ -12,6 +13,7 @@ class Item extends Component {
   }
 
   componentWillMount() {
+    this.props.setItem(this.props.match.params.id);
     const itemId = this.props.match.params.id;
     if (itemId) {
       return fetch(`/api/items/${itemId}`)
@@ -19,7 +21,7 @@ class Item extends Component {
           return response.json();
         })
         .then(item => {
-          console.log("item      ", item);
+          
           this.setState({ ...item });
         })
         .catch(err => {
@@ -28,7 +30,8 @@ class Item extends Component {
     }
   }
   render() {
-    console.log("render     ", this.state);
+
+    
     if (this.state.detail === "not found") {
       return <Redirect to="/items" />;
     }
@@ -67,6 +70,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getItems: () => {
       dispatch(getItems());
+    },
+    setItem: (id) => {
+      dispatch(setItem(id))
     }
   };
 };

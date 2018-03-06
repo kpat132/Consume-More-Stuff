@@ -10,7 +10,9 @@ class Items extends Component {
   constructor(props) {
     super(props);
   }
-
+  componentDidMount() {
+    this.props.getItems();
+  }
   render() {
     console.log("fhshfshfioesh", this.props.categories);
     return (

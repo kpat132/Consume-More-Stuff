@@ -5,13 +5,15 @@ import {GET_CATEGORIES} from "../actions/index"
 import {GET_STATUS} from "../actions/index";
 import {ADD_ITEM} from '../actions/index';
 import {GET_CONDITIONS} from '../actions/index'
+import {SET_ITEM} from '../actions/index'
 
 const initialState = {
   nextId: 4,
   items: [],
   categories:[],
   status:[],
-  conditions:[]
+  conditions:[],
+  item:[]
 };
 
 export default (state = initialState, action = {}) => {
@@ -29,7 +31,12 @@ export default (state = initialState, action = {}) => {
       return {...state, status:action.payload}
       case GET_STATUS:
       return {...state, status:action.payload}
+     case SET_ITEM:
+     return {...state,
+      item: action.payload }
       default:
       return state;
     }
+    
 };
+

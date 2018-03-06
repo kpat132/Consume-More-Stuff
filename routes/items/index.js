@@ -12,7 +12,7 @@ const Item = require('../../db/models/Item');
 router.route('/:id')
 
   .get((req, res) => {
-
+    console.log(req.body);
     let id = req.params.id;
     return new Item({ id: id })
     .fetch({withRelated: ['users', 'categories', 'conditions','item_status']} )
@@ -24,7 +24,7 @@ router.route('/:id')
 
   })
   .put((req, res) => {
-
+    console.log(req.body);
     let id = req.params.id;
     let data = {} = req.body;
     return new Item(data)
