@@ -10,7 +10,7 @@ const CONFIG = require('../../config/config')
 //model
 const saltRounds = 11;
 
-const { isAuthenticated } = require('../helper')
+const { isAuthenticated, isAuthorized } = require('../helper')
 const User = require('../../db/models/User');
 const user_status = require('../../db/models/User_Status');
 const Item = require('../../db/models/Item');
@@ -66,17 +66,23 @@ passport.use(new LocalStrategy(function(username, password, done){
 }));
 
 router.get('/:id', isAuthenticated, (req, res) =>{
-  if(req.user.id !== parseInt(req.params.id)){
-    return res.redirect(`/users/${req.user.id}`)
-  }
+  isAuthorized(req.user.id, req.params.id)
   return new User ()
   .where({id: req.params.id})
-  .fetch()
+  .fetch({withRelated: ['user_status','items']})
   .then(result => {
     result = result.toJSON()
+    let data = {id: result.id, 
+      username: result.username, 
+      email: result.email, 
+      created_at: result.created_at, 
+      updated_at: result.updated_at,
+      user_status: result.user_status,
+      items: result.items
+    }
     if(result.id) {
       return res.status(200).json({
-        user: result.id,
+        user: data,
         authenticated: true
       });
     } else {
@@ -87,9 +93,6 @@ router.get('/:id', isAuthenticated, (req, res) =>{
     }
   })
 })
-
-
-
 
 router.post(`/register`, (req, res) => {
   bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -119,6 +122,7 @@ router.post(`/register`, (req, res) => {
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
   if(req.user) {
+    console.log(req.user)
     return res.status(200).json({
       user: req.user.id,
       authenticated: true
@@ -132,35 +136,21 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
 })
 
 
-
-
-// router.route(`/:id`)
-//   .get((req, res) => {
-//     let id = req.params.id;
-//     return new User({id:id})
-//     .fetch({withRelated: ['user_status','items']})
-//     .then(user => {
-//       res.json(user);
-//     })
-//     .catch(err => {
-//       console.log({err:err.message});
-//       return res.json({err:err.message});
-//     })
-
-//   })
-//   .put((req, res) => {
-//     let id = req.params.id;
-//     let data = {} = req.body;
-//     return new User(data)
-//     .where({id:id})
-//     .save(data,{patch:true})
-//     .then(updatedInfo => {
-//       return res.json(updatedInfo);
-//     })
-//     .catch(err => {
-//       res.json({err:err.message});
-//     })
-  // })
+router.route(`/:id`)
+  .put(isAuthenticated, (req, res) => {
+    isAuthorized(req.user.id, req.params.id)
+    let id = req.params.id;
+    let data = {} = req.body;
+    return new User(data)
+    .where({id:id})
+    .save(data,{patch:true})
+    .then(updatedInfo => {
+      return res.json(updatedInfo);
+    })
+    .catch(err => {
+      res.json({err:err.message});
+    })
+  })
   
   // .delete((req, res) => {
   //   let id = req.params.id;
@@ -179,7 +169,6 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
 
 router.route(`/`)
   .get((req, res) => {
-
     return new User()
     .fetchAll({withRelated: ['user_status','items']})
     .then(users => {
@@ -189,7 +178,6 @@ router.route(`/`)
       console.log({err:err.message});
       return res.json({err:err.message});
     })
-
   })
   
 //   .post((req, res) => {

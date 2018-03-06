@@ -76,6 +76,7 @@ export const editUser = (user) => {
   }
 }
 export const userPage = (id) => {
+  
   return dispatch => {
     return fetch (`${DATA}/${id}`, {
          credentials : 'include' 
@@ -108,6 +109,7 @@ export const loginAction = (user) => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser =>{
+        
       return userPage(verifiedUser.user)(dispatch)
     }).catch(err => {
       console.log(err)
@@ -118,6 +120,7 @@ export const loginAction = (user) => {
 
 
 function checkStatus(response) {
+  console.log('inside checkStatus', response)
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
