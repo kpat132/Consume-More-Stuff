@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import AddItem from '../AddItem';
+import EditItem from '../EditItem'
+
+
 import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
@@ -49,6 +53,7 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
+          <EditItem/>
         </div>
       </div>
     );
