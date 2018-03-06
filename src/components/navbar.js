@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const NavComponent = () => {
   return (
     <nav>
-      <ul class="nav">
+      <ul className="nav">
         <li>
-          <a href="default.asp">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <a href="Messages.asp">Messages</a>
@@ -14,13 +15,16 @@ export const NavComponent = () => {
           <a href="settings.asp">Settings</a>
         </li>
         <li>
-          <div class="dropdown">
-            <button class="dropbtn">
+          <Link to="/items">Items</Link>
+        </li>
+        <li>
+          <div className="dropdown">
+            <button className="dropbtn">
               Catagories
-              <i class="fa fa-caret-down" />
+              <i className="fa fa-caret-down" />
             </button>
-            <div class="dropdown-content">
-              <a href="#">Auto</a>
+            <div className="dropdown-content">
+              <a href="">Auto</a>
               <a href="#">Furniture</a>
               <a href="#">Clothes</a>
               <a href="#">Electronics</a>

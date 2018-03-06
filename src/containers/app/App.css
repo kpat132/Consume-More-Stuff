@@ -119,3 +119,6 @@ li a:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+.addItemLink {
+  text-decoration: none;
+}
