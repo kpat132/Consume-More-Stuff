@@ -66,12 +66,25 @@ passport.use(new LocalStrategy(function(username, password, done){
 }));
 
 router.get('/:id', isAuthenticated, (req, res) =>{
+  if(req.user.id !== parseInt(req.params.id)){
+    return res.redirect(`/users/${req.user.id}`)
+  }
   return new User ()
   .where({id: req.params.id})
   .fetch()
   .then(result => {
     result = result.toJSON()
-    return result.id
+    if(result.id) {
+      return res.status(200).json({
+        user: result.id,
+        authenticated: true
+      });
+    } else {
+      return res.status(401).json({
+        error: 'User is not authenticated',
+        authenticated: false
+      })
+    }
   })
 })
 
@@ -90,10 +103,9 @@ router.post(`/register`, (req, res) => {
       })
       .save()
       .then( (user) => {
-        console.log(user)
         user = user.toJSON()
         return res.status(200).json({
-          user
+          message: 'user registered'
         })
       })
       .catch(err => {
@@ -117,7 +129,6 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
       authenticated: false
     });
   }
-  // need to figure out how to tell front end to redirect to user's home page if succesfull
 })
 
 

@@ -29,7 +29,6 @@ export const registerUser = (user) => {
       method: 'POST',
       headers: {
         'Content-Type' : 'application/json',
-        'credentials' : 'same-origin'
       },
       body: JSON.stringify(
         user
@@ -37,7 +36,7 @@ export const registerUser = (user) => {
     }).then(result => {
       console.log('riri', result)
       // do i need to do an if statement ehre? 
-      return // login page 
+      return // login page reducers shit
     }) //probably should send them back to register page if it didn't work
     .catch(err => {
       console.log(err)
@@ -46,16 +45,13 @@ export const registerUser = (user) => {
 }
 
 export const userPage = (id) => {
-  console.log('gettin here', id)
   return dispatch => {
-    console.log('anything')
-    return fetch (`${DATA}/5`, {
+    return fetch (`${DATA}/${id}`, {
          credentials : 'include' 
-    }).then(result => {
-      console.log(result)
-      return result.json()
-    }).then(verified => {
-      console.log(verified)
+    }).then(checkStatus)
+      .then(parseJSON)
+      .then(verified => {
+        ///send to dispatch so id saves to global storage
     }).catch(err =>{
       console.log(err)
     })
@@ -73,11 +69,10 @@ export const loginUser = (user) => {
       body: JSON.stringify(
         user
       )
-    }).then(result => {
-      return result.json()
-    }).then(verifiedUser =>{
+    }).then(checkStatus)
+      .then(parseJSON)
+      .then(verifiedUser =>{
       return userPage(verifiedUser.user)(dispatch)
-      //save info to global state to use for local storage. also redirect to main user page
     }).catch(err => {
       console.log(err)
     })
@@ -112,3 +107,18 @@ export const loginUser = (user) => {
 //       })
 //   }
 // }
+
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  } else {
+    var error = new Error(response.statusText)
+    error.response = response
+    throw error
+  }
+}
+
+function parseJSON(response) {
+  return response.json()
+}
