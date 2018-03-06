@@ -8,7 +8,7 @@ import EditItem from '../EditItem'
 import { withRouter } from "react-router-dom";
 import "./App.css";
 import NavComponent from "../../components/navbar";
-import { SearchComponent } from "../../components/searchbar";
+import  SearchComponent  from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
@@ -37,12 +37,13 @@ class App extends Component {
   }
 
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
           <div className="search-bar">
-            <SearchComponent />
+            {/* <SearchComponent/> */}
           </div>
 
           <LoginButtonComponent />
@@ -53,7 +54,8 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
-          <EditItem/>
+          <SearchComponent/>
+          
         </div>
       </div>
     );

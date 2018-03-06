@@ -1,14 +1,116 @@
-import React from "react";
+// import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-export const SearchComponent = () => {
-  return (
-    <div className="search-container">
-      <form action="/action_page.php">
-        <input type="text" placeholder="Search.." name="search" />
+
+
+
+
+class SearchComponent extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      search: '',
+      searchItems:[]
+
+    }
+  }
+  
+  updateSearch(event){
+    this.setState({search:event.target.value});
+    let filteredItems = this.props.items.filter(item=>{
+      return item.name.indexOf(this.state.search) !== -1
+    });
+    this.state.searchItems.push(filteredItems);
+    
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    
+    console.log(this.state.searchItems)
+  }
+
+
+  render(){
+    
+    let filteredItems = this.props.items.filter(item=>{
+      return item.name.indexOf(this.state.search) !== -1
+    });
+   
+    
+
+    return (
+      <div className="search-container">
+       <form action="/action_page.php"
+       onSubmit={this.handleSubmit.bind(this)}>
+        <input type="text" placeholder="Search.." name="search" 
+        onChange={this.updateSearch.bind(this)} />
         <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
+        
+        
+        
+       </form>
+     </div>
+    )
+  }
+}
+
+
+
+const mapStatetoProps = state => {
+  
+  return {
+    items:state.items.items
+  };
 };
 
-export default SearchComponent;
+const mapDispatchToProps = dispatch => {
+  return {
+   
+  };
+};
+
+const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(SearchComponent);
+
+export default ConnectedApp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const SearchComponent = ({props}) => {
+  
+//   this.state ={
+//     search:''
+//   }
+
+ 
+  
+
+
+//   return (
+//     <div className="search-container">
+//       <form action="/action_page.php">
+//         <input type="text" placeholder="Search.." name="search" />
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// };
+
+

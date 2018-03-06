@@ -22,7 +22,7 @@ class Items extends Component {
           path="/items"
           render={() => {
             {
-              console.log("hefhdifhoshf", this.props.items);
+              
             }
             return <ItemsList items={this.props.items} />;
           }}

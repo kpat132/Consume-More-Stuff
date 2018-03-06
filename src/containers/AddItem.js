@@ -112,7 +112,9 @@ class AddItem extends Component {
                 Select your Condition
               </option>
               <option value="new">New</option>
+              <option value="good">Good</option>
               <option value="fair">Fair</option>
+              <option value="poor">Poor</option>
               <option value="used">Used</option>
             </select>
             <br />
