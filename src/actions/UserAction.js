@@ -107,6 +107,15 @@ export const loginAction = user => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser => {
+        console.log("insideLoginAction", verifiedUser);
+        return userPage(verifiedUser.user)(dispatch);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(verifiedUser => {
         return userPage(verifiedUser.user)(dispatch);
       })
       .catch(err => {
@@ -116,6 +125,7 @@ export const loginAction = user => {
 };
 
 function checkStatus(response) {
+  console.log("inside checkStatus", response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {

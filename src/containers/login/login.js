@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import { loginAction } from '../../actions/loginAction';
+import { loginAction } from '../../actions/UserAction';
 
 class Login extends Component {
   constructor(props) {
@@ -18,12 +18,12 @@ class Login extends Component {
 
   handlelogin(event) {
     event.preventDefault();
-    console.log('THIS.STATE',this.state);
+   // console.log('THIS.STATE',this.state);
     this.props.login(this.state);
-    this.props.history.push('/items');
+    //this.props.history.push('/items');
   }
   render() {
-    console.log('PROPS',this.props);
+  //  console.log('PROPS',this.props);
     return (
       <div>
       <h1>LOGIN</h1>
