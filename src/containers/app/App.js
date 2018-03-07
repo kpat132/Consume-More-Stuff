@@ -42,13 +42,8 @@ class App extends Component {
 
 
   render() {
-    let string = null;
-    let test = this.props.user;
-    if (localStorage.length === 1) {
-      string = 'WELCOME ';
-    }
-
-
+    console.log('THIS.PROPS.USER.ITEMS', this.props.user.items);
+    let userItems = this.props.users.items;
     return (
       <div className="App">
         <header className="App-header">
@@ -66,7 +61,7 @@ class App extends Component {
         <div className="Main">
 
           <Main />
-          <h1>{string}</h1>
+        
         </div>
         <div className="CategoryHomePage">
           {
