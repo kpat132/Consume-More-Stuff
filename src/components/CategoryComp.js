@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CategoryComp = ({ name, items }) => {
-  console.log(items);
   return (
     <div className="CategoryRow">
       <span className="CategoryName">{name}</span>

@@ -107,6 +107,7 @@ router.post(`/register`, (req, res) => {
       })
       .save()
       .then( (user) => {
+        console.log('userrrrr',user);
         user = user.toJSON()
         return res.status(200).json({
           message: 'user registered'

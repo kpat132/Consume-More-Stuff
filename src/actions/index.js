@@ -99,6 +99,7 @@ export const setItem = id => {
 };
 
 export const addItem = item => {
+  console.log(item);
   return dispatch => {
     return fetch(ITEMS_DATA, {
       method: "POST",

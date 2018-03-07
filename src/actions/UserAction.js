@@ -81,7 +81,6 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
-        console.log("AREYOUWORKINGTHO", verified);
         ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
@@ -126,7 +125,6 @@ export const loginAction = user => {
 };
 
 function checkStatus(response) {
-  console.log("inside checkStatus", response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   } else {
