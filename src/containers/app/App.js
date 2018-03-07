@@ -42,11 +42,7 @@ class App extends Component {
 
 
   render() {
-    let string = null;
-    let test = this.props.user;
-    if (localStorage.length === 1) {
-      string = 'WELCOME ';
-    }
+  
 
 
     return (
@@ -64,18 +60,9 @@ class App extends Component {
         </nav>
         <p className="App-intro"></p>
         <div className="Main">
-
-          <Main />
-          <h1>{string}</h1>
+        <Main categoriesList={this.props.categories} />
         </div>
-        <div className="CategoryHomePage">
-          {
-            this.props.categories.map((category) => {
-              return <CategoryComp key={category.id} {...category} />
-            })
-          }
-
-        </div>
+    
       </div>
     );
   }
