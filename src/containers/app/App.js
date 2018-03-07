@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "./App.css";
+import "../../index.css";
 import Login from "../../containers/login/login";
 import RegisterUser from "../../containers/register";
 
@@ -50,11 +50,13 @@ class App extends Component {
         <p className="App-intro" />
         <div className="Main">
           <Main />
-        </div>
-        <div className="CategoryHomePage">
-          {this.props.categories.map(category => {
-            return <CategoryComp key={category.id} {...category} />;
-          })}
+          <br />
+
+          <div className="CategoryHomePage">
+            {this.props.categories.map(category => {
+              return <CategoryComp key={category.id} {...category} />;
+            })}
+          </div>
         </div>
       </div>
     );

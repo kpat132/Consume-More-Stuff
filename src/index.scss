@@ -1,7 +1,44 @@
-$white-smoke: #f5f5f5;
-$ash: #757575;
-$coal: #363636;
+$white: #f5f5f5;
+$gray: #757575;
+$black: #363636;
 $orange: #dd9004;
-$midnight: #036;
+$blue: #036;
 
-$default-text-color: $white-smoke !default;
+// $default-text-color: $white !default;
+
+//HEADER
+.App-header {
+  background-color: black;
+  height: 100px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row nowrap;
+}
+
+//LOGO CODELY_TOOL
+.App-title {
+  display: flex;
+  justify-content: center;
+  border-style: inset;
+  border-color: $orange;
+  padding: 1%;
+}
+
+.Main {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background-color: $white;
+}
+
+.CategoryHomePage {
+}
+
+.CategoryName {
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  height: 100%;
+}

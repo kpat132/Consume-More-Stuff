@@ -1,0 +1,27 @@
+.App-header {
+  background-color: black;
+  height: 100px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row nowrap; }
+
+.App-title {
+  display: flex;
+  justify-content: center;
+  border-style: inset;
+  border-color: #dd9004;
+  padding: 1%; }
+
+.Main {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  background-color: #f5f5f5; }
+
+.CategoryName {
+  display: inline-flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  margin-left: auto;
+  height: 100%; }
