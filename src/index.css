@@ -97,3 +97,6 @@ li a:hover {
   position: relative;
   margin-left: auto;
   height: 100%; }
+
+.addItemLink {
+  text-decoration: none; }
