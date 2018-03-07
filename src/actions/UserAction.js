@@ -3,6 +3,9 @@ import "whatwg-fetch";
 export const GET_USERS = "GET_USERS"
 export const EDIT_USER = "EDIT_USER"
 export const REGISTER = "REGISTER"
+export const LOGIN = "LOGIN"
+export const USER_PAGE = "USER_PAGE"
+
 
 const DATA = "http://localhost:3000/api/users";
 
@@ -27,23 +30,23 @@ const DATA = "http://localhost:3000/api/users";
 
 export const register = (user) => {
   return dispatch => {
-   return fetch(`${DATA}/register`,{
-    method: `POST`,
-    headers: {
-      'Content-Type' : 'application/json',
-      
-    },
-    body: JSON.stringify(user)
-   })
-   .then(newUser =>{
-     return dispatch({
-       type:REGISTER,
-       users:newUser
-     })
-   })
-   .catch(err => {
-     console.log({err:err.message});
-   })
+    return fetch(`${DATA}/register`, {
+      method: `POST`,
+      headers: {
+        'Content-Type': 'application/json',
+
+      },
+      body: JSON.stringify(user)
+    })
+      .then(newUser => {
+        return dispatch({
+          type: REGISTER,
+          users: newUser
+        })
+      })
+      .catch(err => {
+        console.log({ err: err.message });
+      })
   }
 }
 
@@ -55,10 +58,10 @@ export const editUser = (user) => {
       password: user.password
     }
 
-    return fetch(`${DATA}/${user.id}`,{
+    return fetch(`${DATA}/${user.id}`, {
       method: `PUT`,
       headers: {
-        'Content-Type' : 'application/json'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
@@ -74,17 +77,23 @@ export const editUser = (user) => {
   }
 }
 export const userPage = (id) => {
-  
+
   return dispatch => {
-    return fetch (`${DATA}/${id}`, {
-         credentials : 'include' 
+    return fetch(`${DATA}/${id}`, {
+      credentials: 'include'
     }).then(checkStatus)
       .then(parseJSON)
       .then(verified => {
+        console.log('AREYOUWORKINGTHO',verified)
         ///send to dispatch so id saves to global storage
-    }).catch(err =>{
-      console.log(err)
-    })
+        dispatch({
+          type: USER_PAGE,
+          payload: verified
+        })
+
+      }).catch(err => {
+        console.log(err)
+      })
   }
 }
 
@@ -95,22 +104,27 @@ export const loginAction = (user) => {
       password: user.password
     }
     return fetch(`${DATA}/login`, {
-      credentials : 'include',
+      credentials: 'include',
       method: 'POST',
       headers: {
-        'Content-Type' : 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(
         data
       )
     }).then(checkStatus)
       .then(parseJSON)
-      .then(verifiedUser =>{
-        
-      return userPage(verifiedUser.user)(dispatch)
-    }).catch(err => {
-      console.log(err)
-    })
+      .then(verifiedUser => {
+        console.log('TESTVERIFIEDUSER', verifiedUser);
+        dispatch({
+          type: LOGIN,
+          payload: verifiedUser
+        })
+
+        //return userPage(verifiedUser.user)(dispatch)
+      }).catch(err => {
+        console.log(err)
+      })
   }
 }
 
