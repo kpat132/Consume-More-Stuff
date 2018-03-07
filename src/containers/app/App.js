@@ -7,7 +7,7 @@ import RegisterUser from '../../containers/register';
 
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
-
+import Settings from '../Settings';
 import CategoryComp from "../../components/CategoryComp"
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
@@ -49,9 +49,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
-          <div className="search-bar">
-            <SearchComponent />
-          </div>
+          
 
           <LoginButtonComponent />
         </header>
