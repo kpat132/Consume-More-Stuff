@@ -14,7 +14,6 @@ class Items extends Component {
     this.props.getItems();
   }
   render() {
-    console.log("fhshfshfioesh", this.props.categories);
     return (
       <Switch>
         <Route
@@ -24,6 +23,7 @@ class Items extends Component {
             return <ItemsList items={this.props.items} />;
           }}
         />
+
         <Route exact path="/items/:id" component={Item} />
       </Switch>
     );

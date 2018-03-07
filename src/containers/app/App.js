@@ -1,31 +1,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "./App.css";
-import Login from '../../containers/login/login';
-import RegisterUser from '../../containers/register';
+import "../../index.css";
+import Login from "../../containers/login/login";
+import RegisterUser from "../../containers/register";
 
-import AddItem from '../AddItem';
-import EditItem from '../EditItem'
 
-import CategoryComp from "../../components/CategoryComp"
+import AddItem from "../AddItem";
+import EditItem from "../EditItem";
+import Settings from "../Settings";
+import CategoryComp from "../../components/CategoryComp";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import  LoginButtonComponent  from "../../components/loginButton";
-import { getItems } from "../../actions/index";
-import { getCategories } from "../../actions/index";
-import { getStatus } from "../../actions/index";
-import { getConditions } from "../../actions/index";
-import { userPage } from "../../actions/UserAction";
-
+import {
+  getItems,
+  getCategories,
+  getStatus,
+  getConditions
+} from "../../actions/index";
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
-
 
 class App extends Component {
   constructor(props) {
     super(props);
-
   }
 
   componentWillMount() {
@@ -34,12 +33,7 @@ class App extends Component {
     this.props.getStatus();
     this.props.getConditions();
 
-
-    if (localStorage.length === 1) {
-      this.props.userPage(localStorage.id);
-    }
   }
-
 
   render() {
 
@@ -56,19 +50,19 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
           <div className="search-bar">
-            <SearchComponent />
+            {/* <SearchComponent /> */}
           </div>
         
           {buttons}
+
         </header>
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-        <p className="App-intro"></p>
-        <div className="Main">
-          <Main categoriesList={this.props.categories} />
-        </div>
 
+        <div className="Main">
+        <Main />
+        </div>
       </div>
     );
   }
@@ -80,7 +74,6 @@ const mapStateToProps = state => {
     user: state.users.user,
     users: state.users,
     categories: state.items.categories
-
   };
 };
 
@@ -97,11 +90,10 @@ const mapDispatchToProps = dispatch => {
     },
     getConditions: () => {
       dispatch(getConditions());
-    },
-    userPage: (id) => {
-      dispatch(userPage(id))
     }
-
+    // userPage: id => {
+    //   dispatch(userPage(id));
+    // }
   };
 };
 
