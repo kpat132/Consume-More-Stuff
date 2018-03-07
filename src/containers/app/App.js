@@ -42,7 +42,8 @@ class App extends Component {
 
 
   render() {
-    
+  
+
 
     return (
       <div className="App">
@@ -57,18 +58,9 @@ class App extends Component {
         </nav>
         <p className="App-intro"></p>
         <div className="Main">
-          
-          <Main />
-          
+        <Main categoriesList={this.props.categories} />
         </div>
-        <div className="CategoryHomePage">
-          {
-            this.props.categories.map((category) => {
-              return <CategoryComp key={category.id} {...category} />
-            })
-          }
-
-        </div>
+    
       </div>
     );
   }
