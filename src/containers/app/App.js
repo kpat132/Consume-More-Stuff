@@ -43,8 +43,6 @@ class App extends Component {
 
   render() {
   
-
-
     return (
       <div className="App">
         <header className="App-header">
@@ -52,7 +50,6 @@ class App extends Component {
           <div className="search-bar">
             <SearchComponent />
           </div>
-
           <LoginButtonComponent />
         </header>
         <nav className="Navbar">

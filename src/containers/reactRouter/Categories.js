@@ -5,6 +5,7 @@ import AutoList from "./AutoList";
 import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Item from "./Item";
+import CategoryComp from "../../components/CategoryComp"
 
 class Categories extends Component {
   constructor(props) {
@@ -12,6 +13,8 @@ class Categories extends Component {
   }
 
   render() {
+    console.log('IN HERERERERE')
+    console.log(this.props.categories)
     return (
       <Switch>
         <Route
@@ -19,9 +22,7 @@ class Categories extends Component {
           path="/auto"
           render={() => {
             return (
-              <AutoList
-                categories={this.props.categories}
-                items={this.props.items}
+              <CategoryComp
               />
             );
           }}
@@ -37,6 +38,8 @@ const mapStateToProps = state => {
   };
 };
 
+
+`diff${Item}`
 // const mapDispatchToProps = dispatch => {
 //   return {
 //     getCategories: () => {

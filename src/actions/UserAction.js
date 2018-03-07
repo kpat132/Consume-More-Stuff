@@ -131,7 +131,6 @@ export const loginAction = (user) => {
 
 
 function checkStatus(response) {
-  console.log('inside checkStatus', response)
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
