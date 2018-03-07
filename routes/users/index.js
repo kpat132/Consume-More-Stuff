@@ -65,34 +65,6 @@ passport.use(new LocalStrategy(function(username, password, done){
     .catch(err => { console.log('error:', err)});
 }));
 
-router.get('/:id', isAuthenticated, (req, res) =>{
-  isAuthorized(req.user.id, req.params.id)
-  return new User ()
-  .where({id: req.params.id})
-  .fetch({withRelated: ['user_status','items']})
-  .then(result => {
-    result = result.toJSON()
-    let data = {id: result.id, 
-      username: result.username, 
-      email: result.email, 
-      created_at: result.created_at, 
-      updated_at: result.updated_at,
-      user_status: result.user_status,
-      items: result.items
-    }
-    if(result.id) {
-      return res.status(200).json({
-        user: data,
-        authenticated: true
-      });
-    } else {
-      return res.status(401).json({
-        error: 'User is not authenticated',
-        authenticated: false
-      })
-    }
-  })
-})
 
 router.post(`/register`, (req, res) => {
   bcrypt.genSalt(saltRounds, function(err, salt) {
@@ -133,6 +105,50 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
       authenticated: false
     });
   }
+})
+
+router.get(`/logout`, (req, res) => {
+  console.log(req)
+  req.logout();
+  if(!req.user) {
+    return res.status(200).json({
+      logout: true
+    });
+  } else {
+    return res.status(401).json({
+      error: 'User is still logged in',
+      logout: false
+    })
+  }
+})
+
+router.get('/:id', isAuthenticated, (req, res) =>{
+  isAuthorized(req.user.id, req.params.id)
+  return new User ()
+  .where({id: req.params.id})
+  .fetch({withRelated: ['user_status','items']})
+  .then(result => {
+    result = result.toJSON()
+    let data = {id: result.id, 
+      username: result.username, 
+      email: result.email, 
+      created_at: result.created_at, 
+      updated_at: result.updated_at,
+      user_status: result.user_status,
+      items: result.items
+    }
+    if(result.id) {
+      return res.status(200).json({
+        user: data,
+        authenticated: true
+      });
+    } else {
+      return res.status(401).json({
+        error: 'User is not authenticated',
+        authenticated: false
+      })
+    }
+  })
 })
 
 
