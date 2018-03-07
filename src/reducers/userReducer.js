@@ -1,6 +1,6 @@
 import "whatwg-fetch";
 import { GET_USERS, EDIT_USER, REGISTER, USER_PAGE } from "../actions/UserAction";
-import { LOGIN,LOGOUT } from '../actions/UserAction';
+import { LOGIN, LOGOUT } from '../actions/UserAction';
 
 const initialState = {
   userId: '',
@@ -16,7 +16,7 @@ export default (state = initialState, action = {}) => {
       return { ...state, userId: action.payload.user };
     case USER_PAGE:
       console.log('USER_PAGE', action.payload.user)
-      return { ...state, user: action.payload.user }
+      return { ...state, user:  action.payload.user }
     case REGISTER:
       return { ...state, users: action.users }
     case GET_USERS:
@@ -24,9 +24,9 @@ export default (state = initialState, action = {}) => {
     // case EDIT_USER:
     //    console.log(`second case`);
     //    return { ...state, users: action.user };
-    case LOGOUT:
-    localStorage.clear();
-    return { ...state, user: '' }
+    // case LOGOUT:
+    // localStorage.clear();
+    // return { ...state, user: '' }
     default:
       return state;
   }

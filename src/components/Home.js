@@ -10,37 +10,56 @@ import { userPage } from "../actions/UserAction";
 class Home extends Component {
   constructor(props) {
     super(props)
-  
+
   }
- 
+
+
   render() {
-    // let UserItems;
-    // console.log(localStorage.id);
-    // if(localStorage.length === 1 ){
-    //   // this.setState({UserItems:this.props.user.items})
-    //   console.log('ALEJAFIWEUHFAWIEUHF',this.props.user.items)
-    //   UserItems = <UserItemsList props = {this.props.user.items} />;
-    // }
-    
+    console.log('AOIJEMRIJAERAMLIEJRCAEIJRAEWIJRCAIEWJRCIAWELJRCAIWEJRCIAELW', this.props.user);
+    let UserItems;
+
+    if (localStorage.length === 1) {
+      
+      if (Object.keys(this.props.user).length === 0) {
+        console.log('EMPTY');
+      }
+      else {
+
+        if (this.props.user.items.length > 0) {
+          console.log('ALEJAFIWEUHFAWIEUHF', this.props.user.items)
+          UserItems = <UserItemsList props={this.props.user.items} />;
+        }
+        else {
+          console.log('NO USER ITEMS')
+        }
+      }
+
+
+    }
+    console.log(localStorage.id);
+
+
     return (
       <div className="ParentHomeClass">
         <section>
           <h1>home page</h1>
+          <div className='ItemsThatBelongToUsers'>
+            {UserItems}
+          </div>
           <AddItemButtonComponent />
         </section>
         <div className='UserItems'>
 
-          {/* {UserItems} */}
         </div>
         <div className="CategoryHomePage">
 
           {this.props.categories.map((category) => {
-            return ( <div key={category.id} className="singleCategoryHomePage">  
-             <CategoryComp  {...category} /> 
-             </div>
-             )
-            })}
-          </div>
+            return (<div key={category.id} className="singleCategoryHomePage">
+              <CategoryComp  {...category} />
+            </div>
+            )
+          })}
+        </div>
       </div>
     );
   }
@@ -49,7 +68,7 @@ class Home extends Component {
 const mapStateToProps = state => {
   return {
     categories: state.items.categories,
-    user: state.users.user
+    user: state.users.user,
   }
 }
 
