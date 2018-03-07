@@ -5,6 +5,7 @@ import ItemsList from "./ItemsList";
 import Item from "./Item";
 import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import  SearchComponent  from "../../components/searchbar";
 
 class Items extends Component {
   constructor(props) {
@@ -12,28 +13,31 @@ class Items extends Component {
   }
   componentDidMount() {
     this.props.getItems();
-    
   }
   render() {
+    console.log("fhshfshfioesh", this.props.categories);
     return (
       <Switch>
+        
         <Route
           exact
           path="/items"
           render={() => {
-            {
-              
-            }
             return <ItemsList items={this.props.items} />;
           }}
         />
+        
         <Route exact path="/items/:id" component={Item} />
+        
       </Switch>
     );
   }
 }
 const mapStateToProps = state => {
-  return state.items;
+  return {
+    items: state.items.items,
+    categories: state.items.categories
+  };
 };
 
 const mapDispatchToProps = dispatch => {

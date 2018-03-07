@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const ItemsList = props => {
   return (
     <div className="items-list">
-      
       {props.items.map(item => {
         const itemId = item.id;
         return (

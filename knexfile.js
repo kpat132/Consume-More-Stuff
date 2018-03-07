@@ -11,7 +11,7 @@ module.exports = {
       user: config.db.user,
       password: config.db.password,
       database: config.db.name,
-      charset: "utf8"
+      charset: 'utf8'
     },
     migrations: {
       directory: path.join(__dirname, "db/migrations")
