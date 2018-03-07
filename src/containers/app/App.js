@@ -5,13 +5,14 @@ import "../../index.css";
 import Login from "../../containers/login/login";
 import RegisterUser from "../../containers/register";
 
+
 import AddItem from "../AddItem";
 import EditItem from "../EditItem";
 import Settings from "../Settings";
 import CategoryComp from "../../components/CategoryComp";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
-import { LoginButtonComponent } from "../../components/loginButton";
+import  LoginButtonComponent  from "../../components/loginButton";
 import {
   getItems,
   getCategories,
@@ -32,18 +33,28 @@ class App extends Component {
     this.props.getStatus();
     this.props.getConditions();
 
-    if (localStorage.length === 1) {
-      this.props.userPage(localStorage.id);
-    }
   }
 
   render() {
+
+    console.log('THIS.PROPS.USER.ITEMS', this.props.user.items);
+    let userItems = this.props.users.items;
+
+    let buttons = <LoginButtonComponent />;
+  
+    if (localStorage.length === 1) {
+      buttons = null;
+    }
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
+          <div className="search-bar">
+            {/* <SearchComponent /> */}
+          </div>
+        
+          {buttons}
 
-          <LoginButtonComponent />
         </header>
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />

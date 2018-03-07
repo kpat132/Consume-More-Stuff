@@ -1,10 +1,12 @@
 import "whatwg-fetch";
 
-export const GET_USERS = "GET_USERS";
-export const EDIT_USER = "EDIT_USER";
-export const REGISTER = "REGISTER";
-export const LOGIN = "LOGIN";
-export const USER_PAGE = "USER_PAGE";
+export const GET_USERS = "GET_USERS"
+export const EDIT_USER = "EDIT_USER"
+export const REGISTER = "REGISTER"
+export const LOGIN = "LOGIN"
+export const USER_PAGE = "USER_PAGE"
+export const LOGOUT = "LOGOUT"
+
 
 const DATA = "http://localhost:3000/api/users";
 
@@ -81,6 +83,7 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
+        console.log('AREYOUWORKINGTHO', verified)
         ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
@@ -118,11 +121,24 @@ export const loginAction = user => {
 
         //return userPage(verifiedUser.user)(dispatch)
       })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-};
+  }
+}
+
+export const logout = () => {
+  return dispatch => {
+    return fetch(`${DATA}/logout`)
+      
+      .then(logout => {
+        console.log(logout);
+        dispatch({
+          type:LOGOUT,
+          payload:logout
+        })
+      })
+
+  }
+}
+
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
