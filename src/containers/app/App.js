@@ -50,7 +50,7 @@ class App extends Component {
         </nav>
 
         <div className="Main">
-          <Main categoriesList={this.props.categories} />
+        <Main />
         </div>
       </div>
     );

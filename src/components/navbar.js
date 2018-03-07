@@ -25,11 +25,9 @@ export const NavComponent = ({ categories }) => {
             </button>
             <div className="dropdown-content">
               {categories.map(category => {
-                return (
-                  <div className="singleDropDown" key={category.id}>
-                    <Link to={"/" + category.name}>{category.name}</Link>
-                  </div>
-                );
+                return ( <div className="singleDropDown" key={category.id}>
+                <Link to={"/categories/" + category.name}>{category.name}</Link>
+                </div>)
               })}
             </div>
           </div>

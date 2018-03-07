@@ -13,19 +13,19 @@ class Home extends Component {
   render() {
     return (
       <div className="ParentHomeClass">
-        <h1>home page</h1>
-
-        <AddItemButtonComponent />
-
-        <div className="CategoryHomePage">
-          {this.props.categories.map(category => {
-            return (
-              <div className="singleCategoryHomePage">
-                <CategoryComp key={category.id} {...category} />
-              </div>
-            );
-          })}
-        </div>
+          <section>
+           <h1>home page</h1>
+           <AddItemButtonComponent />
+          </section>
+          <div className="CategoryHomePage">
+          
+          {this.props.categories.map((category) => {
+            return ( <div key={category.id} className="singleCategoryHomePage">  
+             <CategoryComp  {...category} /> 
+             </div>
+             )
+            })}
+          </div>
       </div>
     );
   }
