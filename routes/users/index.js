@@ -55,7 +55,9 @@ passport.use(new LocalStrategy(function(username, password, done){
       else {
        bcrypt.compare(password, user.password)
         .then(res => {
-          if (res) { return done(null, user)}
+          if (res) { 
+            return done(null, user)}
+          
           else {
             return done(null, false, {message: 'bad username or password'})
           }
@@ -94,7 +96,6 @@ router.post(`/register`, (req, res) => {
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
   if(req.user) {
-    console.log(req.user)
     return res.status(200).json({
       user: req.user.id,
       authenticated: true
@@ -108,7 +109,6 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
 })
 
 router.get(`/logout`, (req, res) => {
-  console.log(req)
   req.logout();
   if(!req.user) {
     return res.status(200).json({
@@ -154,17 +154,34 @@ router.get('/:id', isAuthenticated, (req, res) =>{
 
 router.route(`/:id`)
   .put(isAuthenticated, (req, res) => {
+    console.log('im here')
     isAuthorized(req.user.id, req.params.id)
     let id = req.params.id;
     let data = {} = req.body;
     return new User(data)
     .where({id:id})
     .save(data,{patch:true})
-    .then(updatedInfo => {
-      return res.json(updatedInfo);
-    })
-    .catch(err => {
-      res.json({err:err.message});
+    .then(result => {
+      result = result.toJSON()
+      let updatedInfo = {id: id, 
+        username: result.username, 
+        email: result.email, 
+        created_at: result.created_at, 
+        updated_at: result.updated_at,
+        user_status: result.user_status,
+        items: result.items
+      }
+      if(updatedInfo.id) {
+        return res.status(200).json({
+          user: updatedInfo,
+          user_Updated: true
+        });
+      } else {
+        return res.status(401).json({
+          error: 'User is not authenticated',
+          user_Updated: false
+        })
+      }
     })
   })
   
