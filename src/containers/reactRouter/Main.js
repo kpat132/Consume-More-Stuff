@@ -17,6 +17,7 @@ const Main = props => (
       <Route exact path="/items" component={Items} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
+      {/* <Route exact path="/users" component={Login} /> */}
       <Route exact path="/addItem" component={AddItem} />
     </Switch>
   </main>

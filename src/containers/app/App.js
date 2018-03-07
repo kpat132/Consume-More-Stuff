@@ -2,17 +2,22 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./App.css";
-import  Login  from '../../containers/login/login';
+import Login from '../../containers/login/login';
 import RegisterUser from '../../containers/register';
 
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
-import  CategoryComp  from "../../components/CategoryComp"
-import  NavComponent  from "../../components/navbar";
+import CategoryComp from "../../components/CategoryComp"
+import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
-import { getItems, getCategories, getStatus, getConditions } from "../../actions/index";
+import { getItems } from "../../actions/index";
+import { getCategories } from "../../actions/index";
+import { getStatus } from "../../actions/index";
+import { getConditions } from "../../actions/index";
+import { userPage } from "../../actions/UserAction";
+
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
@@ -20,6 +25,7 @@ import Main from "../reactRouter/Main";
 class App extends Component {
   constructor(props) {
     super(props);
+
   }
 
   componentWillMount() {
@@ -27,11 +33,22 @@ class App extends Component {
     this.props.getCategories();
     this.props.getStatus();
     this.props.getConditions();
+
+
+    if (localStorage.length === 1) {
+      this.props.userPage(localStorage.id);
+    }
   }
 
 
   render() {
-  
+    let string = null;
+    let test = this.props.user;
+    if (localStorage.length === 1) {
+      string = 'WELCOME ';
+    }
+
+
     return (
       <div className="App">
         <header className="App-header">
@@ -47,14 +64,17 @@ class App extends Component {
         </nav>
         <p className="App-intro"></p>
         <div className="Main">
-        <Main />
+
+          <Main />
+          <h1>{string}</h1>
         </div>
         <div className="CategoryHomePage">
-        {
-          this.props.categories.map((category) => {
-            return  <CategoryComp key={category.id} {...category} /> 
-          })
-        }
+          {
+            this.props.categories.map((category) => {
+              return <CategoryComp key={category.id} {...category} />
+            })
+          }
+
         </div>
       </div>
     );
@@ -64,8 +84,10 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
+    user: state.users.user,
     users: state.users,
     categories: state.items.categories
+
   };
 };
 
@@ -83,6 +105,9 @@ const mapDispatchToProps = dispatch => {
     getConditions: () => {
       dispatch(getConditions());
     },
+    userPage: (id) => {
+      dispatch(userPage(id))
+    }
 
   };
 };
