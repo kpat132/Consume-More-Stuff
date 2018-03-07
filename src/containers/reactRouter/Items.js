@@ -15,7 +15,7 @@ class Items extends Component {
     this.props.getItems();
   }
   render() {
-    console.log("fhshfshfioesh", this.props.categories);
+    
     return (
       <Switch>
         

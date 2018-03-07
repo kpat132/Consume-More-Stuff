@@ -20,7 +20,7 @@ class Login extends Component {
     event.preventDefault();
    // console.log('THIS.STATE',this.state);
     this.props.login(this.state);
-    //this.props.history.push('/items');
+    this.props.history.push('/');
   }
   render() {
   //  console.log('PROPS',this.props);

@@ -67,6 +67,7 @@ class AddItem extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const newItem = {
+      user_id:parseFloat(localStorage.id),
       category_id: parseFloat(this.state.category_id),
       condition_id: this.state.condition_id,
       name: this.state.name,
@@ -83,7 +84,7 @@ class AddItem extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(localStorage.id)
 
     return (
       <div>

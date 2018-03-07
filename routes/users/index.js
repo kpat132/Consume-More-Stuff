@@ -95,6 +95,7 @@ router.get('/:id', isAuthenticated, (req, res) =>{
 })
 
 router.post(`/register`, (req, res) => {
+  console.log('R U WORKING', req.body);
   bcrypt.genSalt(saltRounds, function(err, salt) {
     if (err) { console.log(err)}
     bcrypt.hash(req.body.password, salt, function (err, hash) {
@@ -106,6 +107,7 @@ router.post(`/register`, (req, res) => {
       })
       .save()
       .then( (user) => {
+        console.log('userrrrr',user);
         user = user.toJSON()
         return res.status(200).json({
           message: 'user registered'
