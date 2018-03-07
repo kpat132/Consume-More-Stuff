@@ -3,15 +3,14 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import AddItem from "../containers/AddItem";
 import AddItemButton, { AddItemButtonComponent } from "./AddItemButton";
-import  CategoryComp  from "../components/CategoryComp";
+import CategoryComp from "../components/CategoryComp";
 
 class Home extends Component {
-  constructor (props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
-
-  render(){
+  render() {
     return (
       <div className="ParentHomeClass">
           <section>
@@ -28,25 +27,20 @@ class Home extends Component {
             })}
           </div>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
     categories: state.items.categories
-  }
-}
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-  return{
-    
-  }
-
-}
+  return {};
+};
 
 const ConnectedHome = connect(mapStateToProps, mapDispatchToProps)(Home);
 
 export default withRouter(connect(mapStateToProps)(ConnectedHome));
-
-

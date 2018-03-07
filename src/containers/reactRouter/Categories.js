@@ -12,18 +12,17 @@ class Categories extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {categoryName: ''}
+    this.state = {categoryName: this.props.match.params.name}
   }
 
-  componentWillMount() {
-    const categoryName = this.props.match.params.name
-    console.log(categoryName)
-    this.setState({categoryName})
+  componentWillReceiveProps(nextProps){
+    if(nextProps.match.params.name !== this.state.categoryName){
+      this.setState({categoryName: nextProps.match.params.name})
+    }
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
+    console.log('renderTriggered')
     return (
       <div className="CategoryDropDown">
       {this.props.categories.filter((category) => {
@@ -35,6 +34,7 @@ class Categories extends Component {
           )
         })
       }
+      
         </div>
     )
   }

@@ -7,12 +7,10 @@ export const GET_CONDITIONS = "GET_CONDITIONS";
 export const ADD_ITEM = "ADD_ITEM";
 export const SET_ITEM = "SET_ITEM";
 
-
 const ITEMS_DATA = "/api/items";
 const CATEGORIES_DATA = "/api/categories";
 const STATUS_DATA = "/api/itemstatus";
 const CONDITIONS_DATA = "/api/conditions";
-
 
 export const getItems = () => {
   return dispatch => {
@@ -38,6 +36,7 @@ export const getCategories = () => {
         return result.json();
       })
       .then(json => {
+        console.log("jsonnnnnnn", json);
         dispatch({
           type: GET_CATEGORIES,
           payload: json
@@ -69,7 +68,6 @@ export const getConditions = () => {
   return dispatch => {
     return fetch(CONDITIONS_DATA)
       .then(result => {
-        
         return result.json();
       })
       .then(json => {
@@ -84,37 +82,33 @@ export const getConditions = () => {
   };
 };
 
-export const setItem = id =>{
-  console.log('id', id);
-  return dispatch =>{
+export const setItem = id => {
+  console.log("id", id);
+  return dispatch => {
     return fetch(`${ITEMS_DATA}/${id}`)
-    .then(item=>{
-      return item.json();
-    })
-    .then(json=>{
-      dispatch({
-        type:SET_ITEM,
-        payload:json
-      }) 
-   
-    })
-  }
-}
-
-
-
-
+      .then(item => {
+        return item.json();
+      })
+      .then(json => {
+        dispatch({
+          type: SET_ITEM,
+          payload: json
+        });
+      });
+  };
+};
 
 export const addItem = item => {
+  console.log(item);
   return dispatch => {
     return fetch(ITEMS_DATA, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(item)
     })
-    .then(result => {
+      .then(result => {
         console.log(result);
         return result.json();
       })
@@ -127,35 +121,28 @@ export const addItem = item => {
   };
 };
 
-export const editItem = ( item)=> {
+export const editItem = item => {
+  let id = item.user_id;
+  let newItem = {
+    price: item.price,
+    name: item.name,
+    description: item.description,
+    make: item.make,
+    model: item.model,
+    dimensions: item.dimensions,
+    image: item.image,
+    notes: item.notes
+  };
 
-  let id =item.user_id;
- let newItem = {
-   price:item.price,
-   name: item.name,
-   description: item.description,
-   make: item.make,
-   model: item.model,
-   dimensions: item.dimensions,
-   image: item.image,
-   notes: item.notes
-
- }
-
- 
-  return dispatch =>{
+  return dispatch => {
     return fetch(`${ITEMS_DATA}/${id}`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(newItem)
-    })
-    .then(update=>{
-      console.log('updated',update);
-    })
-  }
-  
-  
-  
-}
+    }).then(update => {
+      console.log("updated", update);
+    });
+  };
+};
