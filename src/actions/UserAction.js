@@ -8,7 +8,7 @@ export const USER_PAGE = "USER_PAGE"
 export const LOGOUT = "LOGOUT"
 
 
-const DATA = "http://localhost:3000/api/users";
+const DATA = "/api/users";
 
 // export const getUsers = () => {
 //   return dispatch => {
@@ -52,10 +52,11 @@ export const register = user => {
 export const editUser = user => {
   return dispatch => {
     let data = {
+      
       username: user.username,
-      email: user.email,
-      password: user.password
-    };
+      email: user.email
+    }
+
 
     return fetch(`${DATA}/${user.id}`, {
       method: `PUT`,
@@ -65,6 +66,7 @@ export const editUser = user => {
       body: JSON.stringify(data)
     })
       .then(result => {
+        
         dispatch({
           type: EDIT_USER,
           user: result

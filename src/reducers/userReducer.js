@@ -21,12 +21,12 @@ export default (state = initialState, action = {}) => {
       return { ...state, users: action.users }
     case GET_USERS:
       return { ...state, users: action.users };
-    // case EDIT_USER:
-    //    console.log(`second case`);
-    //    return { ...state, users: action.user };
     case LOGOUT:
     localStorage.clear();
     return { ...state, user: null }
+    case EDIT_USER:
+       console.log(`second case`);
+       return { ...state, users: action.user };
     default:
       return state;
   }
