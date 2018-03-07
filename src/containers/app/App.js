@@ -43,7 +43,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Codely_Tool</h1>
           <div className="search-bar">
-            {/* <SearchComponent/> */}
+            <SearchComponent/>
           </div>
 
           <LoginButtonComponent />
@@ -54,7 +54,6 @@ class App extends Component {
         <p className="App-intro">Buy, sell and connect.</p>
         <div className="Main">
           <Main />
-          <SearchComponent/>
           
         </div>
       </div>

@@ -1,6 +1,7 @@
 // import React from "react";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {withRouter} from 'react-router-dom';
 
 
 
@@ -27,8 +28,9 @@ class SearchComponent extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    console.log(this.state.searchItems[0].id)
+    this.props.history.push(`/items/${this.state.searchItems[0].id}`)
     
-    console.log(this.state.searchItems)
   }
 
 
@@ -37,7 +39,9 @@ class SearchComponent extends Component {
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
     });
-   
+    this.state.searchItems = filteredItems
+    console.log(filteredItems)
+    
     
 
     return (
@@ -48,7 +52,7 @@ class SearchComponent extends Component {
         onChange={this.updateSearch.bind(this)} />
         <button type="submit">Submit</button>
         
-        
+     
         
        </form>
      </div>
@@ -71,7 +75,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(SearchComponent);
+const ConnectedApp = withRouter(connect(mapStatetoProps, mapDispatchToProps)(SearchComponent));
 
 export default ConnectedApp;
 
