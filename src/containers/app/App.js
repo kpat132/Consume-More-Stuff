@@ -2,17 +2,30 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "./App.css";
-import  Login  from '../../containers/login/login';
+import Login from '../../containers/login/login';
 import RegisterUser from '../../containers/register';
 
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
+<<<<<<< HEAD
 
 import  NavComponent  from "../../components/navbar";
+||||||| merged common ancestors
+import  CategoryComp  from "../../components/CategoryComp"
+import  NavComponent  from "../../components/navbar";
+=======
+import CategoryComp from "../../components/CategoryComp"
+import NavComponent from "../../components/navbar";
+>>>>>>> ffc6b08b4261f056ccd3893c4ae5d42fee1b13a9
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
-import { getItems, getCategories, getStatus, getConditions } from "../../actions/index";
+import { getItems } from "../../actions/index";
+import { getCategories } from "../../actions/index";
+import { getStatus } from "../../actions/index";
+import { getConditions } from "../../actions/index";
+import { userPage } from "../../actions/UserAction";
+
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 
@@ -20,6 +33,7 @@ import Main from "../reactRouter/Main";
 class App extends Component {
   constructor(props) {
     super(props);
+
   }
 
   componentWillMount() {
@@ -27,11 +41,18 @@ class App extends Component {
     this.props.getCategories();
     this.props.getStatus();
     this.props.getConditions();
+
+
+    if (localStorage.length === 1) {
+      this.props.userPage(localStorage.id);
+    }
   }
 
 
   render() {
-  console.log(this.props.categories)
+  
+
+
     return (
       <div className="App">
         <header className="App-header">
@@ -58,8 +79,10 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
+    user: state.users.user,
     users: state.users,
     categories: state.items.categories
+
   };
 };
 
@@ -77,6 +100,9 @@ const mapDispatchToProps = dispatch => {
     getConditions: () => {
       dispatch(getConditions());
     },
+    userPage: (id) => {
+      dispatch(userPage(id))
+    }
 
   };
 };
