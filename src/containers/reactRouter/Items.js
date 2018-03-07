@@ -5,7 +5,6 @@ import ItemsList from "./ItemsList";
 import Item from "./Item";
 import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
-import  SearchComponent  from "../../components/searchbar";
 
 class Items extends Component {
   constructor(props) {
@@ -15,10 +14,8 @@ class Items extends Component {
     this.props.getItems();
   }
   render() {
-    
     return (
       <Switch>
-        
         <Route
           exact
           path="/items"
@@ -26,9 +23,8 @@ class Items extends Component {
             return <ItemsList items={this.props.items} />;
           }}
         />
-        
+
         <Route exact path="/items/:id" component={Item} />
-        
       </Switch>
     );
   }

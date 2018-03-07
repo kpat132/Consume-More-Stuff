@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addItem } from "../actions/index";
+import { withRouter } from "react-router-dom";
 
 class AddItem extends Component {
   constructor(props) {
@@ -66,8 +67,9 @@ class AddItem extends Component {
   }
   handleSubmit(event) {
     event.preventDefault();
+
     const newItem = {
-      user_id:parseFloat(localStorage.id),
+      user_id: parseFloat(localStorage.id),
       category_id: parseFloat(this.state.category_id),
       condition_id: this.state.condition_id,
       name: this.state.name,
@@ -81,10 +83,11 @@ class AddItem extends Component {
     };
 
     this.props.addItem(newItem);
+    this.props.history.push("/items");
   }
 
   render() {
-    console.log(localStorage.id)
+    console.log(localStorage.id);
 
     return (
       <div>
@@ -185,6 +188,8 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(AddItem);
+const ConnectedApp = withRouter(
+  connect(mapStatetoProps, mapDispatchToProps)(AddItem)
+);
 
 export default ConnectedApp;
