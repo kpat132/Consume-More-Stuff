@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CategoryComp = ({ name, items }) => {
   console.log(items);
@@ -8,7 +9,11 @@ const CategoryComp = ({ name, items }) => {
       <br />
       <ul className="CategoryItems">
         {items.map(item => {
-          return <li className="SingleItemFromCateogor">{item.name}</li>;
+          return (
+            <li className="SingleItemFromCateogor" key={item.id}>
+              <Link to={`/items/${item.id}`}>{item.name}</Link>
+            </li>
+          );
         })}
       </ul>
     </div>

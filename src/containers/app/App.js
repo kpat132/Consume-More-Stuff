@@ -31,6 +31,10 @@ class App extends Component {
     this.props.getCategories();
     this.props.getStatus();
     this.props.getConditions();
+
+    if (localStorage.length === 1) {
+      this.props.userPage(localStorage.id);
+    }
   }
 
   render() {
@@ -47,16 +51,9 @@ class App extends Component {
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-        <p className="App-intro" />
-        <div className="Main">
-          <Main />
-          <br />
 
-          <div className="CategoryHomePage">
-            {this.props.categories.map(category => {
-              return <CategoryComp key={category.id} {...category} />;
-            })}
-          </div>
+        <div className="Main">
+          <Main categoriesList={this.props.categories} />
         </div>
       </div>
     );
@@ -66,6 +63,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     items: state.items,
+    user: state.users.user,
     users: state.users,
     categories: state.items.categories
   };
@@ -85,6 +83,9 @@ const mapDispatchToProps = dispatch => {
     getConditions: () => {
       dispatch(getConditions());
     }
+    // userPage: id => {
+    //   dispatch(userPage(id));
+    // }
   };
 };
 

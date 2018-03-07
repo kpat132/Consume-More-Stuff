@@ -3,6 +3,8 @@ import "whatwg-fetch";
 export const GET_USERS = "GET_USERS";
 export const EDIT_USER = "EDIT_USER";
 export const REGISTER = "REGISTER";
+export const LOGIN = "LOGIN";
+export const USER_PAGE = "USER_PAGE";
 
 const DATA = "http://localhost:3000/api/users";
 
@@ -25,7 +27,6 @@ const DATA = "http://localhost:3000/api/users";
 // }
 
 export const register = user => {
-  console.log("REGISTER ACTION");
   return dispatch => {
     return fetch(`${DATA}/register`, {
       method: `POST`,
@@ -35,11 +36,10 @@ export const register = user => {
       body: JSON.stringify(user)
     })
       .then(newUser => {
-        //  return dispatch({
-        //    type:REGISTER,
-        //    users:newUser
-        //  })
-        console.log("NEWUSER", newUser);
+        return dispatch({
+          type: REGISTER,
+          users: newUser
+        });
       })
       .catch(err => {
         console.log({ err: err.message });
@@ -81,8 +81,12 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
+        console.log("AREYOUWORKINGTHO", verified);
         ///send to dispatch so id saves to global storage
-        console.log("verified", verified);
+        dispatch({
+          type: USER_PAGE,
+          payload: verified
+        });
       })
       .catch(err => {
         console.log(err);
@@ -107,16 +111,13 @@ export const loginAction = user => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser => {
-        console.log("insideLoginAction", verifiedUser);
-        return userPage(verifiedUser.user)(dispatch);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-      .then(checkStatus)
-      .then(parseJSON)
-      .then(verifiedUser => {
-        return userPage(verifiedUser.user)(dispatch);
+        console.log("TESTVERIFIEDUSER", verifiedUser);
+        dispatch({
+          type: LOGIN,
+          payload: verifiedUser
+        });
+
+        //return userPage(verifiedUser.user)(dispatch)
       })
       .catch(err => {
         console.log(err);
