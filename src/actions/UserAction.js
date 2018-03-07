@@ -139,6 +139,9 @@ export const logout = () => {
           payload:logout
         })
       })
+      .catch(err=>{
+        console.log({err:err.message})
+      })
 
   }
 }

@@ -22,6 +22,7 @@ import {
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
+import  LogoutButtonComponent  from "../../components/logoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -47,9 +48,11 @@ class App extends Component {
     let userItems = this.props.users.items;
 
     let buttons = <LoginButtonComponent />;
+    let logoutButton = null;
   
     if (localStorage.length === 1) {
       buttons = null;
+      logoutButton = <LogoutButtonComponent/>
     }
     return (
       <div className="App">
@@ -60,6 +63,7 @@ class App extends Component {
           </div>
         
           {buttons}
+          {logoutButton}
 
         </header>
         <nav className="Navbar">
