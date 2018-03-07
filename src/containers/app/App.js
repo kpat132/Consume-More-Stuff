@@ -11,7 +11,7 @@ import EditItem from '../EditItem'
 import CategoryComp from "../../components/CategoryComp"
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
-import { LoginButtonComponent } from "../../components/loginButton";
+import  LoginButtonComponent  from "../../components/loginButton";
 import { getItems } from "../../actions/index";
 import { getCategories } from "../../actions/index";
 import { getStatus } from "../../actions/index";
@@ -42,8 +42,15 @@ class App extends Component {
 
 
   render() {
+
     console.log('THIS.PROPS.USER.ITEMS', this.props.user.items);
     let userItems = this.props.users.items;
+
+    let buttons = <LoginButtonComponent />;
+  
+    if (localStorage.length === 1) {
+      buttons = null;
+    }
     return (
       <div className="App">
         <header className="App-header">
@@ -51,17 +58,17 @@ class App extends Component {
           <div className="search-bar">
             <SearchComponent />
           </div>
-
-          <LoginButtonComponent />
+        
+          {buttons}
         </header>
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
         <p className="App-intro"></p>
         <div className="Main">
-        <Main categoriesList={this.props.categories} />
+          <Main categoriesList={this.props.categories} />
         </div>
-    
+
       </div>
     );
   }

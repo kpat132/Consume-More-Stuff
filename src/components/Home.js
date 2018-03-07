@@ -3,30 +3,45 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import AddItem from "../containers/AddItem";
 import AddItemButton, { AddItemButtonComponent } from "./AddItemButton";
-import  CategoryComp  from "../components/CategoryComp";
+import CategoryComp from "../components/CategoryComp";
+import UserItemsList from "../components/UserItemsList";
+import { userPage } from "../actions/UserAction";
 
 class Home extends Component {
-  constructor (props){
+  constructor(props) {
     super(props)
+  
   }
-
-
-  render(){
+ 
+  render() {
+    // let UserItems;
+    // console.log(localStorage.id);
+    // if(localStorage.length === 1 ){
+    //   // this.setState({UserItems:this.props.user.items})
+    //   console.log('ALEJAFIWEUHFAWIEUHF',this.props.user.items)
+    //   UserItems = <UserItemsList props = {this.props.user.items} />;
+    // }
+    
     return (
       <div className="ParentHomeClass">
-          <section>
-           <h1>home page</h1>
-           <AddItemButtonComponent />
-          </section>
-          <div className="CategoryHomePage">
-          
+        <section>
+          <h1>home page</h1>
+          <AddItemButtonComponent />
+        </section>
+        <div className='UserItems'>
+
+          {/* {UserItems} */}
+        </div>
+        <div className="CategoryHomePage">
+
           {this.props.categories.map((category) => {
-            return ( <div className="singleCategoryHomePage">  
-             <CategoryComp key={category.id} {...category} /> 
-             </div>
-             )
-            })}
-          </div>
+            return (<div className="singleCategoryHomePage">
+              <CategoryComp key={category.id} {...category} />
+            </div>
+            )
+          })}
+        </div>
+
       </div>
     )
   }
@@ -34,13 +49,17 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.items.categories
+    categories: state.items.categories,
+    user: state.users.user
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return{
-    
+  return {
+    userPage: (id) => {
+      dispatch(userPage(id))
+    }
+
   }
 
 }

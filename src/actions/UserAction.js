@@ -5,6 +5,7 @@ export const EDIT_USER = "EDIT_USER"
 export const REGISTER = "REGISTER"
 export const LOGIN = "LOGIN"
 export const USER_PAGE = "USER_PAGE"
+export const LOGOUT = "LOGOUT"
 
 
 const DATA = "http://localhost:3000/api/users";
@@ -84,7 +85,7 @@ export const userPage = (id) => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(verified => {
-        console.log('AREYOUWORKINGTHO',verified)
+        console.log('AREYOUWORKINGTHO', verified)
         ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
@@ -128,6 +129,20 @@ export const loginAction = (user) => {
   }
 }
 
+export const logout = () => {
+  return dispatch => {
+    return fetch(`${DATA}/logout`)
+      
+      .then(logout => {
+        console.log(logout);
+        dispatch({
+          type:LOGOUT,
+          payload:logout
+        })
+      })
+
+  }
+}
 
 
 function checkStatus(response) {
@@ -144,3 +159,4 @@ function checkStatus(response) {
 function parseJSON(response) {
   return response.json()
 }
+

@@ -1,20 +1,27 @@
 import React from 'react';
 
-const UserItemsList = props =>{
-  console.log(props);
-  return(
-    <div className ='UserItemsList'>
-    <ul className = 'ItemsList'>
+const UserItemsList = props => {
+  let items = props.props;
+  console.log('THESE ARE YO PROPS', items);
+  console.log(localStorage.id);
+  return (
+    <div className='UserItemsList'>
+      <ul className='ItemsList'>
+        {items.map((element => {
+          return (
 
-    {/* <li className = 'useritemName' >{props} </li> */}
+            <li className='useritemName' > {element.name} </li>
+          )
+
+        }))}
 
 
 
-    </ul>
+      </ul>
 
     </div>
 
   )
 }
 
-export default UserItemList
+export default UserItemsList
