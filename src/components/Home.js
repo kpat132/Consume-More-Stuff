@@ -1,8 +1,52 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import AddItem from "../containers/AddItem";
+import AddItemButton, { AddItemButtonComponent } from "./AddItemButton";
+import  CategoryComp  from "../components/CategoryComp";
 
-const Home = props => (
-  <section>
-    <h1>Hey you're home</h1>
-  </section>
-);
-export default Home;
+class Home extends Component {
+  constructor (props){
+    super(props)
+  }
+
+
+  render(){
+    return (
+      <div className="ParentHomeClass">
+          <section>
+           <h1>home page</h1>
+           <AddItemButtonComponent />
+          </section>
+          <div className="CategoryHomePage">
+          
+          {this.props.categories.map((category) => {
+            return ( <div className="singleCategoryHomePage">  
+             <CategoryComp key={category.id} {...category} /> 
+             </div>
+             )
+            })}
+          </div>
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    categories: state.items.categories
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return{
+    
+  }
+
+}
+
+const ConnectedHome = connect(mapStateToProps, mapDispatchToProps)(Home);
+
+export default withRouter(connect(mapStateToProps)(ConnectedHome));
+
+

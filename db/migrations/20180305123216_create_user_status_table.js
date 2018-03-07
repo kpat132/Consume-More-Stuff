@@ -1,3 +1,4 @@
+// user status
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('user_status', table => {
     table.increments('id').notNullable();
@@ -6,5 +7,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('user_status')
+  return knex.schema.createTable('user_status')
 };

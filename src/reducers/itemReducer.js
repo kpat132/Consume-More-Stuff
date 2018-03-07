@@ -1,20 +1,42 @@
 import "whatwg-fetch";
+
 import { GET_ITEM } from "../actions/index";
+import {GET_CATEGORIES} from "../actions/index"
+import {GET_STATUS} from "../actions/index";
+import {ADD_ITEM} from '../actions/index';
+import {GET_CONDITIONS} from '../actions/index'
+import {SET_ITEM} from '../actions/index'
 
 const initialState = {
   nextId: 4,
-  items: []
+  items: [],
+  categories:[],
+  status:[],
+  conditions:[],
+  item:[]
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_ITEM:
-      console.log(action);
-      console.log("in reducer");
-
+    
       return { ...state, items: action.items };
+    case GET_CATEGORIES:
 
-    default:
+      return {...state, categories:action.payload};
+      case GET_CONDITIONS:
+       return {...state, conditions:action.payload} ;
+      case ADD_ITEM:
+        console.log('in dispatch')
+      return {...state, status:action.payload}
+      case GET_STATUS:
+      return {...state, status:action.payload}
+     case SET_ITEM:
+     return {...state,
+      item: action.payload }
+      default:
       return state;
-  }
+    }
+    
 };
+
