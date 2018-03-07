@@ -18,7 +18,7 @@ export default (state = initialState, action = {}) => {
 
     case USER_PAGE:
     console.log('USER_PAGE', action.payload.user)
-    return {...state,user:action.payload.user}
+    return {...state, user:action.payload.user}
     case REGISTER:
 
       return { ...state, users: action.users }
