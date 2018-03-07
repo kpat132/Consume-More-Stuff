@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const NavComponent = ({ categories }) => {
-  console.log("CategoriesNav", categories);
   return (
     <nav>
       <ul className="nav">
-        <li>
+        <li className="home-link">
           <Link to="/">Home</Link>
         </li>
         <li>
@@ -15,18 +14,20 @@ export const NavComponent = ({ categories }) => {
         <li>
           <a href="settings.asp">Settings</a>
         </li>
-        <li>
+        <li className="items-link">
           <Link to="/items">Items</Link>
         </li>
         <li>
           <div className="dropdown">
             <button className="dropbtn">
-              Catagories
+              Categories
               <i className="fa fa-caret-down" />
             </button>
             <div className="dropdown-content">
               {categories.map(category => {
-                return <Link to={"/" + category.name}>{category.name}</Link>;
+                return ( <div className="singleDropDown" key={category.id}>
+                <Link to={"/categories/" + category.name}>{category.name}</Link>
+                </div>)
               })}
             </div>
           </div>
