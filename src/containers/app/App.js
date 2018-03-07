@@ -8,7 +8,7 @@ import RegisterUser from '../../containers/register';
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
-import  CategoryComp  from "../../components/CategoryComp"
+
 import  NavComponent  from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
@@ -31,7 +31,7 @@ class App extends Component {
 
 
   render() {
-  
+  console.log(this.props.categories)
     return (
       <div className="App">
         <header className="App-header">
@@ -47,15 +47,9 @@ class App extends Component {
         </nav>
         <p className="App-intro"></p>
         <div className="Main">
-        <Main />
+        <Main categoriesList={this.props.categories} />
         </div>
-        <div className="CategoryHomePage">
-        {
-          this.props.categories.map((category) => {
-            return  <CategoryComp key={category.id} {...category} /> 
-          })
-        }
-        </div>
+    
       </div>
     );
   }
