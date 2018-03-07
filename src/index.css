@@ -100,3 +100,14 @@ li a:hover {
 
 .addItemLink {
   text-decoration: none; }
+
+.items-list {
+  display: flex;
+  flex-direction: column-reverse;
+  order: -1; }
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 5%; }

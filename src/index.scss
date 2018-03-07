@@ -104,14 +104,14 @@ li a:hover {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-//Main
+//Base Page
 .Main {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   background-color: $white;
 }
-
-.CategoryHomePage {
-}
+// .AddItemButton-container {
+//   align-self: flex-end;
+// }
 
 .CategoryName {
   display: inline-flex;
@@ -124,4 +124,19 @@ li a:hover {
 //Create Item Button
 .addItemLink {
   text-decoration: none;
+}
+//Items Page
+
+.items-list {
+  display: flex;
+  flex-direction: column-reverse;
+  order: -1;
+}
+
+//Search-Bar in Items-Page
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 5%;
 }
