@@ -25,9 +25,9 @@ export default (state = initialState, action = {}) => {
 
     case GET_USERS:
       return { ...state, users: action.users };
-    // case EDIT_USER:
-    //    console.log(`second case`);
-    //    return { ...state, users: action.user };
+    case EDIT_USER:
+       console.log(`second case`);
+       return { ...state, users: action.user };
     default:
       return state;
   }
