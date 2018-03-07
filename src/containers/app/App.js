@@ -59,7 +59,8 @@ class App extends Component {
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-
+       
+        <p className="App-intro"></p>
         <div className="Main">
         <Main />
         </div>
