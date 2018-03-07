@@ -21,8 +21,8 @@ class Home extends Component {
           <div className="CategoryHomePage">
           
           {this.props.categories.map((category) => {
-            return ( <div className="singleCategoryHomePage">  
-             <CategoryComp key={category.id} {...category} /> 
+            return ( <div key={category.id} className="singleCategoryHomePage">  
+             <CategoryComp  {...category} /> 
              </div>
              )
             })}
