@@ -8,16 +8,8 @@ import RegisterUser from '../../containers/register';
 import AddItem from '../AddItem';
 import EditItem from '../EditItem'
 
-<<<<<<< HEAD
-
-import  NavComponent  from "../../components/navbar";
-||||||| merged common ancestors
-import  CategoryComp  from "../../components/CategoryComp"
-import  NavComponent  from "../../components/navbar";
-=======
 import CategoryComp from "../../components/CategoryComp"
 import NavComponent from "../../components/navbar";
->>>>>>> ffc6b08b4261f056ccd3893c4ae5d42fee1b13a9
 import { SearchComponent } from "../../components/searchbar";
 import { LoginButtonComponent } from "../../components/loginButton";
 import { getItems } from "../../actions/index";
