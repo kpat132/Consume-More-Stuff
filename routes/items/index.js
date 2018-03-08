@@ -6,34 +6,11 @@ const Category = require("../../db/models/Category");
 const Condition = require("../../db/models/Condition");
 const Item_Status = require("../../db/models/Item_Status");
 
-const passport = require('passport');
 
 const { isAuthenticated, isAuthorized } = require('../helper')
 
 //model
 const Item = require("../../db/models/Item");
-passport.serializeUser((user, done) => {
-  console.log('serialize')
-  return done(null, {
-    id: user.id, 
-    username: user.username
-  });
-})
-
-passport.deserializeUser((user, done) => {
-  console.log('deserialize')
-  new User ({id: user.id}).fetch()
-    .then(user => {
-      user = user.toJSON();
-      return done(null, {
-        id: user.id,  
-        username: user.username
-      });
-    });
-  });
-
-
-
 
 router
   .route("/:id")
