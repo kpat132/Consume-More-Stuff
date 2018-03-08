@@ -26,7 +26,6 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  console.log('serializing');
   return done(null, {
     id: user.id, 
     username: user.username
@@ -34,11 +33,8 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user, done) => {
-  console.log('deserializing');
-  console.log('1', user)
   new User ({id: user.id}).fetch()
     .then(user => {
-      console.log('2', user)
       user = user.toJSON();
       return done(null, {
         id: user.id,  
@@ -58,7 +54,6 @@ passport.use(new LocalStrategy(function(username, password, done){
        bcrypt.compare(password, user.password)
         .then(res => {
           if (res) { 
-            console.log('am i getting here')
             return done(null, user)}
           
           else {
@@ -99,7 +94,6 @@ router.post(`/register`, (req, res) => {
 })
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
-  console.log('inside login')
   if(req.user) {
     return res.status(200).json({
       user: req.user.id,
@@ -128,7 +122,6 @@ router.get(`/logout`, (req, res) => {
 })
 
 router.get('/:id', isAuthenticated, (req, res) =>{
-  console.log('inside get /:id')
   isAuthorized(req.user.id, req.params.id)
   return new User ()
   .where({id: req.params.id})
@@ -160,7 +153,6 @@ router.get('/:id', isAuthenticated, (req, res) =>{
 
 router.route(`/:id`)
   .put(isAuthenticated, (req, res) => {
-    console.log('im here')
     isAuthorized(req.user.id, req.params.id)
     let id = req.params.id;
     let data = {} = req.body;

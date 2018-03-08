@@ -78,7 +78,6 @@ export const editUser = user => {
   };
 };
 export const userPage = id => {
-
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
       credentials: "include"
@@ -103,6 +102,7 @@ export const loginAction = (user) => {
       username: user.username,
       password: user.password
     }
+    console.log('login action', data)
     return fetch(`${DATA}/login`, {
       credentials: 'include',
       method: 'POST',
