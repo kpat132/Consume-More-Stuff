@@ -12,7 +12,8 @@ export const NavComponent = ({ categories }) => {
           <a href="Messages.asp">Messages</a>
         </li>
         <li className="settings-link">
-          <a href="settings.asp">Settings</a>
+          {/* <a href="settings.asp">Settings</a> */}
+          <Link to="/settings">Settings</Link>
         </li>
         <li className="items-link">
           <Link to="/items">Items</Link>
