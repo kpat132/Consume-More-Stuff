@@ -17,23 +17,23 @@ const UserItemsList = props => {
           const model = element.model;
           const notes = element.notes;
           return (
-            <ul className = 'ContainerForUserItems' key={element.name}>
-              <li className='useritemNames' > {element.name} </li>
-
+            <ul key={element.name}>
+              <li  className='useritemNames' > {element.name} </li>
+             
               {description && <li>Description: {description}</li>}
-
+            
               {price && <li>Price: {price}</li>}
-
+             
               {make && <li>Make: {make}</li>}
-
+             
               {model && <li>Model: {model}</li>}
-
+            
               {dimensions && <li>Dimensions: {dimensions}</li>}
-
+           
               {image && <li>Image: {image}</li>}
-
+            
               {notes && <li>Notes: {notes}</li>}
-              <br />
+
             </ul>
           )
         }))}
