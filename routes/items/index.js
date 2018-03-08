@@ -56,6 +56,7 @@ router
   })
 
   .post((req, res) => {
+    console.log(req.body);
     let data = ({
       name,
       description,
@@ -72,15 +73,15 @@ router
 
     data.item_status_id = 1;
 
-    return new Item(data)
-      .save()
-      .then(newItem => {
-        return res.send(newItem);
-      })
-      .catch(err => {
-        console.log({ err: err.message });
-        return res.json({ err: err.message });
-      });
+    // return new Item(data)
+    //   .save()
+    //   .then(newItem => {
+    //     return res.send(newItem);
+    //   })
+    //   .catch(err => {
+    //     console.log({ err: err.message });
+    //     return res.json({ err: err.message });
+    //   });
   });
 
 module.exports = router;
