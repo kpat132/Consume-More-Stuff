@@ -82,15 +82,12 @@ export const setItem = id => {
 };
 
 export const setCategory = id =>{
-  console.log(`${CATEGORIES_DATA}/${id}`);
   return dispatch => {
     return fetch(`${CATEGORIES_DATA}/${id}`)
     .then(cat=>{
-      console.log('caat',cat)
       return cat.json()
     })
     .then(json=>{
-      console.log('catID',json)
       dispatch({
         type:SET_CATEGORY,
         payload:json
@@ -100,7 +97,6 @@ export const setCategory = id =>{
 }
 
 export const addItem = item => {
-  console.log('item in addItem', item)
   return dispatch => {
     return fetch(`${ITEMS_DATA}`, {
       credentials: "include",
@@ -112,7 +108,6 @@ export const addItem = item => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(result => {
-        console.log('returnAddItem', result)
         return dispatch(getItems());
       })
       .catch(err => {

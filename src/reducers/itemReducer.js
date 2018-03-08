@@ -36,6 +36,5 @@ export default (state = initialState, action = {}) => {
       default:
       return state;
     }
-    console.log(this.state)
 };
 

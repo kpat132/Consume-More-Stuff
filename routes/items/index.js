@@ -74,11 +74,9 @@ router
       category_id
     } = req.body);
     data.item_status_id = 1;
-    console.log('dada', data)
     return new Item(data)
       .save()
       .then(newItem => {
-        console.log('neww', newItem)
         if (newItem.id){
           return res.status(200).json({
             item: newItem1,

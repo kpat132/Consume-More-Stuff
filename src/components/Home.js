@@ -21,7 +21,6 @@ class Home extends Component {
         console.log("EMPTY");
       } else {
         if (this.props.user.items.length > 0) {
-          console.log(this.props.user.username);
           userItemsHeader = this.props.user.username + '`s Items'
           UserItems = <UserItemsList props={this.props.user.items} />;
         } else {
