@@ -44,7 +44,6 @@ router
 router
   .route(`/`)
   .get((req, res) => {
-    console.log('are you getting here?')
     return new Item()
       .fetchAll({
         withRelated: ["users", "categories", "conditions", "item_status"]
@@ -61,7 +60,6 @@ router
   router
   .route(`/`)
   .post(isAuthenticated,(req, res) => {
-    console.log('in post on server')
     let data = ({
       name,
       description,

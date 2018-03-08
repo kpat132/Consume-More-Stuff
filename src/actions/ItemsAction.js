@@ -113,7 +113,7 @@ export const addItem = item => {
       .then(parseJSON)
       .then(result => {
         console.log('returnAddItem', result)
-        //return dispatch(getItems());
+        return dispatch(getItems());
       })
       .catch(err => {
         console.log(err)
