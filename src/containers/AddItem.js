@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addItem } from "../actions/ItemsAction";
 import { withRouter } from "react-router-dom";
+import FileBase64 from 'react-file-base64';
 
 class AddItem extends Component {
   constructor(props) {
@@ -55,17 +56,20 @@ class AddItem extends Component {
     this.setState({ dimensions: event.target.value });
   }
   handleChangeImage(event) {
-    this.setState({ image: event.target.value });
+   let data = new FormData();
+   data.append('file', event.target.files[0]);
+   this.setState({image:data});
+
   }
   handleChangeNotes(event) {
     this.setState({ notes: event.target.value });
   }
-  handleChangeImg(event) {
-    this.setState({ image: event.target.value });
+  handleChangeImg(files) {
+    this.setState({ image: files });
   }
   handleSubmit(event) {
     event.preventDefault();
-
+    
     const newItem = {
       user_id: parseFloat(localStorage.id),
       category_id: parseFloat(this.state.category_id),
@@ -76,7 +80,7 @@ class AddItem extends Component {
       make: this.state.make,
       model: this.state.model,
       dimensions: this.state.dimensions,
-      image: this.state.image,
+      image: this.state.image?this.state.image[0].base64: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOOigxPC1OtYYo1yJ2tJdBh_a7Nx4c23HUFw0kxZHQHiQ8pT2d',
       notes: this.state.notes
     };
 
@@ -90,6 +94,7 @@ class AddItem extends Component {
     return (
       <div>
         <div className="add-form">
+        
           <form className="add-forms" onSubmit={this.handleSubmit.bind(this)}>
             <select
               name="cars"
@@ -158,11 +163,14 @@ class AddItem extends Component {
             <br />
             <input type="text" onChange={this.handleChangeNotes.bind(this)} />
             <br />
-            Image
+            Upload Image
             <br />
-            <input type="text" onChange={this.handleChangeImg.bind(this)} />
-            <br />
-            <br />
+            <FileBase64
+        multiple={ true }
+        onDone={ this.handleChangeImg.bind(this) } />
+            
+            <br /><br />
+            
             <input type="submit" value="submit" />
           </form>
         </div>
