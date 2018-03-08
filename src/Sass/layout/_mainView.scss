@@ -10,6 +10,17 @@
   }
 }
 
+//User Items List
+.ItemsList {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  ul {
+    list-style: none;
+  }
+}
+
 //Categories
 .ParentHomeClass {
   background-color: $gray;
@@ -18,9 +29,10 @@
 
     .singleCategoryHomePage {
       .CategoryRow {
-        display: flex;
         .CategoryItems {
-          flex-direction: row;
+          display: flex;
+          flex-direction: row-reverse;
+          justify-content: space-around;
           flex-wrap: wrap;
           list-style: none;
           .SingleItemFromCateogor {
