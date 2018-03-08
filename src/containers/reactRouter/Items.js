@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getItems } from "../../actions/index";
+import { getItems } from "../../actions/ItemsAction";
 import ItemsList from "./ItemsList";
 import Item from "./Item";
 import { Switch, Route } from "react-router-dom";

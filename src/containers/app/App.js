@@ -13,7 +13,7 @@ import {
   getCategories,
   getStatus,
   getConditions
-} from "../../actions/index";
+} from "../../actions/ItemsAction";
 
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";

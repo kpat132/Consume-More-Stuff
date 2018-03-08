@@ -13,23 +13,7 @@ const CATEGORIES_DATA = "/api/categories";
 const STATUS_DATA = "/api/itemstatus";
 const CONDITIONS_DATA = "/api/conditions";
 
-export const getItems = () => {
-  return dispatch => {
-    return fetch(ITEMS_DATA)
-      .then(result => {
-        return result.json();
-      })
-      .then(json => {
-        dispatch({
-          type: GET_ITEM,
-          items: json
-        });
-      })
-      .catch(err => {
-        return err;
-      });
-  };
-};
+
 export const getCategories = () => {
   return dispatch => {
     return fetch(CATEGORIES_DATA)
@@ -98,15 +82,12 @@ export const setItem = id => {
 };
 
 export const setCategory = id =>{
-  console.log(`${CATEGORIES_DATA}/${id}`);
   return dispatch => {
     return fetch(`${CATEGORIES_DATA}/${id}`)
     .then(cat=>{
-      console.log('caat',cat)
       return cat.json()
     })
     .then(json=>{
-      console.log('catID',json)
       dispatch({
         type:SET_CATEGORY,
         payload:json
@@ -117,23 +98,38 @@ export const setCategory = id =>{
 
 export const addItem = item => {
   return dispatch => {
-    return fetch(ITEMS_DATA, {
-      credentials: 'include',
+    return fetch(`${ITEMS_DATA}`, {
+      credentials: "include",
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(item)
-    })
-      .then(result => {
-        console.log(result);
-        return result.json();
-      })
+    }).then(checkStatus)
+      .then(parseJSON)
       .then(result => {
         return dispatch(getItems());
       })
       .catch(err => {
-        console.log(err);
+        console.log(err)
+      });
+  };
+};
+
+export const getItems = () => {
+  return dispatch => {
+    return fetch(`${ITEMS_DATA}`)
+      .then(result => {
+        return result.json();
+      })
+      .then(json => {
+        dispatch({
+          type: GET_ITEM,
+          items: json
+        });
+      })
+      .catch(err => {
+        return err;
       });
   };
 };
@@ -164,3 +160,18 @@ export const editItem = item => {
     });
   };
 };
+
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  } else {
+    var error = new Error(response.statusText);
+    error.response = response;
+    throw error;
+  }
+}
+
+function parseJSON(response) {
+  return response.json();
+}
