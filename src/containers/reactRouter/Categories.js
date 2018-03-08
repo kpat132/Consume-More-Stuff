@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCategories } from "../../actions/index";
-import { setCategory } from "../../actions/index"
+import { getCategories } from "../../actions/ItemsAction";
+import { setCategory } from "../../actions/ItemsAction"
 
 import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";

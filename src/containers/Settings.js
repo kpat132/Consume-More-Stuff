@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {editUser} from '../actions/UserAction'
+import { withRouter } from "react-router-dom";
 
 
 class Settings extends Component {
@@ -28,6 +29,7 @@ this.setState({username: e.target.value})
       email:this.state.email?this.state.email:this.props.user.email
     }
     this.props.editUser(updateUser)
+    this.props.history.push("/");
   }
 
  
@@ -77,6 +79,6 @@ const mapDispatchToProps = dispatch => {
  }
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(Settings);
+const ConnectedApp = withRouter(connect(mapStatetoProps, mapDispatchToProps)(Settings));
 
 export default ConnectedApp;

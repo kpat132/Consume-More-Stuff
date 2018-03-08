@@ -8,6 +8,7 @@ export const USER_PAGE = "USER_PAGE"
 export const LOGOUT = "LOGOUT"
 
 
+const LOGINROUTE = "/api"
 const DATA = "/api/users";
 
 // export const getUsers = () => {
@@ -30,7 +31,7 @@ const DATA = "/api/users";
 
 export const register = user => {
   return dispatch => {
-    return fetch(`${DATA}/register`, {
+    return fetch(`${LOGINROUTE}/register`, {
       method: `POST`,
       headers: {
         "Content-Type": "application/json"
@@ -52,12 +53,9 @@ export const register = user => {
 export const editUser = user => {
   return dispatch => {
     let data = {
-      
       username: user.username,
       email: user.email
     }
-
-
     return fetch(`${DATA}/${localStorage.id}`, {
       credentials: "include",
       method: `PUT`,
@@ -67,7 +65,6 @@ export const editUser = user => {
       body: JSON.stringify(data)
     })
       .then(result => {
-        
         dispatch({
           type: EDIT_USER,
           user: result
@@ -78,6 +75,7 @@ export const editUser = user => {
       });
   };
 };
+
 export const userPage = id => {
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
@@ -103,8 +101,7 @@ export const loginAction = (user) => {
       username: user.username,
       password: user.password
     }
-    console.log('login action', data)
-    return fetch(`${DATA}/login`, {
+    return fetch(`${LOGINROUTE}/login`, {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -128,7 +125,7 @@ export const loginAction = (user) => {
 
 export const logout = () => {
   return dispatch => {
-    return fetch(`${DATA}/logout`)
+    return fetch(`${LOGINROUTE}/logout`)
       .then(logout => {
         dispatch({
           type:LOGOUT,
@@ -138,7 +135,6 @@ export const logout = () => {
       .catch(err=>{
         console.log({err:err.message})
       })
-
   }
 }
 

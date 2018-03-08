@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { editItem } from '../actions/index';
+import { editItem } from '../actions/ItemsAction';
 
 
 class EditItem extends Component {
