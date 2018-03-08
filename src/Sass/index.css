@@ -136,3 +136,31 @@ footer {
   font-family: "Bungee Shade", regular;
   color: #036;
   height: 50px; }
+
+.item {
+  display: flex;
+  justify-content: center;
+  border-style: solid;
+  border-color: red; }
+
+.item-img-container {
+  text-align: center; }
+  .item-img-container .item-img {
+    border-style: solid;
+    border-color: green;
+    width: 400px;
+    height: 400px; }
+
+.item-content {
+  border-style: solid;
+  border-color: blue;
+  width: 300px; }
+  .item-content .item-name {
+    text-align: center; }
+  .item-content .item-info {
+    border-style: solid;
+    border-color: orange;
+    height: 200px; }
+  .item-content .user-content {
+    border-style: solid;
+    border-color: pink; }

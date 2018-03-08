@@ -75,24 +75,24 @@ router
       category_id
     } = req.body);
     data.item_status_id = 1;
-    // return new Item(data)
-    //   .save()
-    //   .then(newItem => {
-    //     if (newItem.id){
-    //       return res.status(200).json({
-    //         item: newItem1,
-    //         itemAdded: true
-    //       });
-      //   } else {
-      //     return res.status(401).json({
-      //       error: 'User is not authenticated',
-      //       user_Updated: false
-      //     })
-      //   }
-      // }).catch(err => {
+    return new Item(data)
+      .save()
+      .then(newItem => {
+        if (newItem.id){
+          return res.status(200).json({
+            item: newItem1,
+            itemAdded: true
+          });
+        } else {
+          return res.status(401).json({
+            error: 'User is not authenticated',
+            user_Updated: false
+          })
+        }
+      }).catch(err => {
     
-      //   return res.json({err:err.message});
-      // })
+        return res.json({err:err.message});
+      })
     });
 
 

@@ -30,7 +30,9 @@ class Item extends Component {
     }
   }
   render() {
-
+    
+    let newObj = {...this.state.users};
+    console.log(newObj.email);
     
     if (this.state.detail === "not found") {
       return <Redirect to="/items" />;
@@ -47,16 +49,36 @@ class Item extends Component {
     } = this.state;
     return (
       <div className="item">
-        <h1>{name}</h1>
-        <ul>
-          {description && <li>Description: {description}</li>}
-          {price && <li>Price: {price}</li>}
-          {make && <li>Make: {make}</li>}
-          {model && <li>Model: {model}</li>}
-          {dimensions && <li>Dimensions: {dimensions}</li>}
-          {image && <li>Image: {image}</li>}
-          {notes && <li>Notes: {notes}</li>}
-        </ul>
+        <div className='item-img-container'>
+          <div className='item-img'>
+            <h1>IMG</h1>
+            {image &&<img src={ image } />}
+          </div>
+        </div>
+        <div className='item-content'>
+          <div className="item-name" ><h1>{name}</h1>
+          </div>
+          <div className='item-info'>
+            <ul>
+              {price && <li>Price: {price}</li>}
+              {description && <li>Description:} {description}</li>}
+              {make && <li>Make: {make}</li>}
+              {model && <li>Model: {model}</li>}
+              {dimensions && <li>Dimensions: {dimensions}</li>}
+              
+              {notes && <li>Notes: {notes}</li>}
+          </ul>
+          </div>
+          <div className="user-content">
+
+            <h2>Contact Info</h2>
+            <text> Email:</text>
+            {newObj.email}
+            <br/>
+            <text> Username:</text>
+            {newObj.username}
+          </div>
+        </div>
       </div>
     );
   }

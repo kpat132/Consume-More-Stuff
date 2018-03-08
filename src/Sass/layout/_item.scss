@@ -1,0 +1,49 @@
+
+
+.item{
+  display: flex;
+  justify-content: center ;
+  border-style: solid;
+    border-color: red;
+}
+.item-img-container{
+text-align: center;
+  .item-img{
+    border-style: solid;
+      border-color:green;
+      width: 400px;
+      height: 400px;
+
+      
+      
+      
+  }
+
+}
+
+
+.item-content{
+  
+  border-style: solid;
+    border-color: blue;
+    width: 300px;
+  
+    
+    .item-name{
+      text-align: center
+    }
+    .item-info{
+      border-style: solid;
+      border-color: orange;
+      height: 200px;
+    }
+    .user-content{
+     
+      border-style: solid;
+      border-color: pink;
+    }
+
+
+
+}
+
