@@ -26,6 +26,7 @@ router.use(passport.initialize());
 router.use(passport.session());
 
 passport.serializeUser((user, done) => {
+  console.log('serialize')
   return done(null, {
     id: user.id, 
     username: user.username
@@ -33,6 +34,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((user, done) => {
+  console.log('deserialize')
   new User ({id: user.id}).fetch()
     .then(user => {
       user = user.toJSON();
@@ -203,7 +205,6 @@ router.route(`/`)
     return new User()
     .fetchAll({withRelated: ['user_status','items']})
     .then(users => {
-      console.log('IAWUENFAIWUENFAIWEUFNAWEIUFNAEWIUFANWEIUFNAWEIUFAWENFIUWEFNUAWFN');
       return res.json(users.toJSON());
     })
     .catch(err => {
