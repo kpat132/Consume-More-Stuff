@@ -27,7 +27,6 @@ export default (state = initialState, action = {}) => {
       case GET_CONDITIONS:
        return {...state, conditions:action.payload} ;
       case ADD_ITEM:
-        console.log('in dispatch')
       return {...state, status:action.payload}
       case GET_STATUS:
       return {...state, status:action.payload}

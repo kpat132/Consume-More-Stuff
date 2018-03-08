@@ -2,16 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "../../index.css";
-import Login from "../../containers/login/login";
-import RegisterUser from "../../containers/register";
 
-
-import AddItem from "../AddItem";
-import EditItem from "../EditItem";
 import Settings from "../Settings";
-import CategoryComp from "../../components/CategoryComp";
+
 import NavComponent from "../../components/navbar";
-import { SearchComponent } from "../../components/searchbar";
+
 import  LoginButtonComponent  from "../../components/loginButton";
 import {
   getItems,
@@ -19,7 +14,7 @@ import {
   getStatus,
   getConditions
 } from "../../actions/index";
-import { getUsers } from "../../actions/UserAction";
+
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
 import  LogoutButtonComponent  from "../../components/logoutButton";
@@ -38,14 +33,9 @@ class App extends Component {
     if (localStorage.length === 1) {
       this.props.userPage(localStorage.id);
     }
-  
-
   }
 
   render() {
-
-    console.log('THIS.PROPS.USER', this.props.user);
-    let userItems = this.props.users.items;
 
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
@@ -74,7 +64,7 @@ class App extends Component {
         <div className="Main">
         <Main />
 
-        <Settings />
+        {/* <Settings /> */}
         </div>
       </div>
     );

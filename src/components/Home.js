@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import AddItem from "../containers/AddItem";
-import AddItemButton, { AddItemButtonComponent } from "./AddItemButton";
+import { AddItemButtonComponent } from "./AddItemButton";
 import CategoryComp from "../components/CategoryComp";
 import UserItemsList from "../components/UserItemsList";
 import { userPage } from "../actions/UserAction";
@@ -15,28 +14,22 @@ class Home extends Component {
 
 
   render() {
-    console.log('AOIJEMRIJAERAMLIEJRCAEIJRAEWIJRCAIEWJRCIAWELJRCAIWEJRCIAELW', this.props.user);
     let UserItems;
 
     if (localStorage.length === 1) {
-      
       if (Object.keys(this.props.user).length === 0) {
-        console.log('EMPTY');
+        // console.log('empty console')
       }
       else {
-
         if (this.props.user.items.length > 0) {
-          console.log('ALEJAFIWEUHFAWIEUHF', this.props.user.items)
           UserItems = <UserItemsList props={this.props.user.items} />;
         }
         else {
-          console.log('NO USER ITEMS')
+          // console.log('NO USER ITEMS')
         }
       }
-
-
     }
-    console.log(localStorage.id);
+
 
 
     return (

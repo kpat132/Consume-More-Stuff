@@ -27,7 +27,6 @@ this.setState({username: e.target.value})
       username:this.state.username?this.state.username:this.props.user.username,
       email:this.state.email?this.state.email:this.props.user.email
     }
-    console.log(updateUser)
     this.props.editUser(updateUser)
   }
 

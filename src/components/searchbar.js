@@ -1,10 +1,6 @@
-// import React from "react";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom';
-
-
-
 
 
 class SearchComponent extends Component {
@@ -51,9 +47,6 @@ class SearchComponent extends Component {
         <input type="text" placeholder="Search.." name="search" 
         onChange={this.updateSearch.bind(this)} />
         <button type="submit">Submit</button>
-        
-     
-        
        </form>
      </div>
     )

@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getCategories } from "../../actions/index";
-import AutoList from "./AutoList";
-import { Switch, Route } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-import Item from "./Item";
-import SingleCategory from './SingleCategory'
 import CategoryComp from "../../components/CategoryComp";
 
 class Categories extends Component {
@@ -22,7 +16,6 @@ class Categories extends Component {
   }
 
   render() {
-    console.log('renderTriggered')
     return (
       <div className="CategoryDropDown">
       {this.props.categories.filter((category) => {
@@ -46,14 +39,16 @@ const mapStateToProps = state => {
   };
 };
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     getCategories: () => {
-//       dispatch(getCategories());
-//     }
-//   };
-// };
+const mapDispatchToProps = dispatch => {
+  return {
+    // getCategories: () => {
+    //   dispatch(getCategories());
+    // }
+  };
+};
 
-const ConnectedCategories = withRouter(connect(mapStateToProps)(Categories));
+// const ConnectedCategories = withRouter(connect(mapStateToProps)(Categories));
 
-export default ConnectedCategories;
+// export default ConnectedCategories;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories)

@@ -19,8 +19,7 @@ class EditItem extends Component {
       model: "",
       dimensions: "",
       image: "",
-      notes: "",
-      image: ""
+      notes: ""
     };
 
 
