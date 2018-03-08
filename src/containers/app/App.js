@@ -21,6 +21,8 @@ import {
 } from "../../actions/index";
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
+import { userPage } from "../../actions/UserAction";
+import  LogoutButtonComponent  from "../../components/logoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -33,17 +35,24 @@ class App extends Component {
     this.props.getStatus();
     this.props.getConditions();
 
+    if (localStorage.length === 1) {
+      this.props.userPage(localStorage.id);
+    }
+  
+
   }
 
   render() {
 
-    console.log('THIS.PROPS.USER.ITEMS', this.props.user.items);
+    console.log('THIS.PROPS.USER', this.props.user);
     let userItems = this.props.users.items;
 
     let buttons = <LoginButtonComponent />;
+    let logoutButton = null;
   
     if (localStorage.length === 1) {
       buttons = null;
+      logoutButton = <LogoutButtonComponent/>
     }
     return (
       <div className="App">
@@ -54,6 +63,7 @@ class App extends Component {
           </div>
         
           {buttons}
+          {logoutButton}
 
         </header>
         <nav className="Navbar">
@@ -93,10 +103,10 @@ const mapDispatchToProps = dispatch => {
     },
     getConditions: () => {
       dispatch(getConditions());
+    },
+    userPage: id => {
+      dispatch(userPage(id));
     }
-    // userPage: id => {
-    //   dispatch(userPage(id));
-    // }
   };
 };
 
