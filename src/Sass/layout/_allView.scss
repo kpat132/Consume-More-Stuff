@@ -1,0 +1,26 @@
+header {
+  background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat
+    center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 25%;
+  opacity: 1;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  margin-bottom: -50px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+
+  padding: 1%;
+  font-family: $Bungee;
+  color: $blue;
+  height: 50px;
+}

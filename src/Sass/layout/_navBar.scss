@@ -7,7 +7,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: $black;
+
   li {
     display: inline-block;
     a:hover {
@@ -15,7 +15,7 @@
     }
     a {
       display: block;
-      color: $orange;
+      color: $blue;
       text-align: center;
       padding: 14px 16px;
       text-decoration: none;
@@ -32,7 +32,7 @@
         box-shadow: 0px 8px 16px 0px $gray;
         z-index: 1;
         a {
-          color: $orange;
+          color: $blue;
           padding: 12px 16px;
           text-decoration: none;
           display: block;
@@ -46,7 +46,7 @@
         font-size: 16px;
         border: none;
         outline: none;
-        color: $orange;
+        color: $blue;
         padding: 14px 16px;
         background-color: inherit;
         font-family: inherit;
