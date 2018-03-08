@@ -52,12 +52,9 @@ export const register = user => {
 export const editUser = user => {
   return dispatch => {
     let data = {
-      
       username: user.username,
       email: user.email
     }
-
-
     return fetch(`${DATA}/${localStorage.id}`, {
       credentials: "include",
       method: `PUT`,
@@ -67,7 +64,6 @@ export const editUser = user => {
       body: JSON.stringify(data)
     })
       .then(result => {
-        
         dispatch({
           type: EDIT_USER,
           user: result
@@ -78,6 +74,7 @@ export const editUser = user => {
       });
   };
 };
+
 export const userPage = id => {
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
@@ -103,7 +100,6 @@ export const loginAction = (user) => {
       username: user.username,
       password: user.password
     }
-    console.log('login action', data)
     return fetch(`${DATA}/login`, {
       credentials: 'include',
       method: 'POST',
@@ -138,7 +134,6 @@ export const logout = () => {
       .catch(err=>{
         console.log({err:err.message})
       })
-
   }
 }
 
