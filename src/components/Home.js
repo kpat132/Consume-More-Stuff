@@ -21,7 +21,7 @@ class Home extends Component {
         console.log("EMPTY");
       } else {
         if (this.props.user.items.length > 0) {
-          userItemsHeader = this.props.user.username + '`s Items'
+          userItemsHeader = this.props.user.username + "`s Items";
           UserItems = <UserItemsList props={this.props.user.items} />;
         } else {
           console.log("NO USER ITEMS");
@@ -32,12 +32,11 @@ class Home extends Component {
     return (
       <div className="ParentHomeClass">
         <section>
-          <h1>home page</h1>
           <h1>{userItemsHeader}</h1>
           <div className="ItemsThatBelongToUsers">{UserItems}</div>
           {addItemButton}
-          
-          <itemlist stuff = ''/>
+
+          <itemlist stuff="" />
         </section>
         <div className="UserItems" />
         <div className="CategoryHomePage">
