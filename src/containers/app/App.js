@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import "../../Sass/index.css";
-import Login from "../../containers/login/login";
-import RegisterUser from "../../containers/register";
 
-import AddItem from "../AddItem";
-import EditItem from "../EditItem";
 import Settings from "../Settings";
-import CategoryComp from "../../components/CategoryComp";
+
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
 import LoginButtonComponent from "../../components/loginButton";
@@ -18,7 +14,7 @@ import {
   getStatus,
   getConditions
 } from "../../actions/index";
-import { getUsers } from "../../actions/UserAction";
+
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
 import LogoutButtonComponent from "../../components/logoutButton";
@@ -59,7 +55,9 @@ class App extends Component {
           {logoutButton}
         </header>
         <div className="Main">
-          <Main />
+        <Main />
+
+        {/* <Settings /> */}
         </div>
       </div>
     );

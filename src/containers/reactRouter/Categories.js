@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCategories } from "../../actions/index";
 import { setCategory } from "../../actions/index"
-import AutoList from "./AutoList";
+
 import { Switch, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Item from "./Item";
-import SingleCategory from './SingleCategory'
 import CategoryComp from "../../components/CategoryComp";
 import CategorySearch from '../../components/CategorySearch';
 
@@ -32,8 +31,6 @@ class Categories extends Component {
   }
 
   render() {
- 
-    
     return (
       <div className="CategoryDropDown">
       <h1>CATEGORY</h1>
@@ -71,4 +68,4 @@ const mapDispatchToProps = dispatch => {
 
 const ConnectedCategories = withRouter(connect(mapStateToProps, mapDispatchToProps )(Categories));
 
-export default ConnectedCategories;
+export default connect(mapStateToProps, mapDispatchToProps)(Categories)

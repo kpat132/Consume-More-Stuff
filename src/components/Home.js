@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import AddItem from "../containers/AddItem";
-import AddItemButton, { AddItemButtonComponent } from "./AddItemButton";
+import { AddItemButtonComponent } from "./AddItemButton";
 import CategoryComp from "../components/CategoryComp";
 import UserItemsList from "../components/UserItemsList";
 import { userPage } from "../actions/UserAction";

@@ -8,7 +8,7 @@ import { withRouter } from "react-router-dom";
 
 class Items extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   componentDidMount() {
     this.props.getItems();

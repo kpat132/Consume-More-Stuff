@@ -37,7 +37,6 @@ export const getCategories = () => {
         return result.json();
       })
       .then(json => {
-
         dispatch({
           type: GET_CATEGORIES,
           payload: json

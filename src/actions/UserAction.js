@@ -78,6 +78,7 @@ export const editUser = user => {
   };
 };
 export const userPage = id => {
+
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
       credentials: "include"
@@ -85,7 +86,6 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
-        ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
           payload: verified
@@ -128,7 +128,6 @@ export const loginAction = (user) => {
 export const logout = () => {
   return dispatch => {
     return fetch(`${DATA}/logout`)
-      
       .then(logout => {
         dispatch({
           type:LOGOUT,
