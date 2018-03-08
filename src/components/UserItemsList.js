@@ -20,22 +20,6 @@ const UserItemsList = props => {
           console.log('NAME', name)
           return (
             <ul key={element.name}>
-              {/* <li key={element.name} className='useritemName' > {element.name} </li>
-              <br />
-              <li key={element.description} className='useritemName' > {element.description} </li>
-              <br />
-              <li key={element.price} className='useritemName' > {element.price} </li>
-              <br />
-              <li key={element.dimensions} className='useritemName' > {element.dimensions} </li>
-              <br />
-              <li key={element.image} className='useritemName' > {element.image} </li>
-              <br />
-              <li key={element.make} className='useritemName' > {element.make} </li>
-              <br />
-              <li key={element.model} className='useritemName' > {element.model} </li>
-              <br />
-              <li key={element.notes} className='useritemName' > {element.notes} </li>
-               */}
               <li  className='useritemName' > {element.name} </li>
               <br />
               {description && <li>Description: {description}</li>}
@@ -53,13 +37,8 @@ const UserItemsList = props => {
               {notes && <li>Notes: {notes}</li>}
 
             </ul>
-
           )
-
         }))}
-
-
-
       </ul>
 
     </div>

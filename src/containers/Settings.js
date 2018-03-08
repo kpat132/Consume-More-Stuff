@@ -33,9 +33,6 @@ this.setState({username: e.target.value})
  
 
   render() {
-
-  
-
     return (
       <div>
         <h1>Change Usename or Email</h1>
@@ -57,13 +54,6 @@ this.setState({username: e.target.value})
           <br/>
           <br/>
           <input type="submit" value="submit" />
-
-
-          
-          
-          
-          
-          
           </form>
         </div>
       </div>
