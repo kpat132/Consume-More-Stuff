@@ -71,6 +71,7 @@ router.get('/:id', isAuthenticated, (req, res) =>{
   .where({id: req.params.id})
   .fetch({withRelated: ['user_status','items']})
   .then(result => {
+    console.log('CHECKING',result);
     result = result.toJSON()
     let data = {id: result.id, 
       username: result.username, 
@@ -174,6 +175,7 @@ router.route(`/`)
     return new User()
     .fetchAll({withRelated: ['user_status','items']})
     .then(users => {
+      console.log('IAWUENFAIWUENFAIWEUFNAWEIUFNAEWIUFANWEIUFNAWEIUFAWENFIUWEFNUAWFN');
       return res.json(users.toJSON());
     })
     .catch(err => {
