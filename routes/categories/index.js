@@ -5,6 +5,7 @@ const Item = require('../../db/models/Item');
 
 router.route('/:id')
   .get((req, res) => {
+    console.log(req.body);
     let id = req.params.id;
 
     return new Category({ id: id })

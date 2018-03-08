@@ -37,7 +37,7 @@ class App extends Component {
 
   render() {
 
-    console.log('THIS.PROPS.USER.ITEMS', this.props.user.items);
+   
     let userItems = this.props.users.items;
 
     let buttons = <LoginButtonComponent />;
