@@ -1,12 +1,7 @@
 import "whatwg-fetch";
 
-import { GET_ITEM } from "../actions/index";
-import {GET_CATEGORIES} from "../actions/index"
-import {GET_STATUS} from "../actions/index";
-import {ADD_ITEM} from '../actions/index';
-import {GET_CONDITIONS} from '../actions/index'
-import {SET_ITEM} from '../actions/index'
-import { SET_CATEGORY } from '../actions/index'
+import { GET_ITEM, GET_CATEGORIES, GET_STATUS, ADD_ITEM, GET_CONDITIONS, SET_ITEM, SET_CATEGORY } from "../actions/ItemsAction";
+
 
 const initialState = {
   nextId: 4,
@@ -41,6 +36,5 @@ export default (state = initialState, action = {}) => {
       default:
       return state;
     }
-    console.log(this.state)
 };
 

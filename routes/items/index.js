@@ -6,12 +6,14 @@ const Category = require("../../db/models/Category");
 const Condition = require("../../db/models/Condition");
 const Item_Status = require("../../db/models/Item_Status");
 
+
+const { isAuthenticated, isAuthorized } = require('../helper')
+
 //model
 const Item = require("../../db/models/Item");
 
 router
   .route("/:id")
-
   .get((req, res) => {
     let id = req.params.id;
     return new Item({ id: id })
@@ -24,7 +26,8 @@ router
     console.log({ err: err.message });
     return res.json({ err: err.message });
   })
-  .put((req, res) => {
+  .put(isAuthenticated, (req, res) => {
+    isAuthorized(req.user.id, req.params.id)
     let id = req.params.id;
     let data = ({} = req.body);
     return new Item(data)
@@ -40,7 +43,6 @@ router
 
 router
   .route(`/`)
-
   .get((req, res) => {
     return new Item()
       .fetchAll({
@@ -55,7 +57,9 @@ router
       });
   })
 
-  .post((req, res) => {
+  router
+  .route(`/`)
+  .post(isAuthenticated,(req, res) => {
     console.log(req.body);
     let data = ({
       name,
@@ -70,18 +74,26 @@ router
       condition_id,
       category_id
     } = req.body);
-
     data.item_status_id = 1;
-
     // return new Item(data)
     //   .save()
     //   .then(newItem => {
-    //     return res.send(newItem);
-    //   })
-    //   .catch(err => {
-    //     console.log({ err: err.message });
-    //     return res.json({ err: err.message });
-    //   });
-  });
+    //     if (newItem.id){
+    //       return res.status(200).json({
+    //         item: newItem1,
+    //         itemAdded: true
+    //       });
+      //   } else {
+      //     return res.status(401).json({
+      //       error: 'User is not authenticated',
+      //       user_Updated: false
+      //     })
+      //   }
+      // }).catch(err => {
+    
+      //   return res.json({err:err.message});
+      // })
+    });
+
 
 module.exports = router;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addItem } from "../actions/index";
+import { addItem } from "../actions/ItemsAction";
 import { withRouter } from "react-router-dom";
 import FileBase64 from 'react-file-base64';
 
@@ -80,13 +80,12 @@ class AddItem extends Component {
       make: this.state.make,
       model: this.state.model,
       dimensions: this.state.dimensions,
-      image: this.state.image[0].base64,
+      image: this.state.image?this.state.image[0].base64: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOOigxPC1OtYYo1yJ2tJdBh_a7Nx4c23HUFw0kxZHQHiQ8pT2d',
       notes: this.state.notes
     };
- 
+
     this.props.addItem(newItem);
-    this.props.history.push("/items");
-    
+    this.props.history.push("/");
   }
 
   render() {

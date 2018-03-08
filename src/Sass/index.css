@@ -84,18 +84,26 @@
   .AddItemButton-container .addItemLink {
     text-decoration: none; }
 
+.ItemsList {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap; }
+  .ItemsList ul {
+    list-style: none; }
+
 .ParentHomeClass {
   background-color: #757575; }
   .ParentHomeClass .CategoryHomePage {
     font-family: "Quattrocento", regular; }
-    .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow {
-      display: flex; }
-      .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems {
-        flex-direction: row;
-        flex-wrap: wrap;
-        list-style: none; }
-        .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems .SingleItemFromCateogor a {
-          text-decoration: none; }
+    .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      list-style: none; }
+      .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems .SingleItemFromCateogor a {
+        text-decoration: none; }
 
 .items-list {
   display: flex;
