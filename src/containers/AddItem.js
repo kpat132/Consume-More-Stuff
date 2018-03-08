@@ -81,7 +81,7 @@ class AddItem extends Component {
     };
 
     this.props.addItem(newItem);
-    this.props.history.push("/items");
+    this.props.history.push("/");
   }
 
   render() {
