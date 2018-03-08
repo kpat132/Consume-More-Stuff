@@ -1,10 +1,6 @@
-// import React from "react";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom';
-
-
-
 
 
 class SearchComponent extends Component {
@@ -18,6 +14,7 @@ class SearchComponent extends Component {
   }
   
   updateSearch(event){
+    
     this.setState({search:event.target.value});
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
@@ -28,19 +25,18 @@ class SearchComponent extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state.searchItems[0].id)
     this.props.history.push(`/items/${this.state.searchItems[0].id}`)
     
   }
 
 
   render(){
-    
+   
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
     });
     this.state.searchItems = filteredItems
-    console.log(filteredItems)
+    
     
     
 
@@ -51,9 +47,6 @@ class SearchComponent extends Component {
         <input type="text" placeholder="Search.." name="search" 
         onChange={this.updateSearch.bind(this)} />
         <button type="submit">Submit</button>
-        
-     
-        
        </form>
      </div>
     )

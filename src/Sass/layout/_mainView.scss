@@ -1,0 +1,51 @@
+//Home Page
+
+//Create Item Button
+
+.AddItemButton-container {
+  display: flex;
+  justify-content: flex-end;
+  .addItemLink {
+    text-decoration: none;
+  }
+}
+
+//Categories
+.ParentHomeClass {
+  background-color: $gray;
+  .CategoryHomePage {
+    font-family: $Basic;
+
+    .singleCategoryHomePage {
+      .CategoryRow {
+        display: flex;
+        .CategoryItems {
+          flex-direction: row;
+          flex-wrap: wrap;
+          list-style: none;
+          .SingleItemFromCateogor {
+            a {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .AddItemButton-container {
+//   align-self: flex-end;
+// }
+
+// .CategoryName {
+//   display: inline-flex;
+//   justify-content: flex-start;
+//   flex-direction: column;
+//   position: relative;
+//   margin-left: auto;
+//   height: 100%;
+// }
+// a {
+//   text-decoration: none;
+// }

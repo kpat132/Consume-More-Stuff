@@ -18,12 +18,12 @@ class Login extends Component {
 
   handlelogin(event) {
     event.preventDefault();
-   // console.log('THIS.STATE',this.state);
+
     this.props.login(this.state);
     this.props.history.push('/');
   }
   render() {
-  //  console.log('PROPS',this.props);
+
     return (
       <div>
       <h1>LOGIN</h1>

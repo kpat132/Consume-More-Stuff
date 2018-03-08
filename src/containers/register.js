@@ -7,10 +7,8 @@ class RegisterUser extends Component {
   constructor(props) {
     super(props)
     this.state = { username: '', email: '', password: '' }
-
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
-    console.log(this.props.history);
   }
 
   handleChange(event) {
@@ -19,7 +17,6 @@ class RegisterUser extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    console.log('this.state', this.state);
     this.props.register(this.state);
     this.props.history.push('/login');
   }

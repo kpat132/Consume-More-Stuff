@@ -17,8 +17,7 @@ class AddItem extends Component {
       model: "",
       dimensions: "",
       image: "",
-      notes: "",
-      image: ""
+      notes: ""
     };
   }
 
@@ -30,7 +29,6 @@ class AddItem extends Component {
   }
 
   handleChangeCondition(event) {
-    console.log(event.target.value);
     const data = this.props.conditions.filter(condition => {
       return condition.name === event.target.value;
     });
@@ -87,7 +85,7 @@ class AddItem extends Component {
   }
 
   render() {
-    console.log(localStorage.id);
+
 
     return (
       <div>
