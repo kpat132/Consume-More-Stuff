@@ -1,4 +1,6 @@
-header {
+html {
+  height: 100%;
+  margin: 0%;
   background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat
     center center fixed;
   -webkit-background-size: cover;
@@ -11,16 +13,32 @@ header {
 
 body {
   margin: 0;
-  min-height: 100%;
-  margin-bottom: -50px;
+  height: 100%;
+  div.Main {
+    font-family: $Basic;
+    min-height: 100%;
+
+    // background-color: $white;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    flex: 0 0 auto;
+  }
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: $black;
 }
 
 footer {
+  // height: 50px;
+  // margin-bottom: 50px;
   display: flex;
   justify-content: center;
-
-  padding: 1%;
+  align-items: baseline;
   font-family: $Bungee;
-  color: $blue;
-  height: 50px;
+  color: $black;
 }

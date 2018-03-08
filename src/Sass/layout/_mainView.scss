@@ -1,5 +1,3 @@
-//Home Page
-
 //Create Item Button
 
 .AddItemButtonClass {
@@ -21,34 +19,38 @@
   }
 }
 
-//Categories
-.ParentHomeClass {
-  // background-color: $gray;
-  .CategoryHomePage {
-    font-family: $Basic;
-
-    .singleCategoryHomePage {
-      .CategoryRow {
-        .CategoryItems {
-          display: flex;
-          flex-direction: row-reverse;
-          justify-content: space-around;
-          // flex-wrap: wrap;
-          list-style: none;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-          .SingleItemFromCateogor {
-            flex: 0 0 auto;
-            a {
-              text-decoration: none;
-              color: $black;
-            }
-          }
-        }
-      }
-    }
-  }
+ul.CategoryItems {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
 }
+//Categories
+// .ParentHomeClass {
+//   .CategoryHomePage {
+//     font-family: $Basic;
+
+//     .singleCategoryHomePage {
+//       .CategoryRow {
+//         .CategoryItems {
+//           display: flex;
+//           flex-direction: row-reverse;
+//           justify-content: space-around;
+//           flex-wrap: wrap;
+//           list-style: none;
+//           flex-wrap: nowrap;
+//           overflow-x: auto;
+//           .SingleItemFromCateogor {
+//             flex: 0 0 auto;
+//             a {
+//               text-decoration: none;
+//               color: $black;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
 
 // .AddItemButton-container {
 //   align-self: flex-end;

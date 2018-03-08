@@ -64,10 +64,6 @@ class App extends Component {
 
           {/* <Settings /> */}
         </div>
-        <footer className="footer">
-          {" "}
-          <div>Codely_Tool</div>{" "}
-        </footer>
       </div>
     );
   }
