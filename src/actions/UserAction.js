@@ -58,7 +58,8 @@ export const editUser = user => {
     }
 
 
-    return fetch(`${DATA}/${user.id}`, {
+    return fetch(`${DATA}/${localStorage.id}`, {
+      credentials: "include",
       method: `PUT`,
       headers: {
         "Content-Type": "application/json"
