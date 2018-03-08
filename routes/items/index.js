@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require(`express`);
 const router = express.Router();
 
@@ -11,6 +12,7 @@ const { isAuthenticated, isAuthorized } = require('../helper')
 
 //model
 const Item = require("../../db/models/Item");
+
 
 router
   .route("/:id")
@@ -57,10 +59,14 @@ router
       });
   })
 
-  router
+router
   .route(`/`)
-  .post(isAuthenticated,(req, res) => {
-    console.log(req.body);
+  .post(isAuthenticated, (req, res) => {
+    let base64String = req.body.image;
+    let base64Blob = base64String.split(';base64,').pop();
+
+    console.log(base64Blob);
+
     let data = ({
       name,
       description,
@@ -75,25 +81,35 @@ router
       category_id
     } = req.body);
     data.item_status_id = 1;
-    // return new Item(data)
-    //   .save()
-    //   .then(newItem => {
-    //     if (newItem.id){
-    //       return res.status(200).json({
-    //         item: newItem1,
-    //         itemAdded: true
-    //       });
-      //   } else {
-      //     return res.status(401).json({
-      //       error: 'User is not authenticated',
-      //       user_Updated: false
-      //     })
+    return new Item(data)
+      .save()
+
+      // .then(newItem => {
+      //   if (newItem.id) {
+      //     fs.writeFile('public/Images/image.png', base64Blob, { encoding: 'base64' }, (err) => {
+      //       console.log('File created');
+      //     });
       //   }
-      // }).catch(err => {
-    
-      //   return res.json({err:err.message});
       // })
-    });
+
+      .then(newItem => {
+        if (newItem.id) {
+          return res.status(200).json({
+            item: newItem1,
+            itemAdded: true
+          });
+
+        } else {
+          return res.status(401).json({
+            error: 'User is not authenticated',
+            user_Updated: false
+          })
+        }
+      }).catch(err => {
+
+        return res.json({ err: err.message });
+      })
+  });
 
 
 module.exports = router;
