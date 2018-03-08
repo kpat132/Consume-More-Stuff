@@ -85,7 +85,6 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
-        console.log('AREYOUWORKINGTHO', verified)
         ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
@@ -98,30 +97,30 @@ export const userPage = id => {
   };
 };
 
-export const loginAction = user => {
+export const loginAction = (user) => {
   return dispatch => {
     let data = {
       username: user.username,
       password: user.password
-    };
+    }
     return fetch(`${DATA}/login`, {
-      credentials: "include",
-      method: "POST",
+      credentials: 'include',
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data)
-    })
-      .then(checkStatus)
+      body: JSON.stringify(
+        data
+      )
+    }).then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser => {
-        console.log("TESTVERIFIEDUSER", verifiedUser);
         dispatch({
           type: LOGIN,
           payload: verifiedUser
-        });
-
-        //return userPage(verifiedUser.user)(dispatch)
+        })
+      }).catch(err => {
+        console.log(err)
       })
   }
 }
@@ -131,11 +130,13 @@ export const logout = () => {
     return fetch(`${DATA}/logout`)
       
       .then(logout => {
-        console.log(logout);
         dispatch({
           type:LOGOUT,
           payload:logout
         })
+      })
+      .catch(err=>{
+        console.log({err:err.message})
       })
 
   }
