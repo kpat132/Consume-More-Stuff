@@ -16,10 +16,19 @@
   font-family: "Bungee Shade", regular;
   color: #036; }
 
-.login-container {
+div.registerForm,
+div.login-container {
+  justify-content: space-around;
+  color: #036;
   display: flex;
+  justify-content: center;
   flex-wrap: nowrap;
   padding: 5%; }
+
+.register-title {
+  display: flex;
+  justify-content: center;
+  color: #036; }
 
 .login-container button:hover {
   background: #f5f5f5; }
@@ -88,20 +97,10 @@
   .ItemsList ul {
     list-style: none; }
 
-.ParentHomeClass .CategoryHomePage {
-  font-family: "Quattrocento", regular; }
-  .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-around;
-    list-style: none;
-    flex-wrap: nowrap;
-    overflow-x: auto; }
-    .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems .SingleItemFromCateogor {
-      flex: 0 0 auto; }
-      .ParentHomeClass .CategoryHomePage .singleCategoryHomePage .CategoryRow .CategoryItems .SingleItemFromCateogor a {
-        text-decoration: none;
-        color: #000000; }
+ul.CategoryItems {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around; }
 
 .items-list {
   display: flex;
@@ -115,7 +114,9 @@
   flex-wrap: nowrap;
   padding: 5%; }
 
-header {
+html {
+  height: 100%;
+  margin: 0%;
   background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -126,13 +127,24 @@ header {
 
 body {
   margin: 0;
-  min-height: 100%;
-  margin-bottom: -50px; }
+  height: 100%; }
+  body div.Main {
+    font-family: "Quattrocento", regular;
+    min-height: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    flex: 0 0 auto; }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #000000; }
 
 footer {
   display: flex;
   justify-content: center;
-  padding: 1%;
+  align-items: baseline;
   font-family: "Bungee Shade", regular;
-  color: #036;
-  height: 50px; }
+  color: #000000; }
