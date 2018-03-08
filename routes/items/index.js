@@ -56,6 +56,7 @@ router
       });
   })
   .post(isAuthenticated, (req, res) => {
+    console.log('BUT ARE YOU WORKING THO',req.body)
     let data = ({
       name,
       description,
