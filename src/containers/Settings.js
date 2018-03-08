@@ -27,16 +27,12 @@ this.setState({username: e.target.value})
       username:this.state.username?this.state.username:this.props.user.username,
       email:this.state.email?this.state.email:this.props.user.email
     }
-    console.log(updateUser)
     this.props.editUser(updateUser)
   }
 
  
 
   render() {
-
-  
-
     return (
       <div>
         <h1>Change Usename or Email</h1>
@@ -58,13 +54,6 @@ this.setState({username: e.target.value})
           <br/>
           <br/>
           <input type="submit" value="submit" />
-
-
-          
-          
-          
-          
-          
           </form>
         </div>
       </div>

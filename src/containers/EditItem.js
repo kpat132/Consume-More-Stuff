@@ -19,8 +19,7 @@ class EditItem extends Component {
       model: "",
       dimensions: "",
       image: "",
-      notes: "",
-      image: ""
+      notes: ""
     };
 
 
@@ -139,13 +138,10 @@ class EditItem extends Component {
 
 
 const mapStatetoProps = state => {
-  
   return {
     item:state.items.item,
     categories:state.items.categories,
     conditions:state.items.conditions
-
-  
   }
 };
 

@@ -6,6 +6,7 @@ export const GET_STATUS = "GET_STATUS";
 export const GET_CONDITIONS = "GET_CONDITIONS";
 export const ADD_ITEM = "ADD_ITEM";
 export const SET_ITEM = "SET_ITEM";
+export const SET_CATEGORY = 'SET_CATEGORY';
 
 const ITEMS_DATA = "/api/items";
 const CATEGORIES_DATA = "/api/categories";
@@ -36,7 +37,6 @@ export const getCategories = () => {
         return result.json();
       })
       .then(json => {
-        console.log("jsonnnnnnn", json);
         dispatch({
           type: GET_CATEGORIES,
           payload: json
@@ -97,6 +97,24 @@ export const setItem = id => {
       });
   };
 };
+
+export const setCategory = id =>{
+  console.log(`${CATEGORIES_DATA}/${id}`);
+  return dispatch => {
+    return fetch(`${CATEGORIES_DATA}/${id}`)
+    .then(cat=>{
+      console.log('caat',cat)
+      return cat.json()
+    })
+    .then(json=>{
+      console.log('catID',json)
+      dispatch({
+        type:SET_CATEGORY,
+        payload:json
+      });
+    });
+  }
+}
 
 export const addItem = item => {
   console.log(item);

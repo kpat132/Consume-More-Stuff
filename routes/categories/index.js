@@ -5,13 +5,12 @@ const Item = require('../../db/models/Item');
 
 router.route('/:id')
   .get((req, res) => {
+    console.log(req.body);
     let id = req.params.id;
 
     return new Category({ id: id })
       .fetch({ withRelated: ['items'] })
       .then(result => {
-        console.log(result);
-         console.log('json: ',result.toJSON() )
         result = result.toJSON();
         res.json(result);
       })

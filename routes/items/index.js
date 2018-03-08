@@ -13,7 +13,6 @@ router
   .route("/:id")
 
   .get((req, res) => {
-    console.log(req.body);
     let id = req.params.id;
     return new Item({ id: id })
       .fetch({
@@ -26,7 +25,6 @@ router
     return res.json({ err: err.message });
   })
   .put((req, res) => {
-    console.log(req.body);
     let id = req.params.id;
     let data = ({} = req.body);
     return new Item(data)
@@ -77,7 +75,6 @@ router
     return new Item(data)
       .save()
       .then(newItem => {
-        console.log("added");
         return res.send(newItem);
       })
       .catch(err => {

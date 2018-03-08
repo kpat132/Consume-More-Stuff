@@ -35,8 +35,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
   console.log('deserializing');
+  console.log('1', user)
   new User ({id: user.id}).fetch()
     .then(user => {
+      console.log('2', user)
       user = user.toJSON();
       return done(null, {
         id: user.id,  
@@ -55,7 +57,10 @@ passport.use(new LocalStrategy(function(username, password, done){
       else {
        bcrypt.compare(password, user.password)
         .then(res => {
-          if (res) { return done(null, user)}
+          if (res) { 
+            console.log('am i getting here')
+            return done(null, user)}
+          
           else {
             return done(null, false, {message: 'bad username or password'})
           }
@@ -65,38 +70,8 @@ passport.use(new LocalStrategy(function(username, password, done){
     .catch(err => { console.log('error:', err)});
 }));
 
-router.get('/:id', isAuthenticated, (req, res) =>{
-  isAuthorized(req.user.id, req.params.id)
-  return new User ()
-  .where({id: req.params.id})
-  .fetch({withRelated: ['user_status','items']})
-  .then(result => {
-    console.log('CHECKING',result);
-    result = result.toJSON()
-    let data = {id: result.id, 
-      username: result.username, 
-      email: result.email, 
-      created_at: result.created_at, 
-      updated_at: result.updated_at,
-      user_status: result.user_status,
-      items: result.items
-    }
-    if(result.id) {
-      return res.status(200).json({
-        user: data,
-        authenticated: true
-      });
-    } else {
-      return res.status(401).json({
-        error: 'User is not authenticated',
-        authenticated: false
-      })
-    }
-  })
-})
 
 router.post(`/register`, (req, res) => {
-  console.log('R U WORKING', req.body);
   bcrypt.genSalt(saltRounds, function(err, salt) {
     if (err) { console.log(err)}
     bcrypt.hash(req.body.password, salt, function (err, hash) {
@@ -124,8 +99,8 @@ router.post(`/register`, (req, res) => {
 })
 
 router.post(`/login`, passport.authenticate(`local`), (req, res) => {
+  console.log('inside login')
   if(req.user) {
-    console.log(req.user)
     return res.status(200).json({
       user: req.user.id,
       authenticated: true
@@ -138,20 +113,81 @@ router.post(`/login`, passport.authenticate(`local`), (req, res) => {
   }
 })
 
+router.get(`/logout`, (req, res) => {
+  req.logout();
+  if(!req.user) {
+    return res.status(200).json({
+      logout: true
+    });
+  } else {
+    return res.status(401).json({
+      error: 'User is still logged in',
+      logout: false
+    })
+  }
+})
+
+router.get('/:id', isAuthenticated, (req, res) =>{
+  console.log('inside get /:id')
+  isAuthorized(req.user.id, req.params.id)
+  return new User ()
+  .where({id: req.params.id})
+  .fetch({withRelated: ['user_status','items']})
+  .then(result => {
+    result = result.toJSON()
+    let data = {id: result.id, 
+      username: result.username, 
+      email: result.email, 
+      created_at: result.created_at, 
+      updated_at: result.updated_at,
+      user_status: result.user_status,
+      items: result.items
+    }
+    if(result.id) {
+      return res.status(200).json({
+        user: data,
+        authenticated: true
+      });
+    } else {
+      return res.status(401).json({
+        error: 'User is not authenticated',
+        authenticated: false
+      })
+    }
+  })
+})
+
 
 router.route(`/:id`)
   .put(isAuthenticated, (req, res) => {
+    console.log('im here')
     isAuthorized(req.user.id, req.params.id)
     let id = req.params.id;
     let data = {} = req.body;
     return new User(data)
     .where({id:id})
     .save(data,{patch:true})
-    .then(updatedInfo => {
-      return res.json(updatedInfo);
-    })
-    .catch(err => {
-      res.json({err:err.message});
+    .then(result => {
+      result = result.toJSON()
+      let updatedInfo = {id: id, 
+        username: result.username, 
+        email: result.email, 
+        created_at: result.created_at, 
+        updated_at: result.updated_at,
+        user_status: result.user_status,
+        items: result.items
+      }
+      if(updatedInfo.id) {
+        return res.status(200).json({
+          user: updatedInfo,
+          user_Updated: true
+        });
+      } else {
+        return res.status(401).json({
+          error: 'User is not authenticated',
+          user_Updated: false
+        })
+      }
     })
   })
   
