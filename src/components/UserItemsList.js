@@ -19,20 +19,20 @@ const UserItemsList = props => {
           const notes = element.notes;
           return (
             <ul key={element.name}>
-              <li  className='useritemName' > {element.name} </li>
-              <br />
+              <li  className='useritemNames' > {element.name} </li>
+             
               {description && <li>Description: {description}</li>}
-              <br />
+            
               {price && <li>Price: {price}</li>}
-              <br />
+             
               {make && <li>Make: {make}</li>}
-              <br />
+             
               {model && <li>Model: {model}</li>}
-              <br />
+            
               {dimensions && <li>Dimensions: {dimensions}</li>}
-              <br />
+           
               {image && <li>Image: {image}</li>}
-              <br />
+            
               {notes && <li>Notes: {notes}</li>}
 
             </ul>
