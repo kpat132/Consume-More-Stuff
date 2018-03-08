@@ -56,9 +56,8 @@ export const editUser = user => {
       username: user.username,
       email: user.email
     }
-
-
     return fetch(`${DATA}/${user.id}`, {
+      credentials: "include",
       method: `PUT`,
       headers: {
         "Content-Type": "application/json"
@@ -66,7 +65,6 @@ export const editUser = user => {
       body: JSON.stringify(data)
     })
       .then(result => {
-        
         dispatch({
           type: EDIT_USER,
           user: result
@@ -102,7 +100,6 @@ export const loginAction = (user) => {
       username: user.username,
       password: user.password
     }
-    console.log('login action', data)
     return fetch(`${DATA}/login`, {
       credentials: 'include',
       method: 'POST',
@@ -137,7 +134,6 @@ export const logout = () => {
       .catch(err=>{
         console.log({err:err.message})
       })
-
   }
 }
 

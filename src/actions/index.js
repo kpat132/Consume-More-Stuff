@@ -83,7 +83,6 @@ export const getConditions = () => {
 };
 
 export const setItem = id => {
-  console.log("id", id);
   return dispatch => {
     return fetch(`${ITEMS_DATA}/${id}`)
       .then(item => {
@@ -117,9 +116,9 @@ export const setCategory = id =>{
 }
 
 export const addItem = item => {
-  console.log(item);
   return dispatch => {
     return fetch(ITEMS_DATA, {
+      credentials: 'include',
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -154,6 +153,7 @@ export const editItem = item => {
 
   return dispatch => {
     return fetch(`${ITEMS_DATA}/${id}`, {
+      credentials: 'include',
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
