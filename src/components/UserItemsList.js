@@ -2,8 +2,8 @@ import React from 'react';
 
 const UserItemsList = props => {
   let items = props.props;
-  console.log('THESE ARE YO PROPS', items);
-  console.log(localStorage.id);
+  // console.log('THESE ARE YO PROPS', items);
+  // console.log(localStorage.id);
 
   return (
     <div className='UserItemsList'>
@@ -17,7 +17,6 @@ const UserItemsList = props => {
           const make = element.make;
           const model = element.model;
           const notes = element.notes;
-          console.log('NAME', name)
           return (
             <ul key={element.name}>
               {/* <li key={element.name} className='useritemName' > {element.name} </li>

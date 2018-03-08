@@ -78,7 +78,6 @@ export const editUser = user => {
   };
 };
 export const userPage = id => {
-  console.log('USERPAGE',id);
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
       credentials: "include"
@@ -86,7 +85,6 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
-        console.log('AREYOUWORKINGTHO', verified)
         ///send to dispatch so id saves to global storage
         dispatch({
           type: USER_PAGE,
@@ -117,13 +115,10 @@ export const loginAction = (user) => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(verifiedUser => {
-        console.log('TESTVERIFIEDUSER', verifiedUser);
         dispatch({
           type: LOGIN,
           payload: verifiedUser
         })
-
-        //return userPage(verifiedUser.user)(dispatch)
       }).catch(err => {
         console.log(err)
       })
@@ -135,7 +130,6 @@ export const logout = () => {
     return fetch(`${DATA}/logout`)
       
       .then(logout => {
-        console.log(logout);
         dispatch({
           type:LOGOUT,
           payload:logout

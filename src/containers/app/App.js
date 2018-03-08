@@ -43,17 +43,14 @@ class App extends Component {
   }
 
   render() {
-
-    console.log('THIS.PROPS.USER', this.props.user);
     let userItems = this.props.users.items;
-
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
-  
     if (localStorage.length === 1) {
       buttons = null;
       logoutButton = <LogoutButtonComponent/>
     }
+    
     return (
       <div className="App">
         <header className="App-header">
