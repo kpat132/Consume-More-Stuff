@@ -14,6 +14,7 @@ class SearchComponent extends Component {
   }
   
   updateSearch(event){
+    
     this.setState({search:event.target.value});
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
@@ -24,19 +25,18 @@ class SearchComponent extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    console.log(this.state.searchItems[0].id)
     this.props.history.push(`/items/${this.state.searchItems[0].id}`)
     
   }
 
 
   render(){
-    
+   
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
     });
     this.state.searchItems = filteredItems
-    console.log(filteredItems)
+    
     
     
 

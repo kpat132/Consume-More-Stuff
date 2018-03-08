@@ -78,7 +78,12 @@ export const editUser = user => {
   };
 };
 export const userPage = id => {
+<<<<<<< HEAD
   console.log('inside userPage',id);
+||||||| merged common ancestors
+  console.log('USERPAGE',id);
+=======
+>>>>>>> 64c5f55d91d4438745b668360411b2fdde26946e
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
       credentials: "include"
@@ -86,6 +91,13 @@ export const userPage = id => {
       .then(checkStatus)
       .then(parseJSON)
       .then(verified => {
+<<<<<<< HEAD
+||||||| merged common ancestors
+        console.log('AREYOUWORKINGTHO', verified)
+        ///send to dispatch so id saves to global storage
+=======
+        ///send to dispatch so id saves to global storage
+>>>>>>> 64c5f55d91d4438745b668360411b2fdde26946e
         dispatch({
           type: USER_PAGE,
           payload: verified

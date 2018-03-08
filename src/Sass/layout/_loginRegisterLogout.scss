@@ -1,0 +1,19 @@
+//Login & Register
+
+.login-container {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 5%;
+}
+
+// .search-container button:hover {
+//   background: $gray;
+// }
+
+.login-container button:hover {
+  background: $white;
+}
+
+.login-container.button {
+  background-color: $black;
+}
