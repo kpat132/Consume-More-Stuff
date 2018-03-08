@@ -63,6 +63,8 @@ class App extends Component {
         <p className="App-intro"></p>
         <div className="Main">
         <Main />
+
+        <Settings />
         </div>
       </div>
     );

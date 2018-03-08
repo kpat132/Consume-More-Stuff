@@ -11,7 +11,6 @@ router.route(`/`)
     return new Condition()
     .fetchAll({withRelated: ['items']} )
       .then(condition => {
-        console.log('CONDITION',condition.toJSON())
         return res.json(condition.toJSON());
       })
       .catch(err => {

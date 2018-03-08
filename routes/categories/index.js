@@ -10,8 +10,6 @@ router.route('/:id')
     return new Category({ id: id })
       .fetch({ withRelated: ['items'] })
       .then(result => {
-        console.log(result);
-         console.log('json: ',result.toJSON() )
         result = result.toJSON();
         res.json(result);
       })

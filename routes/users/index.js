@@ -35,8 +35,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((user, done) => {
   console.log('deserializing');
+  console.log('1', user)
   new User ({id: user.id}).fetch()
     .then(user => {
+      console.log('2', user)
       user = user.toJSON();
       return done(null, {
         id: user.id,  
@@ -69,7 +71,6 @@ passport.use(new LocalStrategy(function(username, password, done){
 
 
 router.post(`/register`, (req, res) => {
-  console.log('R U WORKING', req.body);
   bcrypt.genSalt(saltRounds, function(err, salt) {
     if (err) { console.log(err)}
     bcrypt.hash(req.body.password, salt, function (err, hash) {
