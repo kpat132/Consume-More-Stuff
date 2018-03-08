@@ -18,6 +18,7 @@ class Home extends Component {
     let UserItems;
     let addItemButton = null;
     if (localStorage.length === 1) {
+
       addItemButton = <AddItemButtonComponent />;
       if (Object.keys(this.props.user).length === 0) {
         console.log('EMPTY');
@@ -43,7 +44,7 @@ class Home extends Component {
           <div className='ItemsThatBelongToUsers'>
             {UserItems}
           </div>
-          <AddItemButtonComponent />
+          {addItemButton}
         </section>
         <div className='UserItems'>
 
