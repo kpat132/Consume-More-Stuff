@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "../../index.css";
+import "../../Sass/index.css";
 
 import Settings from "../Settings";
 
 import NavComponent from "../../components/navbar";
-
-import  LoginButtonComponent  from "../../components/loginButton";
+import { SearchComponent } from "../../components/searchbar";
+import LoginButtonComponent from "../../components/loginButton";
 import {
   getItems,
   getCategories,
@@ -17,7 +17,7 @@ import {
 
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
-import  LogoutButtonComponent  from "../../components/logoutButton";
+import LogoutButtonComponent from "../../components/logoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -36,31 +36,24 @@ class App extends Component {
   }
 
   render() {
-
+    let userItems = this.props.users.items;
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
-  
     if (localStorage.length === 1) {
       buttons = null;
-      logoutButton = <LogoutButtonComponent/>
+      logoutButton = <LogoutButtonComponent />;
     }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Codely_Tool</h1>
-          <div className="search-bar">
-            {/* <SearchComponent /> */}
-          </div>
-        
-          {buttons}
-          {logoutButton}
-
-        </header>
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-       
-        <p className="App-intro"></p>
+        <header className="App-header">
+          <h1 className="App-title">Codely_Tool</h1>
+          {buttons}
+          {logoutButton}
+        </header>
         <div className="Main">
         <Main />
 

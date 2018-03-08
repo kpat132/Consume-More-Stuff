@@ -78,7 +78,7 @@ export const editUser = user => {
   };
 };
 export const userPage = id => {
-  console.log('inside userPage',id);
+
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
       credentials: "include"
