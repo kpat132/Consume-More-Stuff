@@ -15,18 +15,15 @@ class Home extends Component {
 
 
   render() {
-    console.log('AOIJEMRIJAERAMLIEJRCAEIJRAEWIJRCAIEWJRCIAWELJRCAIWEJRCIAELW', this.props.user);
     let UserItems;
-
+    let addItemButton = null;
     if (localStorage.length === 1) {
-      
+      addItemButton = <AddItemButtonComponent />;
       if (Object.keys(this.props.user).length === 0) {
         console.log('EMPTY');
       }
       else {
-
         if (this.props.user.items.length > 0) {
-          console.log('ALEJAFIWEUHFAWIEUHF', this.props.user.items)
           UserItems = <UserItemsList props={this.props.user.items} />;
         }
         else {
@@ -36,7 +33,7 @@ class Home extends Component {
 
 
     }
-    console.log(localStorage.id);
+
 
 
     return (
