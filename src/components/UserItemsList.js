@@ -19,7 +19,7 @@ const UserItemsList = props => {
           const notes = element.notes;
           return (
             <ul key={element.name}>
-              <li  className='useritemName' > {element.name} </li>
+              <li  className='useritemNames' > {element.name} </li>
              
               {description && <li>Description: {description}</li>}
             
