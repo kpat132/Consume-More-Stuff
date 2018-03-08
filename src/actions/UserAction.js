@@ -52,11 +52,10 @@ export const register = user => {
 export const editUser = user => {
   return dispatch => {
     let data = {
-      
       username: user.username,
       email: user.email
     }
-    return fetch(`${DATA}/${user.id}`, {
+    return fetch(`${DATA}/${localStorage.id}`, {
       credentials: "include",
       method: `PUT`,
       headers: {
@@ -75,6 +74,7 @@ export const editUser = user => {
       });
   };
 };
+
 export const userPage = id => {
   return dispatch => {
     return fetch(`${DATA}/${id}`, {
