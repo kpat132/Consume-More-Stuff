@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "../../index.css";
+import "../../Sass/index.css";
 
 import Settings from "../Settings";
 
