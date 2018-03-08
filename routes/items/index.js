@@ -6,6 +6,7 @@ const Category = require("../../db/models/Category");
 const Condition = require("../../db/models/Condition");
 const Item_Status = require("../../db/models/Item_Status");
 
+
 const { isAuthenticated, isAuthorized } = require('../helper')
 
 //model
@@ -55,8 +56,10 @@ router
         return res.json({ err: err.message });
       });
   })
-  .post(isAuthenticated, (req, res) => {
-    console.log('BUT ARE YOU WORKING THO',req.body)
+
+  router
+  .route(`/`)
+  .post(isAuthenticated,(req, res) => {
     let data = ({
       name,
       description,
@@ -70,18 +73,26 @@ router
       condition_id,
       category_id
     } = req.body);
-
     data.item_status_id = 1;
-
     return new Item(data)
       .save()
       .then(newItem => {
-        return res.send(newItem);
+        if (newItem.id){
+          return res.status(200).json({
+            item: newItem1,
+            itemAdded: true
+          });
+        } else {
+          return res.status(401).json({
+            error: 'User is not authenticated',
+            user_Updated: false
+          })
+        }
+      }).catch(err => {
+    
+        return res.json({err:err.message});
       })
-      .catch(err => {
-        console.log({ err: err.message });
-        return res.json({ err: err.message });
-      });
-  });
+    });
+
 
 module.exports = router;

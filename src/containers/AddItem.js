@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addItem } from "../actions/index";
+import { addItem } from "../actions/ItemsAction";
 import { withRouter } from "react-router-dom";
 
 class AddItem extends Component {

@@ -8,6 +8,7 @@ export const USER_PAGE = "USER_PAGE"
 export const LOGOUT = "LOGOUT"
 
 
+const LOGINROUTE = "/api"
 const DATA = "/api/users";
 
 // export const getUsers = () => {
@@ -30,7 +31,7 @@ const DATA = "/api/users";
 
 export const register = user => {
   return dispatch => {
-    return fetch(`${DATA}/register`, {
+    return fetch(`${LOGINROUTE}/register`, {
       method: `POST`,
       headers: {
         "Content-Type": "application/json"
@@ -100,7 +101,7 @@ export const loginAction = (user) => {
       username: user.username,
       password: user.password
     }
-    return fetch(`${DATA}/login`, {
+    return fetch(`${LOGINROUTE}/login`, {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -124,7 +125,7 @@ export const loginAction = (user) => {
 
 export const logout = () => {
   return dispatch => {
-    return fetch(`${DATA}/logout`)
+    return fetch(`${LOGINROUTE}/logout`)
       .then(logout => {
         dispatch({
           type:LOGOUT,
