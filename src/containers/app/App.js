@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "../../index.css";
+import "../../Sass/index.css";
 import Login from "../../containers/login/login";
 import RegisterUser from "../../containers/register";
-
 
 import AddItem from "../AddItem";
 import EditItem from "../EditItem";
@@ -12,7 +11,7 @@ import Settings from "../Settings";
 import CategoryComp from "../../components/CategoryComp";
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
-import  LoginButtonComponent  from "../../components/loginButton";
+import LoginButtonComponent from "../../components/loginButton";
 import {
   getItems,
   getCategories,
@@ -22,7 +21,7 @@ import {
 import { getUsers } from "../../actions/UserAction";
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
-import  LogoutButtonComponent  from "../../components/logoutButton";
+import LogoutButtonComponent from "../../components/logoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -38,8 +37,6 @@ class App extends Component {
     if (localStorage.length === 1) {
       this.props.userPage(localStorage.id);
     }
-  
-
   }
 
   render() {
@@ -48,28 +45,21 @@ class App extends Component {
     let logoutButton = null;
     if (localStorage.length === 1) {
       buttons = null;
-      logoutButton = <LogoutButtonComponent/>
+      logoutButton = <LogoutButtonComponent />;
     }
-    
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Codely_Tool</h1>
-          <div className="search-bar">
-            {/* <SearchComponent /> */}
-          </div>
-        
-          {buttons}
-          {logoutButton}
-
-        </header>
         <nav className="Navbar">
           <NavComponent categories={this.props.categories} />
         </nav>
-       
-        <p className="App-intro"></p>
+        <header className="App-header">
+          <h1 className="App-title">Codely_Tool</h1>
+          {buttons}
+          {logoutButton}
+        </header>
         <div className="Main">
-        <Main />
+          <Main />
         </div>
       </div>
     );
