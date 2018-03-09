@@ -1,22 +1,26 @@
 //HEADER
 .App-header {
-  height: 25%;
+  display: flex;
+  height: 25rem;
   padding: 20px;
   color: white;
-  // background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat
-  //   center center fixed;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  // height: 25%;
+  background: url(https://wallpaperclicker.com/storage/wallpaper/NYC-cityscape-HD-40047284.jpg)
+    no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
   .App-title {
-    display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    // border-style: inset;
   }
-  .login-container {
-    justify-content: center;
+  div.login-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     padding: 0%;
+    width: 100%;
   }
   // display: flex;
   // justify-content: space-around;
