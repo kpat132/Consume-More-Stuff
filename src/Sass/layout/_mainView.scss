@@ -8,21 +8,31 @@
   }
 }
 
-//User Items List
-.ItemsList {
-  display: flex;
+div.CategoryHomePage {
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  background-color: $white;
   flex-direction: row-reverse;
   justify-content: space-around;
   flex-wrap: wrap;
-  ul {
-    list-style: none;
-  }
+  border-style: solid;
+  // border-color: red;
+  -moz-box-shadow: 10px 10px 5px rgb(13, 14, 13);
+  -webkit-box-shadow: 10px 10px 5px rgb(24, 13, 13);
+  -khtml-box-shadow: 10px 10px 5px rgb(4, 0, 0);
 }
+//User Items List
 
 ul.CategoryItems {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around;
+  a {
+    border-style: solid;
+    border-color: green;
+  }
 }
 
 div.ParentHomeClass {

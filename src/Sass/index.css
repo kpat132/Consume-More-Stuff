@@ -100,18 +100,26 @@ ul.navbar {
   .AddItemButtonClass a {
     text-decoration: none; }
 
-.ItemsList {
-  display: flex;
+div.CategoryHomePage {
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #f5f5f5;
   flex-direction: row-reverse;
   justify-content: space-around;
-  flex-wrap: wrap; }
-  .ItemsList ul {
-    list-style: none; }
+  flex-wrap: wrap;
+  border-style: solid;
+  -moz-box-shadow: 10px 10px 5px #0d0e0d;
+  -webkit-box-shadow: 10px 10px 5px #180d0d;
+  -khtml-box-shadow: 10px 10px 5px #040000; }
 
 ul.CategoryItems {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-around; }
+  ul.CategoryItems a {
+    border-style: solid;
+    border-color: green; }
 
 div.ParentHomeClass {
   margin: 0%;
@@ -169,10 +177,10 @@ footer.footer {
   z-index: 1; }
 
 .item {
-  margin-top: 75px;
-  margin-left: 200px;
-  margin-right: 200px;
-  background-color: #ACCEDE;
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   border-style: solid;
@@ -183,12 +191,10 @@ footer.footer {
 .item-img-container {
   text-align: center; }
   .item-img-container .item-img {
-    border-style: solid;
-    border-color: green;
     width: 475px;
     height: 400px; }
   .item-img-container .item-img:hover {
-    opacity: .5;
+    opacity: 0.5;
     cursor: pointer;
     -webkit-transition: opacity 1s ease-out;
     -moz-transition: opacity 2s ease-out;
@@ -196,18 +202,11 @@ footer.footer {
     transition: opacity 2s ease-out; }
 
 .item-content {
-  border-style: solid;
-  border-color: blue;
   width: 300px; }
   .item-content .item-name {
     text-align: center; }
   .item-content .item-info {
-    border-style: solid;
-    border-color: orange;
     height: 200px; }
-  .item-content .user-content {
-    border-style: solid;
-    border-color: pink; }
 
 .item-content:hover {
-  opacity: .5; }
+  opacity: 0.5; }

@@ -39,10 +39,6 @@ class App extends Component {
     let userItems = this.props.users.items;
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
-    if (localStorage.length === 1) {
-      buttons = null;
-      logoutButton = <LogoutButtonComponent />;
-    }
 
     return (
       <div className="App">
@@ -52,19 +48,15 @@ class App extends Component {
             {buttons}
             {logoutButton}
           </header>
+
           <nav className="Navbar">
+            {this.props.children}
             <NavComponent categories={this.props.categories} />
           </nav>
-          {/* <div className="arrow-decoration">
-          <div className="flank-left" />
-          <div className="triangle" />
-          <div className="flank-right" />
-        </div> */}
-          <div className="Main">
-            <Main />
+        </div>
 
-            {/* <Settings /> */}
-          </div>
+        <div className="Main">
+          <Main />
         </div>
         <footer className="footer">Codely_Tool</footer>
       </div>
