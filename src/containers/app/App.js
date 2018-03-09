@@ -42,6 +42,11 @@ class App extends Component {
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
 
+    if(localStorage.length > 0){
+      buttons = null;
+      logoutButton = <LogoutButtonComponent />;
+    }
+
     return (
       <div className="App">
         <div className="Site-content">
