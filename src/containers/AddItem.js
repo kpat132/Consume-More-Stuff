@@ -89,7 +89,7 @@ class AddItem extends Component {
   }
 
   render() {
-
+console.log(this.state)
 
     return (
       <div>
