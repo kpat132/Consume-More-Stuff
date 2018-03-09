@@ -1,4 +1,5 @@
 import "whatwg-fetch";
+import {userPage} from '../actions/UserAction';
 
 export const GET_ITEM = "GET_ITEM";
 export const GET_CATEGORIES = "GET_CATEGORIES";
@@ -108,7 +109,9 @@ export const addItem = item => {
     }).then(checkStatus)
       .then(parseJSON)
       .then(result => {
-        return dispatch(getItems());
+        console.log(result);
+        return dispatch(userPage(result.item.user_id));
+        
       })
       .catch(err => {
         console.log(err)
