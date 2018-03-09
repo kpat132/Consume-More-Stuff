@@ -35,8 +35,9 @@ class Home extends Component {
     return (
       <div className="ParentHomeClass">
         <section>
-          <h1>{userItemsHeader}</h1>
-          {/* { this.state && this.state.user.items && */}
+          <div className='home-user-header'>
+            <h1>{userItemsHeader}</h1>
+          </div>
           <div className="ItemsThatBelongToUsers">{UserItems}</div>
 
           {/* } */}
