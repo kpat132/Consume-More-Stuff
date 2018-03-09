@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getItems } from "../../actions/ItemsAction";
 import { setItem} from '../../actions/ItemsAction'
 import { withRouter } from "react-router-dom";
+import EditItem from "../../containers/EditItem";
 
 class Item extends Component {
   constructor(props) {
@@ -60,8 +61,8 @@ class Item extends Component {
           </div>
           <div className='item-info'>
             <ul>
-              {price && <li>Price: {price}</li>}
-              {description && <li>Description:} {description}</li>}
+              {price && <li>Price: ${price}</li>}
+              {description && <li>Description: {description}</li>}
               {make && <li>Make: {make}</li>}
               {model && <li>Model: {model}</li>}
               {dimensions && <li>Dimensions: {dimensions}</li>}
