@@ -81,55 +81,60 @@ class EditItem extends Component {
       <div>
       
         <div className= 'edit-form'>
-        <h1>edit {this.props.item.name}</h1>
-          <form onSubmit = {this.handleSubmit.bind(this)}>
-          
-          <br />
-            Name
-            <br />
-          
-            <input type="text" 
-            
-            onChange={this.handleChangeName.bind(this)}/>
-            <br />
-            Price
-            <br />
-            <input type="text"
-            onChange={this.handleChangePrice.bind(this)} />
-            <br />
-            Description
-            <br />
-            <input type="text"
-            onChange={this.handleChangeDescription.bind(this)} />
-            <br />
-            Make
-            <br />
-            <input type="text"
-            onChange={this.handleChangeMake.bind(this)} />
-            <br />
-            Model
-            <br />
-            <input type="text"
-            onChange={this.handleChangeModel.bind(this)} />
-            <br />
-            Dimensions
-            <br />
-            <input type="text" 
-            onChange={this.handleChangeDimensions.bind(this)}/>
-            <br />
-            Notes
-            <br />
-            <input type="text"
-            onChange={this.handleChangeNotes.bind(this)} />
-            <br />
-            Image
-            <br />
-            <input type="text"
-            onChange={this.handleChangeImg.bind(this)} />
-            <br />
-            <br />
-            <input type="submit" value="submit" />
-          </form>
+          <div className="edit-title">
+          <h1>Edit {this.props.item.name}</h1>
+          </div>
+            <div className='form-container'>
+              <form onSubmit = {this.handleSubmit.bind(this)}>
+                <div className='form-content'>
+                <br />
+                  Name
+                  <br />
+                
+                  <input type="text" 
+                  
+                  onChange={this.handleChangeName.bind(this)}/>
+                  <br />
+                  Price
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangePrice.bind(this)} />
+                  <br />
+                  Description
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangeDescription.bind(this)} />
+                  <br />
+                  Make
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangeMake.bind(this)} />
+                  <br />
+                  Model
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangeModel.bind(this)} />
+                  <br />
+                  Dimensions
+                  <br />
+                  <input type="text" 
+                  onChange={this.handleChangeDimensions.bind(this)}/>
+                  <br />
+                  Notes
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangeNotes.bind(this)} />
+                  <br />
+                  Image
+                  <br />
+                  <input type="text"
+                  onChange={this.handleChangeImg.bind(this)} />
+                  <br />
+                  <br />
+                <input type="submit" value="submit" />
+                </div>
+            </form>
+          </div>
         </div>
       </div>
     );
