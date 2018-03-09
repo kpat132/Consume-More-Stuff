@@ -30,7 +30,7 @@ const UserItemsList = props => {
             
               {dimensions && <li>Dimensions: {dimensions}</li>}
            
-              {image && <li>Image: {image}</li>}
+              {image && <img src ={`../../${image}`}/>}
             
               {notes && <li>Notes: {notes}</li>}
 

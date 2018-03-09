@@ -62,6 +62,8 @@ router
 router
   .route(`/`)
   .post(isAuthenticated, (req, res) => {
+    let newItem;
+    let itemId;
     let base64String = req.body.image;
     let base64Blob = base64String.split(';base64,').pop();
 
@@ -80,17 +82,44 @@ router
       condition_id,
       category_id
     } = req.body);
+
+    data.image = '';
     data.item_status_id = 1;
     return new Item(data)
       .save()
+      .then(newItem => {
+        itemId = newItem.id;
+        let filePath = ``;
 
-      // .then(newItem => {
-      //   if (newItem.id) {
-      //     fs.writeFile('public/Images/image.png', base64Blob, { encoding: 'base64' }, (err) => {
-      //       console.log('File created');
-      //     });
-      //   }
-      // })
+        if (newItem.id) {
+
+          filePath = `public/Images/Items/Item${itemId}.jpg`;
+          return new Promise((resolve, reject) => {
+            fs.writeFile(filePath, base64Blob, { encoding: 'base64' }, (err) => {
+              if (err) {
+                reject(err);
+              }
+              else {
+                console.log(newItem)
+                resolve([newItem,filePath]);
+              }
+            });
+          })
+
+            .then(result => {
+              return result[0].set({ image: result[1] })
+                .save()
+
+            })
+            .then(result => {
+              console.log('RESULT', result);
+              return result;
+            })
+            .catch(err => {
+              console.log({ err: err.message });
+            })
+        }
+      })
 
       .then(newItem => {
         if (newItem.id) {
@@ -98,14 +127,14 @@ router
             item: newItem1,
             itemAdded: true
           });
-
         } else {
           return res.status(401).json({
             error: 'User is not authenticated',
             user_Updated: false
           })
         }
-      }).catch(err => {
+      })
+      .catch(err => {
 
         return res.json({ err: err.message });
       })
