@@ -46,24 +46,27 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
+        <div className="Site-content">
+          <header className="App-header">
+            <h1 className="App-title">Codely_Tool</h1>
+            {buttons}
+            {logoutButton}
+          </header>
           <nav className="Navbar">
             <NavComponent categories={this.props.categories} />
           </nav>
-          <h1 className="App-title">Codely_Tool</h1>
-          {buttons}
-          {logoutButton}
-        </header>
-        {/* <div className="arrow-decoration">
+          {/* <div className="arrow-decoration">
           <div className="flank-left" />
           <div className="triangle" />
           <div className="flank-right" />
         </div> */}
-        <div className="Main">
-          <Main />
+          <div className="Main">
+            <Main />
 
-          {/* <Settings /> */}
+            {/* <Settings /> */}
+          </div>
         </div>
+        <footer className="footer">Codely_Tool</footer>
       </div>
     );
   }

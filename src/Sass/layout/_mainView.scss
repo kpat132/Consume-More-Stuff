@@ -24,6 +24,18 @@ ul.CategoryItems {
   flex-direction: row-reverse;
   justify-content: space-around;
 }
+
+div.ParentHomeClass {
+  // opacity: 0.6;
+  margin: 0%;
+  background-color: white;
+}
+span.CategoryName {
+  display: flex;
+  justify-content: flex-start;
+  font-family: $Bungee;
+}
+
 //Categories
 // .ParentHomeClass {
 //   .CategoryHomePage {

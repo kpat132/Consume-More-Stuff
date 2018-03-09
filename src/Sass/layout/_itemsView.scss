@@ -3,6 +3,8 @@
 .items-list {
   display: flex;
   flex-direction: column-reverse;
+  background-color: $white;
+  opacity: 0.5;
   .list-items {
     .item-link {
       .a {
