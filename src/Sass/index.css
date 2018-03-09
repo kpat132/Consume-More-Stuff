@@ -100,6 +100,62 @@ ul.navbar {
   .AddItemButtonClass a {
     text-decoration: none; }
 
+<<<<<<< HEAD
+div.CategoryHomePage {
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: #f5f5f5;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-style: solid;
+  border-color: #fafafa;
+  -moz-box-shadow: 5px 5px 5px #212221;
+  -webkit-box-shadow: 5px 5px 5px #180d0d;
+  -khtml-box-shadow: 5px 5px 5px #040000; }
+
+ul.CategoryItems {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around; }
+  ul.CategoryItems a {
+    border-style: solid;
+    border-color: green; }
+
+.CategoryRow {
+  border-style: solid;
+  border-color: orange;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center; }
+
+div.ParentHomeClass {
+  margin: 0%;
+  background-color: white;
+  border-style: solid;
+  border-color: blue; }
+
+span.CategoryName {
+  font-size: 50px;
+  border-style: solid;
+  border-color: red;
+  height: 25%;
+  display: block;
+  width: 100%;
+  justify-content: flex-start;
+  text-align: center;
+  font-family: "Bungee Shade", regular; }
+
+.SingleItemFromCateogor {
+  border-style: solid;
+  border-color: purple;
+  height: 35%; }
+
+=======
+>>>>>>> 94e91cc6221e712419eb08ed7d51ec649ef4676b
 .itemlist-title {
   text-align: center;
   padding-bottom: 45px; }
@@ -148,7 +204,8 @@ body {
     flex: 1; }
 
 ul {
-  list-style: none; }
+  list-style: none;
+  list-style-type: none; }
 
 a {
   text-decoration: none;
@@ -202,6 +259,9 @@ div.item {
 .item-content:hover {
   opacity: 0.5; }
 
+.input-des {
+  height: 45px; }
+
 .edit-form {
   justify-content: center;
   text-align: center; }
@@ -227,3 +287,37 @@ div.item {
     -khtml-box-shadow: 5px 5px 5px #8e8a8a; }
     .form-container .form-content .form-content:hover {
       opacity: 0.7; }
+
+.UserItemsLis {
+  border-style: solid;
+  border-color: red; }
+
+.ItemsList {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0; }
+
+.item-card {
+  text-align: center;
+  width: 25%;
+  list-style-type: none;
+  border-style: solid;
+  border-radius: 16px;
+  border-color: #fafafa; }
+  .item-card .item-card-innerContainer {
+    text-align: center; }
+
+.item-card:hover {
+  opacity: 0.5; }
+
+.home-user-header {
+  text-align: center;
+  text-transform: uppercase; }
+
+.home-card-container {
+  width: 100%; }
+
+.home-card-img {
+  max-width: 100%;
+  max-height: 100%; }
