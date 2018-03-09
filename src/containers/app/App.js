@@ -18,8 +18,7 @@ import {
 import Main from "../reactRouter/Main";
 import { userPage } from "../../actions/UserAction";
 import LogoutButtonComponent from "../../components/logoutButton";
-import Sticky from 'react-sticky-el';
-
+import Sticky from "react-sticky-el";
 
 class App extends Component {
   constructor(props) {
@@ -50,33 +49,19 @@ class App extends Component {
             {buttons}
             {logoutButton}
           </header>
-          
-         
-         <Sticky bottomOffset={80}> 
-          <nav className="Navbar">
-            {this.props.children}
-            <NavComponent categories={this.props.categories} />
-          </nav>
-         
-          
-         
-          {/* <div className="arrow-decoration">
-          <div className="flank-left" />
-          <div className="triangle" />
-          <div className="flank-right" />
-        </div> */}
-          
+
+          <Sticky bottomOffset={80}>
+            <nav className="Navbar">
+              {this.props.children}
+              <NavComponent categories={this.props.categories} />
+            </nav>
           </Sticky>
           <div className="Main">
             <Main />
-
-            {/* <Settings /> */}
           </div>
-              
         </div>
 
         <footer className="footer">Codely_Tool</footer>
-        
       </div>
     );
   }
