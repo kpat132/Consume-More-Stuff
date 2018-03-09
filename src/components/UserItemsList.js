@@ -2,9 +2,10 @@ import React from 'react';
 
 const UserItemsList = props => {
   let items = props.props;
-
+  console.log('WHAT ARE YOU',items)
 
   return (
+    
     <div className='UserItemsList'>
       <ul className='ItemsList'>
         {items.map((element => {
@@ -32,9 +33,17 @@ const UserItemsList = props => {
 
                   {dimensions && <li>Dimensions: {dimensions}</li>}
                   <div className='home-card-container'>
+
                     <div className="home-card-img">
-                    {image && <img src={`${image}`} />}
+
+                    {image && 
+                    <a href = {`http://localhost:3000/items/${element.id}`}>
+                    <img src={`${image}`} />
+                    </a>
+                  }
+
                     </div>
+
                   </div>
                   {notes && <li>Notes: {notes}</li>}
 
