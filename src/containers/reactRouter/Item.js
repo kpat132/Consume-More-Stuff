@@ -39,6 +39,13 @@ class Item extends Component {
   }
 
   render() {
+    let EditButton = null;
+    if (localStorage.length > 0 && this.props.item.user_id == localStorage.id) {
+      EditButton = <EditItemButton />;
+    }
+    console.log(this.props.item.user_id);
+    console.log("LS", localStorage.id);
+
     let newObj = { ...this.state.users };
     console.log(newObj.email);
 

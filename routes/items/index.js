@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require(`express`);
 const router = express.Router();
 
@@ -11,6 +12,7 @@ const { isAuthenticated, isAuthorized } = require('../helper')
 
 //model
 const Item = require("../../db/models/Item");
+
 
 router
   .route("/:id")
@@ -57,10 +59,16 @@ router
       });
   })
 
-  router
+router
   .route(`/`)
-  .post(isAuthenticated,(req, res) => {
-    console.log(req.body);
+  .post(isAuthenticated, (req, res) => {
+    let newItem;
+    let itemId;
+    let base64String = req.body.image;
+    let base64Blob = base64String.split(';base64,').pop();
+
+    console.log(base64Blob);
+
     let data = ({
       name,
       description,
@@ -74,11 +82,49 @@ router
       condition_id,
       category_id
     } = req.body);
+
+    data.image = '';
     data.item_status_id = 1;
     return new Item(data)
       .save()
       .then(newItem => {
-        if (newItem.id){
+        itemId = newItem.id;
+        let filePath = ``;
+
+        if (newItem.id) {
+
+           filePath = `public/Images/Items/Item${itemId}.png`
+
+          return new Promise((resolve, reject) => {
+            fs.writeFile(filePath, base64Blob, { encoding: 'base64' }, (err) => {
+              if (err) {
+                reject(err);
+              }
+              else {
+                console.log(newItem)
+                resolve([newItem,filePath]);
+              }
+            });
+          })
+
+            .then(result => {
+             result[1] = `Images/Items/Item${itemId}.png`
+              return result[0].set({ image: result[1] })
+                .save()
+
+            })
+            .then(result => {
+              console.log('RESULT', result);
+              return result;
+            })
+            .catch(err => {
+              console.log({ err: err.message });
+            })
+        }
+      })
+
+      .then(newItem => {
+        if (newItem.id) {
           return res.status(200).json({
             item: newItem1,
             itemAdded: true
@@ -89,11 +135,12 @@ router
             user_Updated: false
           })
         }
-      }).catch(err => {
-    
-        return res.json({err:err.message});
       })
-    });
+      .catch(err => {
+
+        return res.json({ err: err.message });
+      })
+  });
 
 
 module.exports = router;

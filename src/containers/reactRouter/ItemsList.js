@@ -9,8 +9,8 @@ const ItemsList = props => {
   return (
     <Overdrive
       id="item-to-image"
-      duration={500}
-      // animationDelay={1}
+      duration={1000}
+      // animationDelay={3}
       style={{ display: "flex" }}
     >
       <div className="items-container">
