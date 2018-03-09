@@ -1,13 +1,21 @@
 .App-header {
-  height: 25%;
+  display: flex;
+  height: 25rem;
   padding: 20px;
-  color: white; }
+  color: white;
+  background: url(https://wallpaperclicker.com/storage/wallpaper/NYC-cityscape-HD-40047284.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
   .App-header .App-title {
+    justify-content: flex-start; }
+  .App-header div.login-container {
     display: flex;
-    justify-content: space-around; }
-  .App-header .login-container {
-    justify-content: center;
-    padding: 0%; }
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0%;
+    width: 100%; }
 
 .App-title {
   display: flex;
@@ -131,20 +139,13 @@ span.CategoryName {
 
 html {
   height: 100%;
-  margin: 0%;
-  background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 25%; }
+  margin: 0%; }
 
 body {
   margin: 0;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  height: 100vh; }
+  flex-direction: column; }
   body div.Main {
     position: relative;
     font-family: "Quattrocento", regular;
