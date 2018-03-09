@@ -41,10 +41,6 @@ class App extends Component {
     let userItems = this.props.users.items;
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
-    if (localStorage.length === 1) {
-      buttons = null;
-      logoutButton = <LogoutButtonComponent />;
-    }
 
     return (
       <div className="App">
@@ -58,6 +54,7 @@ class App extends Component {
          
          <Sticky bottomOffset={80}> 
           <nav className="Navbar">
+            {this.props.children}
             <NavComponent categories={this.props.categories} />
           </nav>
          
