@@ -111,6 +111,7 @@ export const addItem = item => {
       .then(result => {
         console.log(result);
         return dispatch(userPage(result.item.user_id));
+        
       })
       .catch(err => {
         console.log(err)
