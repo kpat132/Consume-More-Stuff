@@ -23,6 +23,7 @@ const categoriesRoute = require(`./routes/categories/index`);
 const userStatusRoute = require(`./routes/user_status/index`);
 const conditionsRoute = require(`./routes/conditions/index`);
 const itemStatusRoute = require(`./routes/item_Status/index`);
+app.use(express.static(`public`))
 
 
 app.use(bodyParser.urlencoded( {extended: true} ));
@@ -171,9 +172,13 @@ app.use(`/api/conditions`,conditionsRoute);
 app.use(`/api/itemStatus`,itemStatusRoute);
 
 
-app.get('/',(req,res)=> {
-  res.send('smoke test');
+app.get('/*', (req, res)=>{
+  let options = {
+    root: __dirname + '/public'
+  };
+  res.sendFile('index.html', options);
 })
+
 
 app.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`)
