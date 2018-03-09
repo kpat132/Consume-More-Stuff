@@ -10,8 +10,11 @@ class Home extends Component {
   constructor(props) {
     super(props);
   }
+  componentDidMount(){
+  }
 
   render() {
+    console.log('trigger home render');
     let UserItems;
     let userItemsHeader = null;
     let addItemButton = null;
@@ -36,6 +39,8 @@ class Home extends Component {
             <h1>{userItemsHeader}</h1>
           </div>
           <div className="ItemsThatBelongToUsers">{UserItems}</div>
+
+          {/* } */}
           {addItemButton}
 
          
