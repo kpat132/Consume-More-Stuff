@@ -4,7 +4,7 @@ import SearchComponent from "../../components/searchbar";
 import Sticky from 'react-sticky-el';
 
 const ItemsList = props => {
-  console.log(props)
+
   return (
     <div className="items-container">
       <Sticky bottomOffset={100}> 

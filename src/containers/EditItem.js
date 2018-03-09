@@ -102,8 +102,9 @@ class EditItem extends Component {
                   <br />
                   Description
                   <br />
-                  <input type="text"
-                  onChange={this.handleChangeDescription.bind(this)} />
+                  <input  className = 'input-des' type="text"
+                  onChange={this.handleChangeDescription.bind(this)} 
+                  />
                   <br />
                   Make
                   <br />
@@ -132,6 +133,7 @@ class EditItem extends Component {
                   <br /> */}
                   <br />
                 <input type="submit" value="submit" />
+                
                 </div>
             </form>
           </div>

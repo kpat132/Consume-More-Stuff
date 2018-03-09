@@ -228,6 +228,9 @@ footer.footer {
 .item-content:hover {
   opacity: 0.5; }
 
+.input-des {
+  height: 45px; }
+
 .edit-form {
   justify-content: center;
   text-align: center; }

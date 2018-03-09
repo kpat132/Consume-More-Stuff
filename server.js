@@ -145,7 +145,8 @@ app.post(`/api/register`, (req, res) => {
       new User ({
         username: req.body.username,
         password: hash,
-        email: req.body.email
+        email: req.body.email,
+        user_status_id:1
       })
       .save()
       .then( (user) => {
