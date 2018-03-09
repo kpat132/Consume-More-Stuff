@@ -1,0 +1,81 @@
+//Create Item Button
+
+.AddItemButtonClass {
+  display: flex;
+  justify-content: flex-end;
+  a {
+    text-decoration: none;
+  }
+}
+
+//User Items List
+.ItemsList {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  ul {
+    list-style: none;
+  }
+}
+
+ul.CategoryItems {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+div.ParentHomeClass {
+  // opacity: 0.6;
+  margin: 0%;
+  background-color: white;
+}
+span.CategoryName {
+  display: flex;
+  justify-content: flex-start;
+  font-family: $Bungee;
+}
+
+//Categories
+// .ParentHomeClass {
+//   .CategoryHomePage {
+//     font-family: $Basic;
+
+//     .singleCategoryHomePage {
+//       .CategoryRow {
+//         .CategoryItems {
+//           display: flex;
+//           flex-direction: row-reverse;
+//           justify-content: space-around;
+//           flex-wrap: wrap;
+//           list-style: none;
+//           flex-wrap: nowrap;
+//           overflow-x: auto;
+//           .SingleItemFromCateogor {
+//             flex: 0 0 auto;
+//             a {
+//               text-decoration: none;
+//               color: $black;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .AddItemButton-container {
+//   align-self: flex-end;
+// }
+
+// .CategoryName {
+//   display: inline-flex;
+//   justify-content: flex-start;
+//   flex-direction: column;
+//   position: relative;
+//   margin-left: auto;
+//   height: 100%;
+// }
+// a {
+//   text-decoration: none;
+// }

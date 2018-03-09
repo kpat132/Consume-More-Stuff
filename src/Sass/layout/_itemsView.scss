@@ -1,0 +1,26 @@
+//Items Page
+
+.items-list {
+  display: flex;
+  // flex-direction: row-reverse;
+  flex-wrap: wrap;
+  flex-flow: column-reverse wrap-reverse;
+  background-color: $white;
+  opacity: 0.5;
+
+  .list-items {
+    .item-link {
+      .a {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+//Search-Bar in Items-Page
+.search-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 5%;
+}

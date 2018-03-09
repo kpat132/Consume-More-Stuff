@@ -1,0 +1,27 @@
+//Login & Register
+
+div.registerForm,
+div.login-container {
+  justify-content: space-around;
+  color: $blue;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 5%;
+}
+.register-title {
+  display: flex;
+  justify-content: center;
+  color: $blue;
+}
+// .search-container button:hover {
+//   background: $gray;
+// }
+
+.login-container button:hover {
+  background: $white;
+}
+
+.login-container.button {
+  background-color: $black;
+}

@@ -1,29 +1,63 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addItem } from "../actions/index";
+import {editUser} from '../actions/UserAction'
+import { withRouter } from "react-router-dom";
+
 
 class Settings extends Component {
   constructor(props){
     super(props)
   
     this.state = {
-    
-    
+      username: '',
+      email: ''
     }
+    
   }
 
-  componentWillMount(){
-  
+  handleChangeUsername(e){
+this.setState({username: e.target.value})
   }
+  handleChangeEmail(e){
+    this.setState({email: e.target.value})
+  }
+  handleSubmit(e){
+    e.preventDefault()
+    let updateUser = {
+      id: this.props.user.id,
+      username:this.state.username?this.state.username:this.props.user.username,
+      email:this.state.email?this.state.email:this.props.user.email
+    }
+    this.props.editUser(updateUser)
+    this.props.history.push("/");
+  }
+
+ 
 
   render() {
-    console.log('userrr', this.state)
-
     return (
       <div>
-        <h1>Settings</h1>
+        <h1>Change Usename or Email</h1>
 
-
+        <br/> <br/><br/>
+        <div className='setting-form'>
+          <form 
+          onSubmit = {this.handleSubmit.bind(this)}>
+          New Username&#160;&#160;&#160;
+          
+          <input type="text"
+          onChange={this.handleChangeUsername.bind(this)}/>
+            <br/><br/>
+          New Email  &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+          
+          <input type="text"
+          onChange={this.handleChangeEmail.bind(this)}/>
+          <br/>
+          <br/>
+          <br/>
+          <input type="submit" value="submit" />
+          </form>
+        </div>
       </div>
     );
   }
@@ -39,9 +73,12 @@ const mapStatetoProps = state => {
 const mapDispatchToProps = dispatch => {
  return{
 
+  editUser: (user)=>{
+    dispatch(editUser(user));
+  }
  }
 };
 
-const ConnectedApp = connect(mapStatetoProps, mapDispatchToProps)(Settings);
+const ConnectedApp = withRouter(connect(mapStatetoProps, mapDispatchToProps)(Settings));
 
 export default ConnectedApp;

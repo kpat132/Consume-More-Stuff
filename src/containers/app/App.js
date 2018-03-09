@@ -1,25 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import "../../index.css";
-import Login from "../../containers/login/login";
-import RegisterUser from "../../containers/register";
+import "../../Sass/index.css";
 
-import AddItem from "../AddItem";
-import EditItem from "../EditItem";
 import Settings from "../Settings";
-import CategoryComp from "../../components/CategoryComp";
+
 import NavComponent from "../../components/navbar";
 import { SearchComponent } from "../../components/searchbar";
-import { LoginButtonComponent } from "../../components/loginButton";
+import LoginButtonComponent from "../../components/loginButton";
 import {
   getItems,
   getCategories,
   getStatus,
   getConditions
-} from "../../actions/index";
-import { getUsers } from "../../actions/UserAction";
+} from "../../actions/ItemsAction";
+
 import Main from "../reactRouter/Main";
+import { userPage } from "../../actions/UserAction";
+import LogoutButtonComponent from "../../components/logoutButton";
 
 class App extends Component {
   constructor(props) {
@@ -38,20 +36,37 @@ class App extends Component {
   }
 
   render() {
+    let userItems = this.props.users.items;
+    let buttons = <LoginButtonComponent />;
+    let logoutButton = null;
+    if (localStorage.length === 1) {
+      buttons = null;
+      logoutButton = <LogoutButtonComponent />;
+    }
+
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Codely_Tool</h1>
+        <div className="Site-content">
+          <header className="App-header">
+            <h1 className="App-title">Codely_Tool</h1>
+            {buttons}
+            {logoutButton}
+          </header>
+          <nav className="Navbar">
+            <NavComponent categories={this.props.categories} />
+          </nav>
+          {/* <div className="arrow-decoration">
+          <div className="flank-left" />
+          <div className="triangle" />
+          <div className="flank-right" />
+        </div> */}
+          <div className="Main">
+            <Main />
 
-          <LoginButtonComponent />
-        </header>
-        <nav className="Navbar">
-          <NavComponent categories={this.props.categories} />
-        </nav>
-
-        <div className="Main">
-          <Main categoriesList={this.props.categories} />
+            {/* <Settings /> */}
+          </div>
         </div>
+        <footer className="footer">Codely_Tool</footer>
       </div>
     );
   }
@@ -79,10 +94,10 @@ const mapDispatchToProps = dispatch => {
     },
     getConditions: () => {
       dispatch(getConditions());
+    },
+    userPage: id => {
+      dispatch(userPage(id));
     }
-    // userPage: id => {
-    //   dispatch(userPage(id));
-    // }
   };
 };
 

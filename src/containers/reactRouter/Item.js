@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-import { getItems } from "../../actions/index";
-import { setItem} from '../../actions/index'
+import { getItems } from "../../actions/ItemsAction";
+import { setItem} from '../../actions/ItemsAction'
 import { withRouter } from "react-router-dom";
 
 class Item extends Component {

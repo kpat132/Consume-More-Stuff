@@ -3,8 +3,12 @@ import React from "react";
 export const LoginButtonComponent = () => {
   return (
     <div className="login-container">
-      <button type="submit">Login</button>
-      <button type="submit">Register</button>
+      <a href='http://localhost:3000/login'>
+        <button type="submit">Login</button>
+      </a>
+      <a href='http://localhost:3000/register'>
+        <button type="submit">Register</button>
+      </a>
     </div>
   );
 };
