@@ -93,7 +93,8 @@ router
 
         if (newItem.id) {
 
-          filePath = `public/Images/Items/Item${itemId}.jpg`;
+           filePath = `public/Images/Items/Item${itemId}.png`
+
           return new Promise((resolve, reject) => {
             fs.writeFile(filePath, base64Blob, { encoding: 'base64' }, (err) => {
               if (err) {
@@ -107,6 +108,7 @@ router
           })
 
             .then(result => {
+             result[1] = `Images/Items/Item${itemId}.png`
               return result[0].set({ image: result[1] })
                 .save()
 
