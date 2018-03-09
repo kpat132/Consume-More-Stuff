@@ -2,16 +2,15 @@
   margin-top: auto;
   margin-left: 5%;
   margin-right: 5%;
-
   background-color: $white;
   display: flex;
   justify-content: center;
-  border-style: solid;
-  // border-color: red;
+  border-style: solid; // border-color: red;
   -moz-box-shadow: 10px 10px 5px rgb(13, 14, 13);
   -webkit-box-shadow: 10px 10px 5px rgb(24, 13, 13);
   -khtml-box-shadow: 10px 10px 5px rgb(4, 0, 0);
 }
+
 .item-img-container {
   text-align: center;
   .item-img {
@@ -34,7 +33,6 @@
   // border-style: solid;
   // border-color: blue;
   width: 300px;
-
   .item-name {
     text-align: center;
   }
@@ -48,6 +46,7 @@
     // border-color: pink;
   }
 }
+
 .item-content:hover {
   opacity: 0.5;
 }
