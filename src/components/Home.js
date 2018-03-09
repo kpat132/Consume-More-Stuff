@@ -36,7 +36,7 @@ class Home extends Component {
           <div className="ItemsThatBelongToUsers">{UserItems}</div>
           {addItemButton}
 
-          <itemlist stuff="" />
+         
         </section>
         <div className="UserItems" />
         <div className="CategoryHomePage">
