@@ -122,14 +122,31 @@ span.CategoryName {
   justify-content: flex-start;
   font-family: "Bungee Shade", regular; }
 
+.itemlist-title {
+  text-align: center;
+  padding-bottom: 45px; }
+
 .items-list {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  flex-flow: column-reverse wrap-reverse;
+  flex-direction: row;
   background-color: #f5f5f5;
   opacity: 0.5; }
-  .items-list .list-items .item-link .a {
-    text-decoration: none; }
+  .items-list .list-items {
+    text-align: center;
+    border-style: solid;
+    border-color: white;
+    height: 100px; }
+    .items-list .list-items .item-link {
+      text-align: center;
+      width: 345px; }
+      .items-list .list-items .item-link .a {
+        text-decoration: none; }
+  .items-list .item-list-content {
+    font-size: 10px; }
+  .items-list .list-items:hover {
+    opacity: .5; }
 
 .search-bar {
   display: flex;
@@ -168,14 +185,17 @@ footer.footer {
   background-color: white;
   z-index: 1; }
 
+main.page-content {
+  width: 100%; }
+
 .item {
   margin-top: 75px;
-  margin-left: 200px;
-  margin-right: 200px;
-  background-color: #ACCEDE;
+  background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   border-style: solid;
+  margin-left: 75px;
+  margin-right: 75px;
   -moz-box-shadow: 10px 10px 5px #0d0e0d;
   -webkit-box-shadow: 10px 10px 5px #180d0d;
   -khtml-box-shadow: 10px 10px 5px #040000; }
@@ -185,8 +205,8 @@ footer.footer {
   .item-img-container .item-img {
     border-style: solid;
     border-color: green;
-    width: 475px;
-    height: 400px; }
+    width: 150%;
+    height: 100%; }
   .item-img-container .item-img:hover {
     opacity: .5;
     cursor: pointer;
@@ -198,7 +218,8 @@ footer.footer {
 .item-content {
   border-style: solid;
   border-color: blue;
-  width: 300px; }
+  width: 25%;
+  height: 100%; }
   .item-content .item-name {
     text-align: center; }
   .item-content .item-info {
@@ -211,3 +232,37 @@ footer.footer {
 
 .item-content:hover {
   opacity: .5; }
+
+.EditItemButton {
+  border-radius: 6px;
+  margin-top: 20px;
+  padding: 10px; }
+
+.EditItemButton:hover {
+  opacity: 0.5; }
+
+.edit-form {
+  justify-content: center;
+  text-align: center; }
+
+.edit-title {
+  -moz-box-shadow: 5px 5px 5px #9fa09f;
+  -webkit-box-shadow: 5px 5px 5px #8e8a8a;
+  -khtml-box-shadow: 5px 5px 5px #8e8a8a; }
+
+.edit-title:hover {
+  opacity: 0.5; }
+
+.form-container {
+  text-align: center; }
+  .form-container .form-content {
+    background-color: #f5f5f5;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    -moz-box-shadow: 5px 5px 5px #8e8a8a;
+    -webkit-box-shadow: 5px 5px 5px #8e8a8a;
+    -khtml-box-shadow: 5px 5px 5px #8e8a8a; }
+    .form-container .form-content .form-content:hover {
+      opacity: 0.7; }

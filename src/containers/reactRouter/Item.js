@@ -5,6 +5,7 @@ import { getItems } from "../../actions/ItemsAction";
 import { setItem} from '../../actions/ItemsAction'
 import { withRouter } from "react-router-dom";
 import EditItem from "../../containers/EditItem";
+import EditItemButton from '../../components/EditItemButton'
 
 class Item extends Component {
   constructor(props) {
@@ -54,6 +55,7 @@ class Item extends Component {
           <div className='item-img'>
             <h1>IMG</h1>
             {image?<img src={ image } />:<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOOigxPC1OtYYo1yJ2tJdBh_a7Nx4c23HUFw0kxZHQHiQ8pT2d' /> }
+            <EditItemButton />
           </div>
         </div>
         <div className='item-content'>

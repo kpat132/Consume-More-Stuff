@@ -1,20 +1,46 @@
 //Items Page
-
+.itemlist-title{
+  text-align: center;
+  padding-bottom: 45px;
+}
 .items-list {
   display: flex;
+  
+  justify-content: center;
+ 
   // flex-direction: row-reverse;
   flex-wrap: wrap;
-  flex-flow: column-reverse wrap-reverse;
+  flex-direction: row;
+  // flex-flow: column-reverse wrap-reverse;
   background-color: $white;
   opacity: 0.5;
+  
 
   .list-items {
+    text-align: center;
+    border-style: solid;
+    border-color: white;
+    height: 100px;
     .item-link {
+      text-align: center;
+      width: 345px;
       .a {
+       
         text-decoration: none;
       }
     }
   }
+
+  .item-list-content{
+    
+    font-size: 10px;
+  }
+  .list-items:hover{
+    opacity: .5;
+  
+  }
+ 
+ 
 }
 
 //Search-Bar in Items-Page
