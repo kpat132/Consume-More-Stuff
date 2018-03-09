@@ -100,6 +100,7 @@ ul.navbar {
   .AddItemButtonClass a {
     text-decoration: none; }
 
+<<<<<<< HEAD
 div.CategoryHomePage {
   margin-top: auto;
   margin-left: 5%;
@@ -153,6 +154,8 @@ span.CategoryName {
   border-color: purple;
   height: 35%; }
 
+=======
+>>>>>>> 94e91cc6221e712419eb08ed7d51ec649ef4676b
 .itemlist-title {
   text-align: center;
   padding-bottom: 45px; }
@@ -217,7 +220,11 @@ footer.footer {
   background-color: white;
   z-index: 1; }
 
-.item {
+main.page-content {
+  display: flex;
+  justify-content: center; }
+
+div.item {
   margin-top: auto;
   margin-left: 5%;
   margin-right: 5%;

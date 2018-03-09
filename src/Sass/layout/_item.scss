@@ -1,4 +1,9 @@
-.item {
+main.page-content {
+  display: flex;
+  justify-content: center;
+}
+
+div.item {
   margin-top: auto;
   margin-left: 5%;
   margin-right: 5%;
@@ -50,6 +55,9 @@
 .item-content:hover {
   opacity: 0.5;
 }
+<<<<<<< HEAD
 .input-des{
   height: 45px;
 }
+=======
+>>>>>>> 94e91cc6221e712419eb08ed7d51ec649ef4676b
