@@ -125,11 +125,11 @@ class EditItem extends Component {
                   <input type="text"
                   onChange={this.handleChangeNotes.bind(this)} />
                   <br />
-                  Image
+                  {/* Image
                   <br />
                   <input type="text"
                   onChange={this.handleChangeImg.bind(this)} />
-                  <br />
+                  <br /> */}
                   <br />
                 <input type="submit" value="submit" />
                 </div>
