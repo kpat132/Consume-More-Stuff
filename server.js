@@ -51,6 +51,7 @@ passport.deserializeUser((user, done) => {
   console.log('deserialize')
   new User ({id: user.id}).fetch()
     .then(user => {
+      console.log('user', user)
       user = user.toJSON();
       return done(null, {
         id: user.id,  
