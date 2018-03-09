@@ -245,10 +245,6 @@ div.item {
 .item-content:hover {
   opacity: 0.5; }
 
-.input-des {
-  height: 45px;
-  width: 200px; }
-
 .edit-form {
   justify-content: center;
   text-align: center; }
