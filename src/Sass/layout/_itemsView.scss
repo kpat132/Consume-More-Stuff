@@ -2,9 +2,12 @@
 
 .items-list {
   display: flex;
-  flex-direction: column-reverse;
+  // flex-direction: row-reverse;
+  flex-wrap: wrap;
+  flex-flow: column-reverse wrap-reverse;
   background-color: $white;
   opacity: 0.5;
+
   .list-items {
     .item-link {
       .a {
