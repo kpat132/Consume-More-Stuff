@@ -1,4 +1,9 @@
-.item {
+main.page-content {
+  display: flex;
+  justify-content: center;
+}
+
+div.item {
   margin-top: auto;
   margin-left: 5%;
   margin-right: 5%;
