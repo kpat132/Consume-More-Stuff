@@ -1,30 +1,43 @@
 html {
   height: 100%;
   margin: 0%;
-  background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat
-    center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 25%;
-  opacity: 1;
+  // background: url(https://images8.alphacoders.com/541/541862.jpg) no-repeat
+  //   center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
 }
 
 body {
   margin: 0;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   div.Main {
+    position: relative;
     font-family: $Basic;
-    min-height: 100%;
-
-    // background-color: $white;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-
-    flex: 0 0 auto;
+    height: 47rem;
+    flex: 1;
   }
 }
+
+// :root {
+//   —space: 1.5em 0;
+//   —space: 2em 0;
+// }
+// .Site-content {
+//   flex: 1 0 auto;
+//   padding: var(— space) var(— space) 0;
+//   width: 100%;
+// }
+// .Site-content:after {
+//   content: ‘\00a0’;
+//   display: block;
+//   margin-top: var(— space);
+//   height: 0;
+//   visibility: hidden;
+// }
 ul {
   list-style: none;
 }
@@ -33,12 +46,12 @@ a {
   color: $black;
 }
 
-footer {
-  // height: 50px;
-  // margin-bottom: 50px;
+footer.footer {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: flex-end;
   font-family: $Bungee;
   color: $black;
+  background-color: white;
+  z-index: 1;
 }
