@@ -29,13 +29,7 @@ const UserItemsList = props => {
               {model && <li>Model: {model}</li>}
 
               {dimensions && <li>Dimensions: {dimensions}</li>}
-              {console.log({ image })
-              
-            
-            }
-
-              {/* {image && <img src={require(`${image}`)} />} */}
-
+           
               {image && <img src={`${image}`} />}
 
               {notes && <li>Notes: {notes}</li>}
