@@ -17,8 +17,17 @@ class RegisterUser extends Component {
 
   handleRegister(event) {
     event.preventDefault();
-    this.props.register(this.state);
-    this.props.history.push("/login");
+    this.props.register(this.state, this.props.history);
+   // this.props.history.push("/login");
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.location && nextProps.location.state){
+      if(nextProps.location.state.resetState) {
+        this.setState({ username: "", email: "", password: "" })
+      }
+    }
+    
   }
 
   render() {
@@ -67,8 +76,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    register: user => {
-      dispatch(register(user));
+    register: (user, history) => {
+      dispatch(register(user, history));
     }
   };
 };

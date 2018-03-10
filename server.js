@@ -111,6 +111,7 @@ app.get('/api/users/:id', isAuthenticated, (req, res) =>{
   })
 })
 app.post(`/api/login`, passport.authenticate(`local`), (req, res) => {
+  console.log(req.header)
   if(req.user) {
     return res.status(200).json({
       user: req.user.id,
