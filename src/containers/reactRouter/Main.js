@@ -9,6 +9,7 @@ import AddItem from "../AddItem";
 import EditItem from "../EditItem";
 import Categories from "./Categories";
 import Settings from "../Settings";
+import NoMatch from "../../components/NoMatch";
 
 const Main = props => (
   <main className="page-content">
@@ -24,6 +25,7 @@ const Main = props => (
       <Route exact path="/addItem" component={AddItem} />
       <Route exact path="/EditItem" component={EditItem} />
       <Route exact path="/categories/:name" component={Categories} />
+      <Route component={NoMatch}/>
     </Switch>
   </main>
 );
