@@ -44,55 +44,59 @@ div.login-container {
 .login-container.button {
   background-color: #000000; }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden; }
-  .navbar li {
-    display: inline-block; }
-    .navbar li a:hover {
-      background-color: #f5f5f5; }
-    .navbar li a {
-      display: block;
-      color: #036;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none; }
-    .navbar li .dropdown:hover .dropdown-content {
-      display: block; }
-    .navbar li .dropdown .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f5f5f5;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px #757575; }
-      .navbar li .dropdown .dropdown-content a {
-        color: #036;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left; }
-      .navbar li .dropdown .dropdown-content a:hover {
-        background-color: #757575; }
-    .navbar li .dropdown .dropbtn {
-      font-size: 16px;
-      border: none;
-      outline: none;
-      color: #036;
-      padding: 14px 16px;
-      background-color: inherit;
-      font-family: inherit;
-      margin: 0; }
-  .navbar .navbar a:hover,
-  .navbar .dropdown:hover .dropbtn {
-    background-color: #f5f5f5; }
+/* The side navigation menu */
+.sidenav {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #111;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  transition: 0.5s;
+  /* 0.5 second transition effect to slide in the sidenav */ }
 
-ul.navbar {
-  margin: 0%;
-  background-color: #f5f5f5; }
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s; }
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1; }
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px; }
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+.Mains {
+  transition: margin-left 0.5s;
+  padding: 20px; }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+  .sidenav a {
+    font-size: 18px; } }
 
 .AddItemButtonClass {
   display: flex;
@@ -112,34 +116,29 @@ div.CategoryHomePage {
   -khtml-box-shadow: 5px 5px 5px #040000; }
 
 .CategoryRow {
-  border-style: solid;
-  border-color: palevioletred;
   height: 250px;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+  -moz-box-shadow: 10px 10px 5px #0d0e0d;
+  -webkit-box-shadow: 10px 10px 5px #180d0d;
+  -khtml-box-shadow: 10px 10px 5px #040000; }
+
+CategoryRow:hover {
+  opacity: 0.5; }
 
 div.ParentHomeClass {
   margin: 0%;
   background-color: white;
-  border-style: solid;
-  border-color: blue; }
+  border-style: solid; }
 
 span.CategoryName {
   font-size: 50px;
-  border-style: solid;
-  border-color: red;
   height: 25%;
-  display: block;
-  width: 100%;
-  justify-content: flex-start;
-  text-align: center;
   font-family: "Bungee Shade", regular; }
 
 .SingleItemFromCateogor {
-  border-style: solid;
-  border-color: purple;
   height: 35%; }
 
 .itemlist-title {
@@ -178,12 +177,20 @@ html {
   height: 100%;
   margin: 0%; }
 
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+  .sidenav a {
+    font-size: 18px; } }
+
 body {
   margin: 0;
   height: 100%;
   display: flex;
   flex-direction: column; }
   body div.Main {
+    transition: margin-left 0.5s;
+    padding: 20px;
     position: relative;
     font-family: "Quattrocento", regular;
     height: 47rem;
@@ -245,6 +252,10 @@ div.item {
 .item-content:hover {
   opacity: 0.5; }
 
+.input-des {
+  height: 45px;
+  width: 200px; }
+
 .edit-form {
   justify-content: center;
   text-align: center; }
@@ -289,11 +300,11 @@ div.item {
   border-radius: 16px;
   border-color: #fafafa; }
   .item-card .item-card-innerContainer {
-    text-align: center; }
+    text-align: center;
+    display: flex;
+    justify-content: center; }
 
 .home-img {
-  border-style: solid;
-  border-color: #6bd823;
   max-width: 100%;
   max-height: 100%; }
 

@@ -26,53 +26,53 @@ div.CategoryHomePage {
 }
 //User Items List
 
-ul.CategoryItems {
-  // display: flex;
-  // flex-direction: row-reverse;
-  // justify-content: space-around;
-  // a {
-  //   border-style: solid;
-  //   border-color: green;
+// ul.CategoryItems {
+//   // display: flex;
+//   // flex-direction: row-reverse;
+//   // justify-content: space-around;
+//   // a {
+//   //   border-style: solid;
+//   //   border-color: green;
    
-  // }
-}
+//   // }
+// }
 .CategoryRow{
 
-  border-style:solid;
-  border-color: palevioletred;
+ 
   height: 250px;
   width: 100%;
   display:flex;
   flex-direction: row;
   justify-content: center;
+  -moz-box-shadow: 10px 10px 5px rgb(13, 14, 13);
+  -webkit-box-shadow: 10px 10px 5px rgb(24, 13, 13);
+  -khtml-box-shadow: 10px 10px 5px rgb(4, 0, 0);
   
- 
 }
+CategoryRow:hover{
+opacity: 0.5;
+}
+
 
 div.ParentHomeClass {
   // opacity: 0.6;
   margin: 0%;
   background-color: white;
   border-style:solid;
-  border-color: blue;
+
 }
 span.CategoryName {
   font-size:50px;
-  border-style:solid;
-  border-color: red;
+ 
   
   height: 25%;
-  display:block;
-  width:100%;
-
-  justify-content: flex-start;
-  text-align: center;
+ 
   font-family: $Bungee;
 }
 .SingleItemFromCateogor{
 
-  border-style:solid;
-  border-color:purple;
+ 
+
   height: 35%;
 }
 

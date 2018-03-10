@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {withRouter} from 'react-router-dom';
+import NoMatch from '../components/NoMatch';
 
 
 class SearchComponent extends Component {
@@ -25,13 +26,14 @@ class SearchComponent extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    this.props.history.push(`/items/${this.state.searchItems[0].id}`)
+    this.state.searchItems[0]?this.props.history.push(`/items/${this.state.searchItems[0].id}`):
+    this.props.history.push(`/${NoMatch}`)
     
   }
 
 
   render(){
-   
+   console.log(this.state.searchItems);
     let filteredItems = this.props.items.filter(item=>{
       return item.name.indexOf(this.state.search) !== -1
     });
