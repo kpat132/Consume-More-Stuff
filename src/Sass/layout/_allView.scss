@@ -8,6 +8,14 @@ html {
   // -o-background-size: cover;
   // background-size: cover;
 }
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
 
 body {
   margin: 0;
@@ -15,6 +23,9 @@ body {
   display: flex;
   flex-direction: column;
   div.Main {
+    transition: margin-left 0.5s;
+    padding: 20px;
+
     position: relative;
     font-family: $Basic;
     height: 47rem;
