@@ -67,8 +67,6 @@ router
     let base64String = req.body.image;
     let base64Blob = base64String.split(';base64,').pop();
 
-    console.log(base64Blob);
-
     let data = ({
       name,
       description,
@@ -101,7 +99,6 @@ router
                 reject(err);
               }
               else {
-                console.log(newItem)
                 resolve([newItem,filePath]);
               }
             });
@@ -114,7 +111,6 @@ router
 
             })
             .then(result => {
-              console.log('RESULT', result);
               return result;
             })
             .catch(err => {
@@ -126,7 +122,7 @@ router
       .then(newItem => {
         if (newItem.id) {
           return res.status(200).json({
-            item: newItem1,
+            item: newItem,
             itemAdded: true
           });
         } else {

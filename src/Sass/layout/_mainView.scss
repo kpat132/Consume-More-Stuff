@@ -7,3 +7,115 @@
     text-decoration: none;
   }
 }
+
+div.CategoryHomePage {
+  margin-top: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+
+  background-color: $white;
+  // flex-direction: row-reverse;
+  // justify-content: space-around;
+  // flex-wrap: wrap;
+  border-style: solid;
+  border-color: rgb(250, 250, 250);
+  // border-color: red;
+  -moz-box-shadow: 5px 5px 5px rgb(33, 34, 33);
+  -webkit-box-shadow: 5px 5px 5px rgb(24, 13, 13);
+  -khtml-box-shadow: 5px 5px 5px rgb(4, 0, 0);
+}
+//User Items List
+
+ul.CategoryItems {
+  // display: flex;
+  // flex-direction: row-reverse;
+  // justify-content: space-around;
+  // a {
+  //   border-style: solid;
+  //   border-color: green;
+   
+  // }
+}
+.CategoryRow{
+
+  border-style:solid;
+  border-color: palevioletred;
+  height: 250px;
+  width: 100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  
+ 
+}
+
+div.ParentHomeClass {
+  // opacity: 0.6;
+  margin: 0%;
+  background-color: white;
+  border-style:solid;
+  border-color: blue;
+}
+span.CategoryName {
+  font-size:50px;
+  border-style:solid;
+  border-color: red;
+  
+  height: 25%;
+  display:block;
+  width:100%;
+
+  justify-content: flex-start;
+  text-align: center;
+  font-family: $Bungee;
+}
+.SingleItemFromCateogor{
+
+  border-style:solid;
+  border-color:purple;
+  height: 35%;
+}
+
+//Categories
+// .ParentHomeClass {
+//   .CategoryHomePage {
+//     font-family: $Basic;
+
+//     .singleCategoryHomePage {
+//       .CategoryRow {
+//         .CategoryItems {
+//           display: flex;
+//           flex-direction: row-reverse;
+//           justify-content: space-around;
+//           flex-wrap: wrap;
+//           list-style: none;
+//           flex-wrap: nowrap;
+//           overflow-x: auto;
+//           .SingleItemFromCateogor {
+//             flex: 0 0 auto;
+//             a {
+//               text-decoration: none;
+//               color: $black;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .AddItemButton-container {
+//   align-self: flex-end;
+// }
+
+// .CategoryName {
+//   display: inline-flex;
+//   justify-content: flex-start;
+//   flex-direction: column;
+//   position: relative;
+//   margin-left: auto;
+//   height: 100%;
+// }
+// a {
+//   text-decoration: none;
+// }

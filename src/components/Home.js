@@ -11,7 +11,9 @@ class Home extends Component {
     super(props);
   }
 
+
   render() {
+    console.log('trigger home render');
     let UserItems;
     let userItemsHeader = null;
     let addItemButton = null;
@@ -32,8 +34,12 @@ class Home extends Component {
     return (
       <div className="ParentHomeClass">
         <section>
-          <h1>{userItemsHeader}</h1>
+          <div className='home-user-header'>
+            <h1>{userItemsHeader}</h1>
+          </div>
           <div className="ItemsThatBelongToUsers">{UserItems}</div>
+
+
           {addItemButton}
 
          

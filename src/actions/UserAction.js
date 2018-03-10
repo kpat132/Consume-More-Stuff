@@ -29,7 +29,7 @@ const DATA = "/api/users";
 //   }
 // }
 
-export const register = user => {
+export const register = (user, history) => {
   return dispatch => {
     return fetch(`${LOGINROUTE}/register`, {
       method: `POST`,
@@ -38,14 +38,18 @@ export const register = user => {
       },
       body: JSON.stringify(user)
     })
+    .then(checkStatus)
+    .then(parseJSON)
       .then(newUser => {
-        return dispatch({
+        dispatch({
           type: REGISTER,
           users: newUser
         });
+        history.push("/login")
       })
       .catch(err => {
         console.log({ err: err.message });
+        history.push("/register", { resetState:true })
       });
   };
 };
