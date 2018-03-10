@@ -23,6 +23,8 @@ import Sticky from "react-sticky-el";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.handleOpenNav = this.handleOpenNav.bind(this);
+    this.handleCloseNav = this.handleCloseNav.bind(this);
   }
 
   componentWillMount() {
@@ -35,13 +37,26 @@ class App extends Component {
       this.props.userPage(localStorage.id);
     }
   }
+  handleOpenNav(event) {
+    console.log(document.getElementsByClassName("mySidenav")[0]);
+    document.getElementsByClassName("mySidenav")[0].style.width = "250px";
+
+    document.getElementsByClassName("Mains")[0].style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  }
+  handleCloseNav(event) {
+    console.log("onclick");
+    document.getElementsByClassName("mySidenav")[0].style.width = "0";
+    document.getElementsByClassName("Mains")[0].style.marginLeft = "0";
+    document.body.style.backgroundColor = "white";
+  }
 
   render() {
     let userItems = this.props.users.items;
     let buttons = <LoginButtonComponent />;
     let logoutButton = null;
 
-    if(localStorage.length > 0){
+    if (localStorage.length > 0) {
       buttons = null;
       logoutButton = <LogoutButtonComponent />;
     }
@@ -55,12 +70,18 @@ class App extends Component {
             {logoutButton}
           </header>
 
-          <Sticky bottomOffset={80}>
-            <nav className="Navbar">
-              {this.props.children}
-              <NavComponent categories={this.props.categories} />
-            </nav>
-          </Sticky>
+          <nav className="Navbar">
+            {this.props.children}
+            <NavComponent
+              categories={this.props.categories}
+              nav={this.handleCloseNav}
+            />
+          </nav>
+
+          <div className="Mains">
+            <span onClick={this.handleOpenNav}>&#9776; Navbar</span>
+          </div>
+
           <div className="Main">
             <Main />
           </div>

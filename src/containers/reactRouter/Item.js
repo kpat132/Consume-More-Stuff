@@ -65,8 +65,8 @@ class Item extends Component {
     return (
       <Overdrive
         id="item-to-image"
-        duration={1000}
-        // animationDelay={3}
+        duration={10}
+        animationDelay={3}
         style={{ display: "flex" }}
       >
         <div className="item">
