@@ -17,24 +17,30 @@ const UserItemsList = props => {
           const model = element.model;
           const notes = element.notes;
           return (
-            <ul key={element.name}>
-              <li  className='useritemNames' > {element.name} </li>
-             
-              {description && <li>Description: {description}</li>}
-            
-              {price && <li>Price: {price}</li>}
-             
-              {make && <li>Make: {make}</li>}
-             
-              {model && <li>Model: {model}</li>}
-            
-              {dimensions && <li>Dimensions: {dimensions}</li>}
-           
-              {image && <li>Image: {image}</li>}
-            
-              {notes && <li>Notes: {notes}</li>}
+          <div className='item-card'>
+            <div className='item-card-innerContainer'>
+              <ul key={element.name}>
+                  <li className='useritemNames' > {element.name} </li>
 
-            </ul>
+                  {description && <li>Description: {description}</li>}
+
+                  {price && <li>Price: {price}</li>}
+
+                  {make && <li>Make: {make}</li>}
+
+                  {model && <li>Model: {model}</li>}
+
+                  {dimensions && <li>Dimensions: {dimensions}</li>}
+                  <div className='home-card-container'>
+                    <div className="home-card-img">
+                    {image && <img src={`${image}`} />}
+                    </div>
+                  </div>
+                  {notes && <li>Notes: {notes}</li>}
+
+                </ul>
+              </div>
+             </div> 
           )
         }))}
       </ul>

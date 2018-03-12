@@ -89,7 +89,7 @@ class AddItem extends Component {
   }
 
   render() {
-
+console.log(this.state)
 
     return (
       <div>
@@ -141,6 +141,7 @@ class AddItem extends Component {
             <br />
             <input
               type="text"
+              className = 'input-des'
               onChange={this.handleChangeDescription.bind(this)}
             />
             <br />
